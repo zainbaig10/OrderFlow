@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart — EXION OrderFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../admin/dashboard.html" class="nav-item"><i class="fas fa-shield-alt"></i><span>Admin Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+        <div class="topbar-actions">
+          <a href="cart.html" class="topbar-btn" style="position:relative;"><i class="fas fa-shopping-cart"></i><span class="notif-badge" id="cartBadge" style="display:none;">0</span></a>
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+          <div class="topbar-user"><div class="user-avatar">SC</div><div class="user-info"><span class="user-name">Sarah Chen</span><span class="user-role">Sales Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div><h1 class="page-title">Shopping Cart</h1><p class="page-subtitle" id="cartCount">0 item(s)</p></div>
+          <a href="new-order.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+        </div>
+
+        <div class="cart-customer-summary" id="cartCustomerSummary" style="display:none;"></div>
+
+        <div id="cartEmpty" class="card">
+          <div class="card-body"><div class="empty-state">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>Your cart is empty</h3>
+            <p>Browse the product catalog to add items to your order.</p>
+            <a href="product-catalog.html" class="btn btn-primary"><i class="fas fa-boxes-stacked"></i> Browse Products</a>
+          </div></div>
+        </div>
+
+        <div id="cartContent" class="hidden">
+          <div class="card">
+            <div class="card-header"><h3 class="card-title">Cart Items</h3></div>
+            <div class="card-body-no-pad" id="cartItems"></div>
+            <div class="cart-summary">
+              <div class="cart-summary-row"><span>Subtotal</span><span class="font-bold" id="cartTotal">$0.00</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3 class="card-title">Remarks &amp; Attachments</h3></div>
+            <div class="card-body">
+              <div class="form-group"><label>Order Remarks</label><textarea class="form-input form-textarea" id="orderRemarks" placeholder="Any special instructions for the office team..." onchange="setSessionData('order_remarks',this.value)"></textarea></div>
+              <div class="form-group"><label>Attach Photos (optional)</label>
+                <div class="photo-upload-area" onclick="showToast('Photo upload simulated — 1 file attached','success')">
+                  <i class="fas fa-cloud-upload-alt"></i><p><span>Click to upload</span> or drag and drop</p><p class="text-muted" style="font-size:12px;margin-top:4px;">PNG, JPG up to 10MB</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;" class="mt-4">
+            <a href="product-catalog.html" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
+            <a href="review.html" class="btn btn-primary btn-lg"><i class="fas fa-arrow-right"></i> Proceed to Review</a>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

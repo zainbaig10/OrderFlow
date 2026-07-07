@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customers — EXION DealerFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../admin/dashboard.html" class="nav-item"><i class="fas fa-shield-alt"></i><span>Admin Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search customers..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+          <div class="topbar-user"><div class="user-avatar">SR</div><div class="user-info"><span class="user-name">Sarah Al Rashid</span><span class="user-role">Sales Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div><h1 class="page-title">Customers</h1><p class="page-subtitle">10 customers in your territory</p></div>
+          <button class="btn btn-primary" onclick="showToast('Use New Order flow for inline customer creation','info')"><i class="fas fa-plus"></i> New Customer</button>
+        </div>
+        <div class="filters-bar">
+          <div class="filter-search"><i class="fas fa-search"></i><input type="text" id="customerTableSearch" placeholder="Search by company, contact, or phone..."></div>
+        </div>
+        <div class="card">
+          <div class="card-body-no-pad"><div class="table-wrapper">
+            <table class="data-table">
+              <thead><tr><th>Company</th><th>Contact Person</th><th>Phone</th><th>Email</th><th>Orders</th><th></th></tr></thead>
+              <tbody id="customerTableBody">
+                <tr><td><strong>Al Muhaidib Kitchens</strong></td><td>Khalid Al Muhaidib</td><td>+966 13 812 3456</td><td>khalid@almuhaidib.com.sa</td><td>22</td><td><a href="customer-details.html?id=1" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Raha Kitchen Solutions</strong></td><td>Faisal Al Ghamdi</td><td>+966 13 823 4567</td><td>faisal@raha-kitchens.sa</td><td>31</td><td><a href="customer-details.html?id=2" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Eastern Kitchens Factory</strong></td><td>Omar Al Dossari</td><td>+966 13 834 5678</td><td>omar@eastern-kitchens.sa</td><td>15</td><td><a href="customer-details.html?id=3" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Gulf Modular Kitchens</strong></td><td>Sultan Al Harbi</td><td>+966 13 845 6789</td><td>sultan@gulfmodular.sa</td><td>19</td><td><a href="customer-details.html?id=4" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Al Jazeera Kitchen World</strong></td><td>Mohammed Al Qahtani</td><td>+966 13 856 7890</td><td>mohammed@aljazeerakitchen.sa</td><td>27</td><td><a href="customer-details.html?id=5" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Dammam Interior Works</strong></td><td>Abdullah Al Shamrani</td><td>+966 13 867 8901</td><td>abdullah@dammaminterior.sa</td><td>8</td><td><a href="customer-details.html?id=6" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Crystal Kitchen Systems</strong></td><td>Turki Al Otaibi</td><td>+966 13 878 9012</td><td>turki@crystalkitchens.sa</td><td>12</td><td><a href="customer-details.html?id=7" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Al Khobar Kitchen Showroom</strong></td><td>Ibrahim Al Mutairi</td><td>+966 13 889 0123</td><td>ibrahim@khobarkitchen.sa</td><td>34</td><td><a href="customer-details.html?id=8" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Saudi Kitchen Supply Co.</strong></td><td>Ahmed Al Zahrani</td><td>+966 13 890 1234</td><td>ahmed@sdkitchen.sa</td><td>41</td><td><a href="customer-details.html?id=9" class="btn btn-sm btn-secondary">View</a></td></tr>
+                <tr><td><strong>Royal Kitchen Fittings</strong></td><td>Bandar Al Subaie</td><td>+966 13 901 2345</td><td>bandar@royalkitchen.sa</td><td>3</td><td><a href="customer-details.html?id=10" class="btn btn-sm btn-secondary">View</a></td></tr>
+              </tbody>
+            </table>
+            <div class="search-no-results hidden" id="customerNoResults">
+              <i class="fas fa-user-slash"></i>
+              <h4>No customer found</h4>
+              <p>Try a different search term or create a new customer.</p>
+              <button class="btn btn-primary btn-sm" onclick="showToast('Use New Order flow for inline customer creation','info')"><i class="fas fa-plus"></i> Create New Customer</button>
+            </div>
+          </div></div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

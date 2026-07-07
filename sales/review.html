@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Review Order — EXION DealerFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../admin/dashboard.html" class="nav-item"><i class="fas fa-shield-alt"></i><span>Admin Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+          <div class="topbar-user"><div class="user-avatar">SR</div><div class="user-info"><span class="user-name">Sarah Al Rashid</span><span class="user-role">Sales Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div><h1 class="page-title">Review &amp; Submit</h1><p class="page-subtitle">Step 3 of 3 — Confirm your order details</p></div>
+          <a href="cart.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Cart</a>
+        </div>
+        <div class="steps">
+          <div class="step completed"><div class="step-num"><i class="fas fa-check" style="font-size:12px;"></i></div><div class="step-label">Customer</div></div>
+          <div class="step completed"><div class="step-num"><i class="fas fa-check" style="font-size:12px;"></i></div><div class="step-label">Products</div></div>
+          <div class="step current"><div class="step-num">3</div><div class="step-label">Review</div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3 class="card-title"><i class="fas fa-route" style="margin-right:8px;color:var(--primary-400);"></i>Status Preview</h3></div>
+          <div class="card-body">
+            <div class="status-flow" id="statusFlow"></div>
+            <p class="text-muted" style="font-size:12px;">This shows the expected workflow after submission.</p>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3 class="card-title"><i class="fas fa-user" style="margin-right:8px;color:var(--primary-400);"></i>Customer</h3></div>
+          <div class="card-body" id="reviewCustomer"><div class="detail-value text-muted">No customer selected</div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3 class="card-title"><i class="fas fa-box" style="margin-right:8px;color:var(--primary-400);"></i>Order Items</h3></div>
+          <div class="card-body-no-pad"><div class="table-wrapper">
+            <table class="data-table">
+              <thead><tr><th>#</th><th>Product</th><th class="text-right">Qty</th><th class="text-right">Unit Price</th><th class="text-right">Amount</th></tr></thead>
+              <tbody id="reviewItems"><tr><td colspan="5" class="text-center text-muted" style="padding:24px;">No items in cart</td></tr></tbody>
+            </table>
+          </div></div>
+          <div class="cart-summary"><div class="cart-summary-row total"><span>Total</span><span id="reviewTotal">SAR 0.00</span></div></div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3 class="card-title"><i class="fas fa-sticky-note" style="margin-right:8px;color:var(--primary-400);"></i>Remarks</h3></div>
+          <div class="card-body"><p id="reviewRemarks" class="text-muted">No remarks provided.</p></div>
+        </div>
+        <div style="text-align:right;" class="mt-4">
+          <a href="cart.html" class="btn btn-secondary btn-lg" style="margin-right:12px;"><i class="fas fa-edit"></i> Edit Order</a>
+          <button class="btn btn-success btn-lg" onclick="submitOrder()"><i class="fas fa-paper-plane"></i> Submit Order Request</button>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', function() { renderStatusFlow('submitted'); });</script>
+</body>
+</html>

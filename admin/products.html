@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products — EXION DealerFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
+        <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
+        <a href="settings.html" class="nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../sales/dashboard.html" class="nav-item"><i class="fas fa-store"></i><span>Sales Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search products..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">5</span></button>
+          <div class="topbar-user"><div class="user-avatar">AT</div><div class="user-info"><span class="user-name">Andrew Teo</span><span class="user-role">Office Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header"><div><h1 class="page-title">Products</h1><p class="page-subtitle">10 products across 6 categories</p></div><button class="btn btn-primary" onclick="showToast('Add product form would open here','info')"><i class="fas fa-plus"></i> Add Product</button></div>
+        <div class="filters-bar">
+          <div class="filter-group"><label>Category:</label><select class="form-select" id="adminProductCategory" style="width:auto;min-width:160px;"><option value="All">All Categories</option><option value="Hinges">Hinges</option><option value="Channels">Channels</option><option value="Storage">Storage</option><option value="Organizers">Organizers</option><option value="Mechanisms">Mechanisms</option></select></div>
+        </div>
+        <div class="card"><div class="card-body-no-pad"><div class="table-wrapper">
+          <table class="data-table">
+            <thead><tr><th>Product Name</th><th>SKU</th><th>Category</th><th class="text-right">Price (SAR)</th><th>Stock</th><th></th></tr></thead>
+            <tbody id="adminProductTableBody">
+              <tr data-category="Hinges"><td><strong>Soft Close Hinges</strong></td><td>HNG-110</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Hinges</span></td><td class="text-right font-bold">SAR 18.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Channels"><td><strong>Drawer Channels</strong></td><td>DRW-220</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Channels</span></td><td class="text-right font-bold">SAR 45.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Storage"><td><strong>Pull Out Basket</strong></td><td>BSK-330</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Storage</span></td><td class="text-right font-bold">SAR 85.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Storage"><td><strong>Pantry Unit</strong></td><td>PNT-440</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Storage</span></td><td class="text-right font-bold">SAR 120.00</td><td><div class="stock-low">Low Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Organizers"><td><strong>Cutlery Tray</strong></td><td>CTR-550</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Organizers</span></td><td class="text-right font-bold">SAR 35.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Storage"><td><strong>Magic Corner</strong></td><td>MGC-660</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Storage</span></td><td class="text-right font-bold">SAR 150.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Storage"><td><strong>Bottle Pull Out</strong></td><td>BTL-770</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Storage</span></td><td class="text-right font-bold">SAR 95.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Organizers"><td><strong>Dish Drying Rack</strong></td><td>DRY-880</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Organizers</span></td><td class="text-right font-bold">SAR 75.00</td><td><div class="stock-low">Low Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Mechanisms"><td><strong>Lift System</strong></td><td>LFT-990</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Mechanisms</span></td><td class="text-right font-bold">SAR 130.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+              <tr data-category="Organizers"><td><strong>Waste Bin System</strong></td><td>WBS-100</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Organizers</span></td><td class="text-right font-bold">SAR 65.00</td><td><div class="stock-out">Out of Stock</div></td><td><button class="btn-sm btn-secondary" onclick="showToast('Edit product','info')"><i class="fas fa-edit"></i></button></td></tr>
+            </tbody>
+          </table>
+        </div></div></div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

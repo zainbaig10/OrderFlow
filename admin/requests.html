@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Requests — EXION OrderFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
+        <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
+        <a href="settings.html" class="nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../sales/dashboard.html" class="nav-item"><i class="fas fa-store"></i><span>Sales Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search requests..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">5</span></button>
+          <div class="topbar-user"><div class="user-avatar">AT</div><div class="user-info"><span class="user-name">Andrew Teo</span><span class="user-role">Office Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header"><div><h1 class="page-title">All Requests</h1><p class="page-subtitle">47 total requests · 8 need your attention</p></div></div>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="tab-all">All (10)</button>
+          <button class="tab-btn" data-tab="tab-submitted">Submitted (3)</button>
+          <button class="tab-btn" data-tab="tab-preparing">Preparing (2)</button>
+          <button class="tab-btn" data-tab="tab-sent">Sent (2)</button>
+          <button class="tab-btn" data-tab="tab-completed">Completed (2)</button>
+        </div>
+        <div id="tab-all" class="tab-content active">
+          <div class="card"><div class="card-body-no-pad"><div class="table-wrapper">
+            <table class="data-table">
+              <thead><tr><th>Request ID</th><th>Customer</th><th>Salesperson</th><th>Date</th><th>Items</th><th>Total</th><th>Priority</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0047"><td><strong class="text-primary">REQ-2024-0047</strong></td><td>Meridian Auto Parts</td><td>Sarah Chen</td><td>18 Dec</td><td>4</td><td>$312.40</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-submitted">Submitted</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0046"><td><strong class="text-primary">REQ-2024-0046</strong></td><td>Summit Industrial Supply</td><td>Marcus Johnson</td><td>17 Dec</td><td>7</td><td>$587.20</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-preparing">Preparing</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0045"><td><strong class="text-primary">REQ-2024-0045</strong></td><td>RoyalTech Industries</td><td>Sarah Chen</td><td>16 Dec</td><td>12</td><td>$1,452.80</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-sent">Sent</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0044"><td><strong class="text-primary">REQ-2024-0044</strong></td><td>Apex Machinery Trading</td><td>Priya Patel</td><td>15 Dec</td><td>3</td><td>$186.00</td><td><span class="badge badge-low">Low</span></td><td><span class="badge badge-confirmed">Confirmed</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0043"><td><strong class="text-primary">REQ-2024-0043</strong></td><td>NorthStar Engineering</td><td>Marcus Johnson</td><td>14 Dec</td><td>5</td><td>$423.50</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-completed">Completed</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0042"><td><strong class="text-primary">REQ-2024-0042</strong></td><td>Falcon Equipment Pte Ltd</td><td>Sarah Chen</td><td>13 Dec</td><td>6</td><td>$534.70</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-completed">Completed</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0041"><td><strong class="text-primary">REQ-2024-0041</strong></td><td>Pacific Coast Distributors</td><td>Priya Patel</td><td>12 Dec</td><td>2</td><td>$94.40</td><td><span class="badge badge-low">Low</span></td><td><span class="badge badge-submitted">Submitted</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0040"><td><strong class="text-primary">REQ-2024-0040</strong></td><td>Tiong Heng Hardware</td><td>Marcus Johnson</td><td>11 Dec</td><td>8</td><td>$672.30</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-preparing">Preparing</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0039"><td><strong class="text-primary">REQ-2024-0039</strong></td><td>Keppel Marine Supplies</td><td>Sarah Chen</td><td>10 Dec</td><td>4</td><td>$348.90</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-sent">Sent</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0038"><td><strong class="text-primary">REQ-2024-0038</strong></td><td>Greenfield Solutions</td><td>Priya Patel</td><td>09 Dec</td><td>1</td><td>$28.50</td><td><span class="badge badge-low">Low</span></td><td><span class="badge badge-draft">Draft</span></td></tr>
+              </tbody>
+            </table>
+          </div></div></div>
+        </div>
+        <div id="tab-submitted" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th><th>Priority</th></tr></thead><tbody>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0047"><td><strong class="text-primary">REQ-2024-0047</strong></td><td>Meridian Auto Parts</td><td>Sarah Chen</td><td>$312.40</td><td><span class="badge badge-high">High</span></td></tr>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0041"><td><strong class="text-primary">REQ-2024-0041</strong></td><td>Pacific Coast Distributors</td><td>Priya Patel</td><td>$94.40</td><td><span class="badge badge-low">Low</span></td></tr>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0038"><td><strong class="text-primary">REQ-2024-0038</strong></td><td>Greenfield Solutions</td><td>Priya Patel</td><td>$28.50</td><td><span class="badge badge-low">Low</span></td></tr>
+        </tbody></table></div></div></div></div>
+        <div id="tab-preparing" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th></tr></thead><tbody>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0046"><td><strong class="text-primary">REQ-2024-0046</strong></td><td>Summit Industrial Supply</td><td>Marcus Johnson</td><td>$587.20</td></tr>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0040"><td><strong class="text-primary">REQ-2024-0040</strong></td><td>Tiong Heng Hardware</td><td>Marcus Johnson</td><td>$672.30</td></tr>
+        </tbody></table></div></div></div></div>
+        <div id="tab-sent" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th></tr></thead><tbody>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0045"><td><strong class="text-primary">REQ-2024-0045</strong></td><td>RoyalTech Industries</td><td>Sarah Chen</td><td>$1,452.80</td></tr>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0039"><td><strong class="text-primary">REQ-2024-0039</strong></td><td>Keppel Marine Supplies</td><td>Sarah Chen</td><td>$348.90</td></tr>
+        </tbody></table></div></div></div></div>
+        <div id="tab-completed" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th></tr></thead><tbody>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0043"><td><strong class="text-primary">REQ-2024-0043</strong></td><td>NorthStar Engineering</td><td>Marcus Johnson</td><td>$423.50</td></tr>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0042"><td><strong class="text-primary">REQ-2024-0042</strong></td><td>Falcon Equipment Pte Ltd</td><td>Sarah Chen</td><td>$534.70</td></tr>
+        </tbody></table></div></div></div></div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

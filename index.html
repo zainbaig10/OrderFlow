@@ -1,0 +1,110 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXION OrderFlow — Sign In</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-brand">
+      <div class="login-brand-logo">E</div>
+      <h1>EXION OrderFlow</h1>
+      <p>Replace paper-based dealer order collection with a digital workflow integrated into office quotation management.</p>
+      <ul class="login-brand-features">
+        <li><i class="fas fa-bolt"></i> Submit orders from the field in seconds</li>
+        <li><i class="fas fa-file-invoice"></i> Auto-generate professional quotations</li>
+        <li><i class="fas fa-chart-line"></i> Real-time request tracking &amp; status</li>
+        <li><i class="fas fa-users"></i> Manage customers, products &amp; team</li>
+      </ul>
+    </div>
+    <div class="login-form-side">
+      <div class="login-form-box">
+        <h2>Welcome back</h2>
+        <p class="subtitle">Sign in to your OrderFlow account</p>
+        <form onsubmit="event.preventDefault(); window.location.href='sales/dashboard.html';">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-input" placeholder="sarah.chen@exion.com" value="sarah.chen@exion.com">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-input" placeholder="Enter your password" value="password123">
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-600);cursor:pointer;">
+              <input type="checkbox" checked style="accent-color:var(--primary-500);"> Remember me
+            </label>
+            <a href="#" style="font-size:13px;color:var(--primary-500);font-weight:600;" onclick="event.preventDefault();">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+        </form>
+        <div class="login-admin-link">
+          <a href="admin/dashboard.html">Enter Admin Portal →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EXION OrderFlow — Sign In</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="login-page">
+    <div class="login-brand">
+      <div class="login-brand-logo">E</div>
+      <h1>EXION OrderFlow</h1>
+      <p>Replace paper-based dealer order collection with a digital workflow integrated into office quotation management.</p>
+      <ul class="login-brand-features">
+        <li><i class="fas fa-bolt"></i> Submit orders from the field in seconds</li>
+        <li><i class="fas fa-file-invoice"></i> Auto-generate professional quotations</li>
+        <li><i class="fas fa-chart-line"></i> Real-time request tracking &amp; status</li>
+        <li><i class="fas fa-users"></i> Manage customers, products &amp; team</li>
+      </ul>
+    </div>
+    <div class="login-form-side">
+      <div class="login-form-box">
+        <h2>Welcome back</h2>
+        <p class="subtitle">Sign in to your OrderFlow account</p>
+        <form onsubmit="handleLogin(event);">
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" class="form-input" placeholder="sarah.chen@exion.com" value="sarah.chen@exion.com">
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-input" placeholder="Enter your password" value="password123">
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;">
+            <label style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--gray-600);cursor:pointer;">
+              <input type="checkbox" checked style="accent-color:var(--primary-500);"> Remember me
+            </label>
+            <a href="#" style="font-size:13px;color:var(--primary-500);font-weight:600;" onclick="event.preventDefault();showToast('Password reset email sent (simulated)','info');">Forgot password?</a>
+          </div>
+          <div class="form-group">
+            <label>Sign in as</label>
+            <select class="form-select" id="loginRole">
+              <option value="sales">Salesperson</option>
+              <option value="admin">Office / Admin</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top:8px;">Sign In</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

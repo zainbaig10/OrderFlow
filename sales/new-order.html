@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Order — EXION OrderFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* Fix: search dropdown clipped by parent overflow */
+    .main-area {
+      overflow: visible !important;
+    }
+    .content {
+      overflow-y: auto !important;
+      overflow-x: hidden !important;
+      min-height: 0;
+    }
+    .topbar {
+      overflow: visible !important;
+      position: relative;
+      z-index: 100 !important;
+    }
+    .sidebar {
+      z-index: 500 !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../admin/dashboard.html" class="nav-item"><i class="fas fa-shield-alt"></i><span>Admin Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+        <div class="topbar-actions">
+          <a href="cart.html" class="topbar-btn" style="position:relative;"><i class="fas fa-shopping-cart"></i><span class="notif-badge" id="cartBadge" style="display:none;">0</span></a>
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+          <div class="topbar-user"><div class="user-avatar">SC</div><div class="user-info"><span class="user-name">Sarah Chen</span><span class="user-role">Sales Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div><h1 class="page-title">New Order Request</h1><p class="page-subtitle">Step 1 of 3 — Select Customer</p></div>
+          <a href="dashboard.html" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</a>
+        </div>
+
+        <div class="steps">
+          <div class="step current"><div class="step-num">1</div><div class="step-label">Customer</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-label">Products</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-label">Review</div></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h3 class="card-title"><i class="fas fa-search" style="margin-right:8px;color:var(--primary-400);"></i>Search Existing Customer</h3></div>
+          <div class="card-body">
+            <div id="customerSearchBox">
+              <div class="search-dropdown" style="max-width:480px;">
+                <input type="text" class="form-input" id="customerSearchInput" placeholder="Type company name, contact person, or phone..." autocomplete="off" style="font-size:15px;padding:12px 16px 12px 44px;">
+                <i class="fas fa-search" style="position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--gray-400);font-size:15px;pointer-events:none;"></i>
+                <div class="search-dropdown-list" id="customerSearchList"></div>
+              </div>
+            </div>
+
+            <div id="selectedCustomer" class="hidden mt-4"></div>
+
+            <div id="addCustomerForm" class="hidden mt-4">
+              <div class="status-bar" style="background:var(--info-light);margin-bottom:20px;">
+                <div class="status-dot blue"></div>
+                <span class="status-text" style="color:var(--info-text);">Customer not found — Create new customer below</span>
+              </div>
+              <form id="newCustomerForm">
+                <div class="form-grid">
+                  <div class="form-group"><label>Company Name *</label><input type="text" class="form-input" name="company" required placeholder="e.g. ABC Trading Pte Ltd"></div>
+                  <div class="form-group"><label>Contact Person *</label><input type="text" class="form-input" name="contact" required placeholder="e.g. John Tan"></div>
+                  <div class="form-group"><label>Phone *</label><input type="text" class="form-input" name="phone" required placeholder="+65 XXXX XXXX"></div>
+                  <div class="form-group"><label>Email</label><input type="email" class="form-input" name="email" placeholder="email@company.sg"></div>
+                  <div class="form-group full"><label>Address</label><input type="text" class="form-input" name="address" placeholder="Full address"></div>
+                  <div class="form-group full"><label>Notes</label><textarea class="form-input form-textarea" name="notes" placeholder="Any special notes..."></textarea></div>
+                </div>
+                <div class="flex gap-2 mt-4">
+                  <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Add Customer &amp; Continue</button>
+                  <button type="button" class="btn btn-secondary" id="cancelAddCustomer">Cancel</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="or-divider"><span>OR</span></div>
+
+        <div style="text-align:center;">
+          <button class="btn btn-outline btn-lg" onclick="document.getElementById('customerSearchBox').classList.add('hidden');document.getElementById('addCustomerForm').classList.remove('hidden');document.getElementById('addCustomerForm').scrollIntoView({behavior:'smooth'});"><i class="fas fa-user-plus"></i> New Customer</button>
+        </div>
+
+        <div class="card mt-6">
+          <div class="card-header"><h3 class="card-title"><i class="fas fa-clipboard-list" style="margin-right:8px;color:var(--primary-400);"></i>Visit Details</h3></div>
+          <div class="card-body">
+            <div class="form-grid">
+              <div class="form-group"><label>Visit Date</label><input type="date" class="form-input" id="visitDate" readonly></div>
+              <div class="form-group"><label>Visit Time</label><input type="time" class="form-input" id="visitTime" readonly></div>
+              <div class="form-group"><label>Purpose</label>
+                <select class="form-select" id="visitPurpose" onchange="setSessionData('visit_purpose',this.value)">
+                  <option value="New Order" selected>New Order</option>
+                  <option value="Follow-up">Follow-up</option>
+                  <option value="Product Demo">Product Demo</option>
+                  <option value="Inquiry">Inquiry</option>
+                  <option value="Complaint">Complaint</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6">
+          <a href="product-catalog.html" class="btn btn-primary btn-lg" id="continueToProducts"><i class="fas fa-arrow-right"></i> Continue to Products</a>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    /* Fix: Reposition search dropdown to fixed so it's never clipped by parent overflow */
+    (function() {
+      var input = document.getElementById('customerSearchInput');
+      var list  = document.getElementById('customerSearchList');
+      if (!input || !list) return;
+
+      function reposition() {
+        if (!list.children.length) return;
+        var r = input.getBoundingClientRect();
+        list.style.position = 'fixed';
+        list.style.top  = r.bottom + 'px';
+        list.style.left = r.left + 'px';
+        list.style.width = r.width + 'px';
+        list.style.zIndex = '9999';
+        list.style.marginTop = '0';
+
+        /* Flip upward if it would overflow the viewport bottom */
+        requestAnimationFrame(function() {
+          var lr = list.getBoundingClientRect();
+          if (lr.bottom > window.innerHeight - 8) {
+            list.style.top = (r.top - lr.height) + 'px';
+          }
+        });
+      }
+
+      /* Watch for items being added/removed or visibility changes */
+      var mo = new MutationObserver(function() {
+        requestAnimationFrame(reposition);
+      });
+      mo.observe(list, { childList: true, subtree: true, attributes: true, attributeFilter: ['class', 'style'] });
+
+      input.addEventListener('input', function() {
+        requestAnimationFrame(reposition);
+      });
+
+      window.addEventListener('resize', reposition);
+      window.addEventListener('scroll', reposition, true);
+    })();
+
+    document.addEventListener('DOMContentLoaded', function() {
+      var btn = document.getElementById('continueToProducts');
+      if (btn) btn.addEventListener('click', function(e) {
+        if (!getSessionData('selected_customer')) { e.preventDefault(); showToast('Please select or add a customer first', 'error'); }
+      });
+    });
+  </script>
+</body>
+</html>

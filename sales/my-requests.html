@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Requests — EXION DealerFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../admin/dashboard.html" class="nav-item"><i class="fas fa-shield-alt"></i><span>Admin Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search requests..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+          <div class="topbar-user"><div class="user-avatar">SR</div><div class="user-info"><span class="user-name">Sarah Al Rashid</span><span class="user-role">Sales Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div><h1 class="page-title">My Requests</h1><p class="page-subtitle">Track all your order requests</p></div>
+          <a href="new-order.html" class="btn btn-primary"><i class="fas fa-plus"></i> New Order</a>
+        </div>
+        <div class="tabs">
+          <button class="tab-btn active" data-tab="tab-all">All (6)</button>
+          <button class="tab-btn" data-tab="tab-submitted">Submitted (2)</button>
+          <button class="tab-btn" data-tab="tab-sent">Sent (2)</button>
+          <button class="tab-btn" data-tab="tab-completed">Completed (2)</button>
+        </div>
+        <div id="tab-all" class="tab-content active">
+          <div class="card"><div class="card-body-no-pad"><div class="table-wrapper">
+            <table class="data-table">
+              <thead><tr><th>Request ID</th><th>Customer</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0047"><td><strong class="text-primary">REQ-2024-0047</strong></td><td>Al Muhaidib Kitchens</td><td>18 Dec 2024</td><td>4</td><td>SAR 312.00</td><td><span class="badge badge-submitted">Submitted</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0041"><td><strong class="text-primary">REQ-2024-0041</strong></td><td>Crystal Kitchen Systems</td><td>12 Dec 2024</td><td>2</td><td>SAR 95.00</td><td><span class="badge badge-submitted">Submitted</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0045"><td><strong class="text-primary">REQ-2024-0045</strong></td><td>Saudi Kitchen Supply Co.</td><td>16 Dec 2024</td><td>12</td><td>SAR 1,540.00</td><td><span class="badge badge-sent">Quotation Sent</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0039"><td><strong class="text-primary">REQ-2024-0039</strong></td><td>Dammam Interior Works</td><td>10 Dec 2024</td><td>4</td><td>SAR 415.00</td><td><span class="badge badge-sent">Quotation Sent</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0043"><td><strong class="text-primary">REQ-2024-0043</strong></td><td>Eastern Kitchens Factory</td><td>14 Dec 2024</td><td>5</td><td>SAR 490.00</td><td><span class="badge badge-completed">Completed</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0042"><td><strong class="text-primary">REQ-2024-0042</strong></td><td>Al Khobar Kitchen Showroom</td><td>13 Dec 2024</td><td>6</td><td>SAR 540.00</td><td><span class="badge badge-completed">Completed</span></td></tr>
+              </tbody>
+            </table>
+          </div></div></div>
+        </div>
+        <div id="tab-submitted" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>Request ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th></tr></thead><tbody>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0047"><td><strong class="text-primary">REQ-2024-0047</strong></td><td>Al Muhaidib Kitchens</td><td>18 Dec 2024</td><td>SAR 312.00</td><td><span class="badge badge-submitted">Submitted</span></td></tr>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0041"><td><strong class="text-primary">REQ-2024-0041</strong></td><td>Crystal Kitchen Systems</td><td>12 Dec 2024</td><td>SAR 95.00</td><td><span class="badge badge-submitted">Submitted</span></td></tr>
+        </tbody></table></div></div></div></div>
+        <div id="tab-sent" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>Request ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th></tr></thead><tbody>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0045"><td><strong class="text-primary">REQ-2024-0045</strong></td><td>Saudi Kitchen Supply Co.</td><td>16 Dec 2024</td><td>SAR 1,540.00</td><td><span class="badge badge-sent">Quotation Sent</span></td></tr>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0039"><td><strong class="text-primary">REQ-2024-0039</strong></td><td>Dammam Interior Works</td><td>10 Dec 2024</td><td>SAR 415.00</td><td><span class="badge badge-sent">Quotation Sent</span></td></tr>
+        </tbody></table></div></div></div></div>
+        <div id="tab-completed" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>Request ID</th><th>Customer</th><th>Date</th><th>Total</th><th>Status</th></tr></thead><tbody>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0043"><td><strong class="text-primary">REQ-2024-0043</strong></td><td>Eastern Kitchens Factory</td><td>14 Dec 2024</td><td>SAR 490.00</td><td><span class="badge badge-completed">Completed</span></td></tr>
+          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0042"><td><strong class="text-primary">REQ-2024-0042</strong></td><td>Al Khobar Kitchen Showroom</td><td>13 Dec 2024</td><td>SAR 540.00</td><td><span class="badge badge-completed">Completed</span></td></tr>
+        </tbody></table></div></div></div></div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

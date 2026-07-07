@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer Details — EXION DealerFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../admin/dashboard.html" class="nav-item"><i class="fas fa-shield-alt"></i><span>Admin Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+          <div class="topbar-user"><div class="user-avatar">SR</div><div class="user-info"><span class="user-name">Sarah Al Rashid</span><span class="user-role">Sales Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="breadcrumb"><a href="customers.html">Customers</a><span class="sep">/</span><span>Al Muhaidib Kitchens</span></div>
+        <div class="page-header">
+          <div style="display:flex;align-items:center;gap:16px;">
+            <div class="user-avatar" style="width:48px;height:48px;font-size:18px;border-radius:var(--radius-lg);">AM</div>
+            <div><h1 class="page-title">Al Muhaidib Kitchens</h1><p class="page-subtitle">Customer since January 2023 · 22 orders · Last contact: 18 Dec 2024</p></div>
+          </div>
+          <div class="flex gap-2">
+            <a href="new-order.html" class="btn btn-primary"><i class="fas fa-plus"></i> New Order</a>
+            <a href="customers.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3 class="card-title">Contact Information</h3></div>
+          <div class="card-body">
+            <div class="detail-grid">
+              <div class="detail-item"><div class="detail-label">Contact Person</div><div class="detail-value">Khalid Al Muhaidib</div></div>
+              <div class="detail-item"><div class="detail-label">Phone</div><div class="detail-value">+966 13 812 3456</div></div>
+              <div class="detail-item"><div class="detail-label">Email</div><div class="detail-value">khalid@almuhaidib.com.sa</div></div>
+              <div class="detail-item"><div class="detail-label">Address</div><div class="detail-value">King Fahd Road, Al Khobar 31952</div></div>
+            </div>
+            <div class="detail-item mt-4"><div class="detail-label">Notes</div><div class="detail-value">Premium kitchen projects. Net 30 terms.</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header"><h3 class="card-title">Previous Orders</h3></div>
+          <div class="card-body-no-pad"><div class="table-wrapper">
+            <table class="data-table">
+              <thead><tr><th>Request ID</th><th>Date</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+              <tbody>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0047"><td><strong class="text-primary">REQ-2024-0047</strong></td><td>18 Dec 2024</td><td>4</td><td>SAR 312.00</td><td><span class="badge badge-submitted">Submitted</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0035"><td><strong class="text-primary">REQ-2024-0035</strong></td><td>02 Dec 2024</td><td>3</td><td>SAR 220.00</td><td><span class="badge badge-completed">Completed</span></td></tr>
+                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0028"><td><strong class="text-primary">REQ-2024-0028</strong></td><td>18 Nov 2024</td><td>6</td><td>SAR 520.00</td><td><span class="badge badge-completed">Completed</span></td></tr>
+              </tbody>
+            </table>
+          </div></div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

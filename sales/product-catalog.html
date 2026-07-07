@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Catalog — EXION OrderFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../admin/dashboard.html" class="nav-item"><i class="fas fa-shield-alt"></i><span>Admin Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+        <div class="topbar-actions">
+          <a href="cart.html" class="topbar-btn" style="position:relative;"><i class="fas fa-shopping-cart"></i><span class="notif-badge" id="cartBadge" style="display:none;">0</span></a>
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+          <div class="topbar-user"><div class="user-avatar">SC</div><div class="user-info"><span class="user-name">Sarah Chen</span><span class="user-role">Sales Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header">
+          <div><h1 class="page-title">Product Catalog</h1><p class="page-subtitle">Step 2 of 3 — Add Products to Cart</p></div>
+          <div class="flex gap-2">
+            <a href="cart.html" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> View Cart</a>
+            <a href="new-order.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+          </div>
+        </div>
+
+        <div class="steps">
+          <div class="step completed"><div class="step-num"><i class="fas fa-check" style="font-size:12px;"></i></div><div class="step-label">Customer</div></div>
+          <div class="step current"><div class="step-num">2</div><div class="step-label">Products</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-label">Review</div></div>
+        </div>
+
+        <div class="products-counter">
+          <div><span class="pc-label">Selected Products</span><span class="pc-count" id="productsCounter">0</span></div>
+          <a href="cart.html"><i class="fas fa-shopping-cart"></i> View Cart</a>
+        </div>
+
+        <div class="filters-bar">
+          <div class="filter-search"><i class="fas fa-search"></i><input type="text" id="productSearch" placeholder="Search products or SKU..."></div>
+          <div class="filter-group">
+            <label>Sort:</label>
+            <select class="form-select" id="productSort" style="width:auto;min-width:160px;">
+              <option value="name-asc">Name A–Z</option>
+              <option value="name-desc">Name Z–A</option>
+              <option value="price-asc">Price Low–High</option>
+              <option value="price-desc">Price High–Low</option>
+            </select>
+          </div>
+        </div>
+        <div class="chips">
+          <button class="chip active" data-category="All">All Products</button>
+          <button class="chip" data-category="Bearings">Bearings</button>
+          <button class="chip" data-category="Filters">Filters</button>
+          <button class="chip" data-category="Belts">Belts</button>
+          <button class="chip" data-category="Hoses">Hoses</button>
+          <button class="chip" data-category="Seals">Seals</button>
+          <button class="chip" data-category="Adhesives">Adhesives</button>
+        </div>
+
+        <div class="product-grid" id="productGrid"></div>
+
+        <div class="mt-6" style="text-align:center;">
+          <a href="cart.html" class="btn btn-primary btn-lg"><i class="fas fa-shopping-cart"></i> Go to Cart</a>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

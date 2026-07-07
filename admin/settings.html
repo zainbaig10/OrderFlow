@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — EXION DealerFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
+        <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
+        <a href="settings.html" class="nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../sales/dashboard.html" class="nav-item"><i class="fas fa-store"></i><span>Sales Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search settings..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">5</span></button>
+          <div class="topbar-user"><div class="user-avatar">AT</div><div class="user-info"><span class="user-name">Andrew Teo</span><span class="user-role">Office Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content">
+        <div class="page-header"><div><h1 class="page-title">Settings</h1><p class="page-subtitle">Configure your DealerFlow instance</p></div></div>
+        <div class="settings-section">
+          <h3>Company Information</h3>
+          <p>These details appear on all quotations and documents.</p>
+          <div class="settings-card">
+            <div class="form-grid">
+              <div class="form-group"><label>Company Name</label><input type="text" class="form-input" value="EXION Trading Est."></div>
+              <div class="form-group"><label>CR Number</label><input type="text" class="form-input" value="1010123456789"></div>
+              <div class="form-group"><label>VAT Number</label><input type="text" class="form-input" value="310012345600003"></div>
+              <div class="form-group"><label>Phone</label><input type="text" class="form-input" value="+966 13 801 2345"></div>
+              <div class="form-group"><label>Email</label><input type="email" class="form-input" value="info@exion.sa"></div>
+              <div class="form-group"><label>Website</label><input type="text" class="form-input" value="www.exion.sa"></div>
+              <div class="form-group full"><label>Address</label><input type="text" class="form-input" value="P.O. Box 34521, Al Khobar 31952, Saudi Arabia"></div>
+            </div>
+            <div class="mt-4"><button class="btn btn-primary" onclick="showToast('Company information saved','success')"><i class="fas fa-save"></i> Save Changes</button></div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Quotation Defaults</h3>
+          <p>Default values when generating quotations.</p>
+          <div class="settings-card">
+            <div class="form-grid">
+              <div class="form-group"><label>Default Payment Terms</label><select class="form-select"><option value="Net 15">Net 15</option><option value="Net 30" selected>Net 30</option><option value="Net 45">Net 45</option><option value="Cash on Delivery">Cash on Delivery</option></select></div>
+              <div class="form-group"><label>Default Validity Period</label><select class="form-select"><option>14 days</option><option selected>30 days</option><option>60 days</option><option>90 days</option></select></div>
+              <div class="form-group"><label>Default VAT Rate (%)</label><input type="number" class="form-input" value="15" readonly style="background:var(--gray-50);"></div>
+              <div class="form-group"><label>Currency</label><input type="text" class="form-input" value="SAR" readonly style="background:var(--gray-50);"></div>
+            </div>
+            <div class="mt-4"><button class="btn btn-primary" onclick="showToast('Quotation defaults saved','success')"><i class="fas fa-save"></i> Save Changes</button></div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Notifications</h3>
+          <p>Control which notifications are sent to users.</p>
+          <div class="settings-card">
+            <div class="setting-row">
+              <div><div class="setting-label">New Request Submitted</div><div class="setting-desc">Notify office staff when a salesperson submits a new request</div></div>
+              <div class="toggle on"></div>
+            </div>
+            <div class="setting-row">
+              <div><div class="setting-label">Quotation Sent</div><div class="setting-desc">Notify the salesperson when their request quotation is sent</div></div>
+              <div class="toggle on"></div>
+            </div>
+            <div class="setting-row">
+              <div><div class="setting-label">Order Confirmed</div><div class="setting-desc">Notify when a customer confirms the order</div></div>
+              <div class="toggle on"></div>
+            </div>
+            <div class="setting-row">
+              <div><div class="setting-label">Daily Summary Email</div><div class="setting-desc">Send a daily email summary of all activities</div></div>
+              <div class="toggle"></div>
+            </div>
+            <div class="setting-row">
+              <div><div class="setting-label">Overdue Quotations</div><div class="setting-desc">Alert when a quotation has expired without response</div></div>
+              <div class="toggle on"></div>
+            </div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Integrations</h3>
+          <p>Connect with external services.</p>
+          <div class="settings-card">
+            <div class="setting-row">
+              <div style="display:flex;align-items:center;gap:12px;"><i class="fab fa-whatsapp" style="font-size:24px;color:#25D366;"></i><div><div class="setting-label">WhatsApp Business</div><div class="setting-desc">Send quotations directly to customers via WhatsApp</div></div>
+              <div class="toggle on"></div>
+            </div>
+            <div class="setting-row">
+              <div style="display:flex;align-items:center;gap:12px;"><i class="fas fa-plug" style="font-size:24px;color:var(--primary-500);"></i><div><div class="setting-label">Odoo ERP</div><div class="setting-desc">Sync customers, products, and orders with Odoo</div></div>
+              <div class="toggle"></div>
+            </div>
+            <div class="setting-row">
+              <div style="display:flex;align-items:center;gap:12px;"><i class="fas fa-envelope" style="font-size:24px;color:var(--warning);"></i><div><div class="setting-label">Email (SMTP)</div><div class="setting-desc">Send quotations via email as PDF attachments</div></div>
+              <div class="toggle on"></div>
+            </div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Danger Zone</h3>
+          <p>Irreversible actions — proceed with caution.</p>
+          <div class="settings-card" style="border-color:var(--danger-light);">
+            <div class="setting-row">
+              <div><div class="setting-label" style="color:var(--danger-text);">Reset All Data</div><div class="setting-desc">Permanently delete all requests, customers, and quotations</div></div>
+              <button class="btn btn-sm btn-danger" onclick="showToast('This action is disabled in the demo','error')">Reset Data</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>

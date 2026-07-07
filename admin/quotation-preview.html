@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotation Preview — EXION DealerFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
+        <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
+        <a href="settings.html" class="nav-item"><i class="fas fa-cog"></i><span>Settings</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../sales/dashboard.html" class="nav-item"><i class="fas fa-store"></i><span>Sales Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">5</span></button>
+          <div class="topbar-user"><div class="user-avatar">AT</div><div class="user-info"><span class="user-name">Andrew Teo</span><span class="user-role">Office Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content" style="background:var(--gray-200);padding:24px;">
+        <div class="breadcrumb" style="color:var(--gray-500);"><a href="requests.html" style="color:var(--primary-500);">Requests</a><span class="sep">/</span><a href="quotation.html" style="color:var(--primary-500);">Quotation</a><span class="sep">/</span><span>Preview</span></div>
+        <div class="quotation-preview-container">
+          <div class="quotation-paper">
+            <div class="qp-header">
+              <div>
+                <div class="qp-company-name">EXION TRADING EST.</div>
+                <div class="qp-company-details">
+                  P.O. Box 34521, Al Khobar 31952, Saudi Arabia<br>
+                  Tel: +966 13 801 2345 · Fax: +966 13 801 2346<br>
+                  CR No: 1010123456789<br> VAT No: 310012345600003
+                </div>
+              </div>
+              <div class="qp-title-block">
+                <div class="qp-title">QUOTATION</div>
+                <div style="font-size:14px;font-weight:600;color:var(--gray-600);margin-top:4px;" id="qpNumber">QT-2024-1234</div>
+              </div>
+            </div>
+            <div class="qp-meta">
+              <div class="qp-meta-block"><div class="label">Quotation Date</div><div class="value" id="qpDate"></div></div>
+              <div class="qp-meta-block"><div class="label">Valid Until</div><div class="value" id="qpValidity"></div></div>
+              <div class="qp-meta-block"><div class="label">Payment Terms</div><div class="value" id="qpPayment">Net 30</div></div>
+              <div class="qp-meta-block"><div class="label">Salesperson</div><div class="value">Sarah Al Rashid</div></div>
+            </div>
+            <div class="qp-bill-to">
+              <div class="label">Bill To</div>
+              <div class="name" id="qpBillCompany"></div>
+              <div class="detail" id="qpBillContact"></div>
+              <div class="detail" id="qpBillAddress"></div>
+              <div class="detail" id="qpBillPhone"></div>
+              <div class="detail" id="qpBillEmail"></div>
+            </div>
+            <table class="qp-table">
+              <thead><tr><th style="width:40px;">#</th><th>Description</th><th class="text-right" style="width:60px;">Qty</th><th class="text-right" style="width:100px;">Unit Price</th><th class="text-right" style="width:110px;">Amount</th></tr></thead>
+              <tbody id="qpItems"></tbody>
+            </table>
+            <div class="qp-totals">
+              <div class="qp-totals-table">
+                <div class="qp-totals-row"><span>Subtotal</span><span id="qpSubtotal"></span></div>
+                <div class="qp-totals-row" id="qpDiscountRow"><span>Discount</span><span id="qpDiscount"></span></div>
+                <div class="qp-tots-row"><span>VAT (15%)</span><span id="qpTax"></span></div>
+                <div class="qp-totals-row grand"><span>Grand Total</span><span id="qpGrand"></span></div>
+              </div>
+            </div>
+            <div class="qp-terms">
+              <h4>Terms &amp; Conditions</h4>
+              1. Prices are valid for 30 days from the date of this quotation.<br>
+              2. Delivery within 5-7 working days upon order confirmation.<br>
+              3. Payment terms: Net 30 days from invoice date.<br>
+              4. Goods remain the property of EXION Trading Est. until full payment is received.<br>
+              5. All prices are in Saudi Riyals and inclusive of 15% VAT unless stated otherwise.
+            </div>
+            <div class="qp-signatures">
+              <div class="qp-sig-block"><div class="qp-sig-line">Authorized Signature</div></div>
+              <div class="qp-sig-block"><div class="qp-sig-line">Accepted By</div></div>
+            </div>
+          </div>
+          <div class="quotation-actions">
+            <a href="quotation.html" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> Edit Quotation</a>
+            <button class="btn btn-primary btn-lg" onclick="markAsSent()"><i class="fas fa-check"></i> Mark as Sent</button>
+            <button class="btn btn-success btn-lg" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+            <button class="btn btn-white btn-lg" onclick="showToast('PDF download simulated','info')"><i class="fas fa-file-pdf"></i> Download PDF</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+</body>
+</html>
