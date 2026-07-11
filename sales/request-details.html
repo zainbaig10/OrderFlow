@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Request Details — EXION OrderFlow</title>
+  <title>Quotation Details — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -15,8 +15,8 @@
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
-        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
-        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Quotation</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Quotations</span></a>
         <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
       </nav>
       <div class="sidebar-footer">
@@ -34,16 +34,24 @@
         </div>
       </header>
       <main class="content">
-        <div class="breadcrumb"><a href="my-requests.html">My Requests</a><span class="sep">/</span><span id="srdId">REQ-2024-0047</span></div>
+        <div class="breadcrumb"><a href="my-requests.html">My Quotations</a><span class="sep">/</span><span id="srdId">QT-2024-0047</span></div>
         <div class="page-header">
           <div>
-            <h1 class="page-title">Request Details</h1>
+            <h1 class="page-title">Quotation Details</h1>
             <div class="status-bar mt-2" style="display:inline-flex;">
               <div class="status-dot blue"></div>
-              <span class="status-text" id="srdStatus">Submitted</span>
+              <span class="status-text" id="srdStatus">Quotation Generated</span>
             </div>
           </div>
-          <a href="my-requests.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;">
+            <a href="my-requests.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+            <button class="btn btn-whatsapp" id="srdWhatsAppBtn" onclick="sendQuotationWhatsApp()"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="discount-warning hidden" id="srdPendingMsg">
+          <i class="fas fa-clock"></i>
+          <div><div class="dw-text">Waiting for discount approval.</div><div class="dw-desc">This quotation exceeds the 5% discount limit. You can send it via WhatsApp once the admin approves the discount.</div></div>
         </div>
 
         <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;">
@@ -51,31 +59,32 @@
             <div class="card mb-4">
               <div class="card-header"><h3 class="card-title"><i class="fas fa-building" style="margin-right:8px;color:var(--primary-400);"></i>Customer</h3></div>
               <div class="card-body">
-                <div class="detail-item mb-2"><div class="detail-label">Company</div><div class="detail-value" id="srdCustCompany">Meridian Auto Parts</div></div>
-                <div class="detail-item mb-2"><div class="detail-label">Contact Person</div><div class="detail-value" id="srdCustContact">James Rodriguez</div></div>
-                <div class="detail-item mb-2"><div class="detail-label">Phone</div><div class="detail-value" id="srdCustPhone">+65 9123 4567</div></div>
-                <div class="detail-item"><div class="detail-label">Email</div><div class="detail-value" id="srdCustEmail">james@meridian.com.sg</div></div>
+                <div class="detail-item mb-2"><div class="detail-label">Company</div><div class="detail-value" id="srdCustCompany">—</div></div>
+                <div class="detail-item mb-2"><div class="detail-label">Contact Person</div><div class="detail-value" id="srdCustContact">—</div></div>
+                <div class="detail-item mb-2"><div class="detail-label">Phone</div><div class="detail-value" id="srdCustPhone">—</div></div>
+                <div class="detail-item"><div class="detail-label">Email</div><div class="detail-value" id="srdCustEmail">—</div></div>
               </div>
             </div>
             <div class="card">
-              <div class="card-header"><h3 class="card-title"><i class="fas fa-box" style="margin-right:8px;color:var(--primary-400);"></i>Order Items</h3></div>
+              <div class="card-header"><h3 class="card-title"><i class="fas fa-box" style="margin-right:8px;color:var(--primary-400);"></i>Quotation Items</h3></div>
               <div class="card-body-no-pad"><div class="table-wrapper">
                 <table class="data-table">
-                  <thead><tr><th>#</th><th>Product</th><th class="text-right">Qty</th><th class="text-right">Unit Price</th><th class="text-right">Amount</th></tr></thead>
+                  <thead><tr><th style="width:40px;">#</th><th>Product</th><th class="text-right" style="width:70px;">Qty</th><th class="text-right" style="width:110px;">Unit Price</th><th class="text-right" style="width:80px;">Discount</th><th class="text-right" style="width:120px;">Amount</th></tr></thead>
                   <tbody id="srdItems"></tbody>
                 </table>
               </div></div>
-              <div class="cart-summary"><div class="cart-summary-row total"><span>Total</span><span id="srdTotal">$0.00</span></div></div>
+              <div class="cart-summary" id="srdSummaryRows"></div>
             </div>
           </div>
           <div>
             <div class="card mb-4">
               <div class="card-header"><h3 class="card-title"><i class="fas fa-info-circle" style="margin-right:8px;color:var(--primary-400);"></i>Details</h3></div>
               <div class="card-body">
-                <div class="detail-item mb-2"><div class="detail-label">Request ID</div><div class="detail-value" id="srdId2">REQ-2024-0047</div></div>
-                <div class="detail-item mb-2"><div class="detail-label">Date</div><div class="detail-value" id="srdDate">18 Dec 2024</div></div>
-                <div class="detail-item mb-2"><div class="detail-label">Salesperson</div><div class="detail-value" id="srdSalesperson">Sarah Chen</div></div>
-                <div class="detail-item"><div class="detail-label">Remarks</div><div class="detail-value" id="srdRemarks">Urgent — customer needs by Friday</div></div>
+                <div class="detail-item mb-2"><div class="detail-label">Quotation ID</div><div class="detail-value" id="srdId2">QT-2024-0047</div></div>
+                <div class="detail-item mb-2"><div class="detail-label">Date</div><div class="detail-value" id="srdDate">—</div></div>
+                <div class="detail-item mb-2"><div class="detail-label">Salesperson</div><div class="detail-value" id="srdSalesperson">—</div></div>
+                <div class="detail-item mb-2"><div class="detail-label">Discount</div><div class="detail-value" id="srdDiscount">—</div></div>
+                <div class="detail-item"><div class="detail-label">Remarks</div><div class="detail-value" id="srdRemarks">—</div></div>
               </div>
             </div>
             <div class="card">

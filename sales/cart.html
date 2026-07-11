@@ -15,8 +15,8 @@
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
-        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
-        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Quotation</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Quotations</span></a>
         <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
       </nav>
       <div class="sidebar-footer">
@@ -37,7 +37,7 @@
       <main class="content">
         <div class="page-header">
           <div><h1 class="page-title">Shopping Cart</h1><p class="page-subtitle" id="cartCount">0 item(s)</p></div>
-          <a href="new-order.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
+          <a href="product-catalog.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
         </div>
 
         <div class="cart-customer-summary" id="cartCustomerSummary" style="display:none;"></div>
@@ -46,7 +46,7 @@
           <div class="card-body"><div class="empty-state">
             <i class="fas fa-shopping-cart"></i>
             <h3>Your cart is empty</h3>
-            <p>Browse the product catalog to add items to your order.</p>
+            <p>Browse the product catalog to add items to your quotation.</p>
             <a href="product-catalog.html" class="btn btn-primary"><i class="fas fa-boxes-stacked"></i> Browse Products</a>
           </div></div>
         </div>
@@ -55,14 +55,12 @@
           <div class="card">
             <div class="card-header"><h3 class="card-title">Cart Items</h3></div>
             <div class="card-body-no-pad" id="cartItems"></div>
-            <div class="cart-summary">
-              <div class="cart-summary-row"><span>Subtotal</span><span class="font-bold" id="cartTotal">$0.00</span></div>
-            </div>
+            <div class="cart-summary" id="cartSummaryRows"></div>
           </div>
           <div class="card">
             <div class="card-header"><h3 class="card-title">Remarks &amp; Attachments</h3></div>
             <div class="card-body">
-              <div class="form-group"><label>Order Remarks</label><textarea class="form-input form-textarea" id="orderRemarks" placeholder="Any special instructions for the office team..." onchange="setSessionData('order_remarks',this.value)"></textarea></div>
+              <div class="form-group"><label>Order Remarks</label><textarea class="form-input form-textarea" id="orderRemarks" placeholder="Any special instructions..." onchange="setSessionData('order_remarks',this.value)"></textarea></div>
               <div class="form-group"><label>Attach Photos (optional)</label>
                 <div class="photo-upload-area" onclick="showToast('Photo upload simulated — 1 file attached','success')">
                   <i class="fas fa-cloud-upload-alt"></i><p><span>Click to upload</span> or drag and drop</p><p class="text-muted" style="font-size:12px;margin-top:4px;">PNG, JPG up to 10MB</p>
@@ -72,7 +70,7 @@
           </div>
           <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;" class="mt-4">
             <a href="product-catalog.html" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> Continue Shopping</a>
-            <a href="review.html" class="btn btn-primary btn-lg"><i class="fas fa-arrow-right"></i> Proceed to Review</a>
+            <a href="review.html" class="btn btn-primary btn-lg"><i class="fas fa-arrow-right"></i> Review &amp; Generate Quotation</a>
           </div>
         </div>
       </main>

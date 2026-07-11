@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Dashboard — EXION DealerFlow</title>
+  <title>Admin Dashboard — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -11,10 +11,10 @@
   <div class="app">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
-        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Quotations</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
         <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
         <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
@@ -28,41 +28,39 @@
     <div class="main-area">
       <header class="topbar">
         <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search requests, customers..."></div>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search quotations, customers..."></div>
         <div class="topbar-actions">
           <button class="topbar-btn" id="notifBtn" style="position:relative;"><i class="fas fa-bell"></i><span class="notif-badge">5</span>
             <div class="notif-dropdown" id="notifDropdown">
-              <div class="notif-dropdown-header"><h4>🔔 3 New Requests</h4><a href="requests.html">View All</a></div>
-              <div class="notif-item"><div class="notif-icon blue"><i class="fas fa-file-alt"></i></div><div><div class="notif-text">New request REQ-2024-0047 submitted by Sarah Al Rashid</div><div class="notif-time">30 min ago</div></div></div>
-              <div class="notif-item"><div class="notif-icon blue"><i class="fas fa-file-alt"></i></div><div><div class="notif-text">New request REQ-2024-0041 submitted by Priya Nair</div><div class="notif-time">2 hours ago</div></div></div>
-              <div class="notif-item"><div class="notif-icon orange"><i class="fas fa-clock"></i></div><div><div class="notif-text">REQ-2024-0040 quotation still pending</div><div class="notif-time">5 hours ago</div></div></div>
+              <div class="notif-dropdown-header"><h4>🔔 2 Pending Approvals</h4><a href="requests.html">View All</a></div>
+              <div class="notif-item"><div class="notif-icon orange"><i class="fas fa-exclamation-triangle"></i></div><div><div class="notif-text">QT-2024-0046 needs discount approval (8%)</div><div class="notif-time">30 min ago</div></div></div>
+              <div class="notif-item"><div class="notif-icon orange"><i class="fas fa-exclamation-triangle"></i></div><div><div class="notif-text">QT-2024-0040 needs discount approval (10%)</div><div class="notif-time">5 hours ago</div></div></div>
+              <div class="notif-item"><div class="notif-icon blue"><i class="fas fa-file-invoice"></i></div><div><div class="notif-text">New quotation QT-2024-0047 by Sarah Al Rashid</div><div class="notif-time">1 hour ago</div></div></div>
             </div>
           </button>
           <div class="topbar-user"><div class="user-avatar">AT</div><div class="user-info"><span class="user-name">Andrew Teo</span><span class="user-role">Office Manager</span></div></div>
         </div>
       </header>
       <main class="content">
-        <div class="page-header"><div><h1 class="page-title">Admin Dashboard</h1><p class="page-subtitle">Overview of all operations — December 2024</p></div><a href="requests.html" class="btn btn-primary"><i class="fas fa-file-alt"></i> View All Requests</a></div>
+        <div class="page-header"><div><h1 class="page-title">Admin Dashboard</h1><p class="page-subtitle">Overview of all operations — December 2024</p></div><a href="requests.html" class="btn btn-primary"><i class="fas fa-file-alt"></i> View All Quotations</a></div>
         <div class="stats-grid">
-          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon blue"><i class="fas fa-file-alt"></i></div><span class="stat-card-change up"><i class="fas fa-arrow-up"></i> 18%</span></div><div class="stat-card-value">47</div><div class="stat-card-label">Total Requests</div></div>
-          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon orange"><i class="fas fa-hourglass-half"></i></div></div><div class="stat-card-value">8</div><div class="stat-card-label">Awaiting Quotation</div></div>
-          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon green"><i class="fas fa-paper-plane"></i></div><span class="stat-card-change up"><i class="fas fa-arrow-up"></i> 12%</span></div><div class="stat-card-value">21</div><div class="stat-card-label">Quotations Sent</div></div>
-          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon purple"><i class="fas fa-file-invoice-dollar"></i></div><span class="stat-card-change up"><i class="fas fa-arrow-up"></i> 24%</span></div><div class="stat-card-value">SAR 38.4K</div><div class="stat-card-label">Quotation Value</div></div>
-          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon green"><i class="fas fa-check-double"></i></div><span class="stat-card-change up"><i class="fas fa-arrow-up"></i> 8%</span></div><div class="stat-card-value">14</div><div class="stat-card-label">Completed Orders</div></div>
-          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon red"><i class="fas fa-users"></i></div></div><div class="stat-card-value">10</div><div class="stat-card-label">Active Customers</div></div>
+          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon blue"><i class="fas fa-file-invoice"></i></div><span class="stat-card-change up"><i class="fas fa-arrow-up"></i> 18%</span></div><div class="stat-card-value">4</div><div class="stat-card-label">Today's Quotations</div></div>
+          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon orange"><i class="fas fa-exclamation-triangle"></i></div></div><div class="stat-card-value">2</div><div class="stat-card-label">Pending Discount Approvals</div></div>
+          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon green"><i class="fas fa-file-invoice-dollar"></i></div><span class="stat-card-change up"><i class="fas fa-arrow-up"></i> 24%</span></div><div class="stat-card-value">SAR 38.4K</div><div class="stat-card-label">Quotation Value</div></div>
+          <div class="stat-card"><div class="stat-card-header"><div class="stat-card-icon purple"><i class="fas fa-check-double"></i></div><span class="stat-card-change up"><i class="fas fa-arrow-up"></i> 8%</span></div><div class="stat-card-value">14</div><div class="stat-card-label">Completed Orders</div></div>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr;gap:20px;">
           <div class="card">
-            <div class="card-header"><h3 class="card-title">Recent Requests</h3><a href="requests.html" class="btn btn-sm btn-secondary">View All</a></div>
+            <div class="card-header"><h3 class="card-title">Recent Quotations</h3><a href="requests.html" class="btn btn-sm btn-secondary">View All</a></div>
             <div class="card-body-no-pad"><div class="table-wrapper">
               <table class="data-table">
-                <thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th><th>Status</th></tr></thead>
+                <thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Discount</th><th>Value</th><th>Status</th></tr></thead>
                 <tbody>
-                  <tr class="clickable" data-href="request-details.html?id=REQ-2024-0047"><td><strong class="text-primary">REQ-2024-0047</strong></td><td>Al Muhaidib Kitchens</td><td>Sarah Al Rashid</td><td>SAR 312.00</td><td><span class="badge badge-submitted">Submitted</span></td></tr>
-                  <tr class="clickable" data-href="request-details.html?id=REQ-2024-0046"><td><strong class="text-primary">REQ-2024-0046</strong></td><td>Raha Kitchen Solutions</td><td>Marcus Al Harbi</td><td>SAR 685.00</td><td><span class="badge badge-preparing">Quotation Preparing</span></td></tr>
-                  <tr class="clickable" data-href="request-details.html?id=REQ-2024-0045"><td><strong class="text-primary">REQ-2024-0045</strong></td><td>Saudi Kitchen Supply Co.</td><td>Sarah Al Rashid</td><td>SAR 1,540.00</td><td><span class="badge badge-sent">Quotation Sent</span></td></tr>
-                  <tr class="clickable" data-href="request-details.html?id=REQ-2024-0044"><td><strong class="text-primary">REQ-2024-0044</strong></td><td>Gulf Modular Kitchens</td><td>Priya Nair</td><td>SAR 195.00</td><td><span class="badge badge-confirmed">Order Confirmed</span></td></tr>
-                  <tr class="clickable" data-href="request-details.html?id=REQ-2024-0043"><td><strong class="text-primary">REQ-2024-0043</strong></td><td>Eastern Kitchens Factory</td><td>Marcus Al Harbi</td><td>SAR 490.00</td><td><span class="badge badge-completed">Completed</span></td></tr>
+                  <tr class="clickable" data-href="request-details.html?id=QT-2024-0047"><td><strong class="text-primary">QT-2024-0047</strong></td><td>Al Muhaidib Kitchens</td><td>Sarah Al Rashid</td><td>—</td><td>SAR 312.00</td><td><span class="badge badge-generated">Quotation Generated</span></td></tr>
+                  <tr class="clickable" data-href="request-details.html?id=QT-2024-0046"><td><strong class="text-primary">QT-2024-0046</strong></td><td>Raha Kitchen Solutions</td><td>Marcus Al Harbi</td><td><span class="text-warning">8%</span></td><td>SAR 685.00</td><td><span class="badge badge-pending-approval">Pending Approval</span></td></tr>
+                  <tr class="clickable" data-href="request-details.html?id=QT-2024-0045"><td><strong class="text-primary">QT-2024-0045</strong></td><td>Saudi Kitchen Supply Co.</td><td>Sarah Al Rashid</td><td>3%</td><td>SAR 1,540.00</td><td><span class="badge badge-sent">Quotation Sent</span></td></tr>
+                  <tr class="clickable" data-href="request-details.html?id=QT-2024-0044"><td><strong class="text-primary">QT-2024-0044</strong></td><td>Gulf Modular Kitchens</td><td>Priya Nair</td><td>—</td><td>SAR 195.00</td><td><span class="badge badge-accepted">Customer Accepted</span></td></tr>
+                  <tr class="clickable" data-href="request-details.html?id=QT-2024-0043"><td><strong class="text-primary">QT-2024-0043</strong></td><td>Eastern Kitchens Factory</td><td>Marcus Al Harbi</td><td>2%</td><td>SAR 490.00</td><td><span class="badge badge-completed">Completed</span></td></tr>
                 </tbody>
               </table>
             </div></div>
@@ -70,18 +68,18 @@
           <div>
             <div class="card"><div class="card-header"><h3 class="card-title">By Status</h3></div><div class="card-body">
               <div style="display:flex;flex-direction:column;gap:14px;">
-                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Submitted</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:20%;height:100%;background:var(--info);border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">4</span></div></div>
-                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Quotation Preparing</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:15%;height:100%;background:var(--warning);border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">3</span></div></div>
-                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Quotation Sent</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:40%;height:100%;background:#22C55E;border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">8</span></div></div>
-                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Order Confirmed</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:10%;height:100%;background:#7C3AED;border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">2</span></div></div>
-                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Completed</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:35%;height:100%;background:var(--success);border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">7</span></div></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Quotation Generated</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:20%;height:100%;background:var(--info);border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">2</span></div></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Pending Approval</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:10%;height:100%;background:var(--warning);border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">2</span></div></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Quotation Sent</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:35%;height:100%;background:#22C55E;border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">3</span></div></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Customer Accepted</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:10%;height:100%;background:#7C3AED;border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">1</span></div></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;"><span style="font-size:13px;color:var(--gray-600);">Completed</span><div style="display:flex;align-items:center;gap:10px;"><div style="width:120px;height:8px;background:var(--gray-100);border-radius:4px;overflow:hidden;"><div style="width:30%;height:100%;background:var(--success);border-radius:4px;"></div></div><span style="font-size:13px;font-weight:700;min-width:20px;text-align:right;">2</span></div></div>
               </div>
             </div></div>
-            <div class="card"><div class="card-header"><h3 class="card-title">Top Salespersons</h3></div><div class="card-body">
+            <div class="card"><div class="card-header"><h3 class="card-title">Top Salespeople</h3></div><div class="card-body">
               <div style="display:flex;flex-direction:column;gap:12px;">
-                <div style="display:flex;align-items:center;gap:10px;"><div class="user-avatar" style="width:32px;height:32px;font-size:11px;">SR</div><div style="flex:1;"><div style="font-size:13px;font-weight:600;">Sarah Al Rashid</div><div style="font-size:11px;color:var(--gray-500);">21 requests</div></div><span style="font-size:13px;font-weight:700;color:var(--success);">SAR 18.2K</span></div>
-                <div style="display:flex;align-items:center;gap:10px;"><div class="user-avatar" style="width:32px;height:32px;font-size:11px;">MA</div><div style="flex:1;"><div style="font-size:13px;font-weight:600;">Marcus Al Harbi</div><div style="font-size:11px;color:var(--gray-500);">16 requests</div></div><span style="font-size:13px;font-weight:700;color:var(--success);">SAR 14.7K</span></div>
-                <div style="display:flex;align-items:center;gap:10px;"><div class="user-avatar" style="width:32px;height:32px;font-size:11px;">PN</div><div style="flex:1;"><div style="font-size:13px;font-weight:600;">Priya Nair</div><div style="font-size:11px;color:var(--gray-500);">10 requests</div></div><span style="font-size:13px;font-weight:700;color:var(--success);">SAR 5.5K</span></div>
+                <div style="display:flex;align-items:center;gap:10px;"><div class="user-avatar" style="width:32px;height:32px;font-size:11px;">SR</div><div style="flex:1;"><div style="font-size:13px;font-weight:600;">Sarah Al Rashid</div><div style="font-size:11px;color:var(--gray-500);">21 quotations · SAR 18.2K value</div></div><span style="font-size:13px;font-weight:700;color:var(--success);">SAR 18.2K</span></div>
+                <div style="display:flex;align-items:center;gap:10px;"><div class="user-avatar" style="width:32px;height:32px;font-size:11px;">MA</div><div style="flex:1;"><div style="font-size:13px;font-weight:600;">Marcus Al Harbi</div><div style="font-size:11px;color:var(--gray-500);">16 quotations · SAR 14.7K value</div></div><span style="font-size:13px;font-weight:700;color:var(--success);">SAR 14.7K</span></div>
+                <div style="display:flex;align-items:center;gap:10px;"><div class="user-avatar" style="width:32px;height:32px;font-size:11px;">PN</div><div style="flex:1;"><div style="font-size:13px;font-weight:600;">Priya Nair</div><div style="font-size:11px;color:var(--gray-500);">10 quotations · SAR 5.5K value</div></div><span style="font-size:13px;font-weight:700;color:var(--success);">SAR 5.5K</span></div>
               </div>
             </div></div>
           </div>

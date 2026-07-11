@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Requests — EXION OrderFlow</title>
+  <title>Quotations — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -14,7 +14,7 @@
       <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
-        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Quotations</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
         <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
         <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
@@ -28,56 +28,56 @@
     <div class="main-area">
       <header class="topbar">
         <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search requests..."></div>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search quotations..."></div>
         <div class="topbar-actions">
           <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">5</span></button>
           <div class="topbar-user"><div class="user-avatar">AT</div><div class="user-info"><span class="user-name">Andrew Teo</span><span class="user-role">Office Manager</span></div></div>
         </div>
       </header>
       <main class="content">
-        <div class="page-header"><div><h1 class="page-title">All Requests</h1><p class="page-subtitle">47 total requests · 8 need your attention</p></div></div>
+        <div class="page-header"><div><h1 class="page-title">All Quotations</h1><p class="page-subtitle">10 total quotations · 2 need your attention</p></div></div>
         <div class="tabs">
           <button class="tab-btn active" data-tab="tab-all">All (10)</button>
-          <button class="tab-btn" data-tab="tab-submitted">Submitted (3)</button>
-          <button class="tab-btn" data-tab="tab-preparing">Preparing (2)</button>
-          <button class="tab-btn" data-tab="tab-sent">Sent (2)</button>
+          <button class="tab-btn" data-tab="tab-pending">Pending Approval (2)</button>
+          <button class="tab-btn" data-tab="tab-generated">Generated (2)</button>
+          <button class="tab-btn" data-tab="tab-sent">Sent (3)</button>
           <button class="tab-btn" data-tab="tab-completed">Completed (2)</button>
         </div>
         <div id="tab-all" class="tab-content active">
           <div class="card"><div class="card-body-no-pad"><div class="table-wrapper">
             <table class="data-table">
-              <thead><tr><th>Request ID</th><th>Customer</th><th>Salesperson</th><th>Date</th><th>Items</th><th>Total</th><th>Priority</th><th>Status</th></tr></thead>
+              <thead><tr><th>Quotation ID</th><th>Customer</th><th>Salesperson</th><th>Date</th><th>Discount</th><th>Value</th><th>Status</th><th>Actions</th></tr></thead>
               <tbody>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0047"><td><strong class="text-primary">REQ-2024-0047</strong></td><td>Meridian Auto Parts</td><td>Sarah Chen</td><td>18 Dec</td><td>4</td><td>$312.40</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-submitted">Submitted</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0046"><td><strong class="text-primary">REQ-2024-0046</strong></td><td>Summit Industrial Supply</td><td>Marcus Johnson</td><td>17 Dec</td><td>7</td><td>$587.20</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-preparing">Preparing</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0045"><td><strong class="text-primary">REQ-2024-0045</strong></td><td>RoyalTech Industries</td><td>Sarah Chen</td><td>16 Dec</td><td>12</td><td>$1,452.80</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-sent">Sent</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0044"><td><strong class="text-primary">REQ-2024-0044</strong></td><td>Apex Machinery Trading</td><td>Priya Patel</td><td>15 Dec</td><td>3</td><td>$186.00</td><td><span class="badge badge-low">Low</span></td><td><span class="badge badge-confirmed">Confirmed</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0043"><td><strong class="text-primary">REQ-2024-0043</strong></td><td>NorthStar Engineering</td><td>Marcus Johnson</td><td>14 Dec</td><td>5</td><td>$423.50</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-completed">Completed</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0042"><td><strong class="text-primary">REQ-2024-0042</strong></td><td>Falcon Equipment Pte Ltd</td><td>Sarah Chen</td><td>13 Dec</td><td>6</td><td>$534.70</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-completed">Completed</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0041"><td><strong class="text-primary">REQ-2024-0041</strong></td><td>Pacific Coast Distributors</td><td>Priya Patel</td><td>12 Dec</td><td>2</td><td>$94.40</td><td><span class="badge badge-low">Low</span></td><td><span class="badge badge-submitted">Submitted</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0040"><td><strong class="text-primary">REQ-2024-0040</strong></td><td>Tiong Heng Hardware</td><td>Marcus Johnson</td><td>11 Dec</td><td>8</td><td>$672.30</td><td><span class="badge badge-medium">Medium</span></td><td><span class="badge badge-preparing">Preparing</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0039"><td><strong class="text-primary">REQ-2024-0039</strong></td><td>Keppel Marine Supplies</td><td>Sarah Chen</td><td>10 Dec</td><td>4</td><td>$348.90</td><td><span class="badge badge-high">High</span></td><td><span class="badge badge-sent">Sent</span></td></tr>
-                <tr class="clickable" data-href="request-details.html?id=REQ-2024-0038"><td><strong class="text-primary">REQ-2024-0038</strong></td><td>Greenfield Solutions</td><td>Priya Patel</td><td>09 Dec</td><td>1</td><td>$28.50</td><td><span class="badge badge-low">Low</span></td><td><span class="badge badge-draft">Draft</span></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0047</strong></td><td>Al Muhaidib Kitchens</td><td>Sarah Al Rashid</td><td>18 Dec</td><td>—</td><td>SAR 312.00</td><td><span class="badge badge-generated">Quotation Generated</span></td><td><a href="request-details.html?id=QT-2024-0047" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0046</strong></td><td>Raha Kitchen Solutions</td><td>Marcus Al Harbi</td><td>17 Dec</td><td><span class="text-warning">8%</span></td><td>SAR 685.00</td><td><span class="badge badge-pending-approval">Pending Approval</span></td><td><a href="request-details.html?id=QT-2024-0046" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0045</strong></td><td>Saudi Kitchen Supply Co.</td><td>Sarah Al Rashid</td><td>16 Dec</td><td>3%</td><td>SAR 1,540.00</td><td><span class="badge badge-sent">Quotation Sent</span></td><td><a href="request-details.html?id=QT-2024-0045" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0044</strong></td><td>Gulf Modular Kitchens</td><td>Priya Nair</td><td>15 Dec</td><td>—</td><td>SAR 195.00</td><td><span class="badge badge-accepted">Customer Accepted</span></td><td><a href="request-details.html?id=QT-2024-0044" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0043</strong></td><td>Eastern Kitchens Factory</td><td>Marcus Al Harbi</td><td>14 Dec</td><td>2%</td><td>SAR 490.00</td><td><span class="badge badge-completed">Completed</span></td><td><a href="request-details.html?id=QT-2024-0043" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0042</strong></td><td>Al Khobar Kitchen Showroom</td><td>Sarah Al Rashid</td><td>13 Dec</td><td>—</td><td>SAR 540.00</td><td><span class="badge badge-completed">Completed</span></td><td><a href="request-details.html?id=QT-2024-0042" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0041</strong></td><td>Crystal Kitchen Systems</td><td>Priya Nair</td><td>12 Dec</td><td>—</td><td>SAR 95.00</td><td><span class="badge badge-generated">Quotation Generated</span></td><td><a href="request-details.html?id=QT-2024-0041" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0040</strong></td><td>Al Jazeera Kitchen World</td><td>Marcus Al Harbi</td><td>11 Dec</td><td><span class="text-warning">10%</span></td><td>SAR 875.00</td><td><span class="badge badge-pending-approval">Pending Approval</span></td><td><a href="request-details.html?id=QT-2024-0040" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0039</strong></td><td>Dammam Interior Works</td><td>Sarah Al Rashid</td><td>10 Dec</td><td>5%</td><td>SAR 415.00</td><td><span class="badge badge-sent">Quotation Sent</span></td><td><a href="request-details.html?id=QT-2024-0039" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+                <tr><td><strong class="text-primary">QT-2024-0038</strong></td><td>Royal Kitchen Fittings</td><td>Priya Nair</td><td>09 Dec</td><td>—</td><td>SAR 120.00</td><td><span class="badge badge-draft">Draft</span></td><td><a href="request-details.html?id=QT-2024-0038" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
               </tbody>
             </table>
           </div></div></div>
         </div>
-        <div id="tab-submitted" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th><th>Priority</th></tr></thead><tbody>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0047"><td><strong class="text-primary">REQ-2024-0047</strong></td><td>Meridian Auto Parts</td><td>Sarah Chen</td><td>$312.40</td><td><span class="badge badge-high">High</span></td></tr>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0041"><td><strong class="text-primary">REQ-2024-0041</strong></td><td>Pacific Coast Distributors</td><td>Priya Patel</td><td>$94.40</td><td><span class="badge badge-low">Low</span></td></tr>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0038"><td><strong class="text-primary">REQ-2024-0038</strong></td><td>Greenfield Solutions</td><td>Priya Patel</td><td>$28.50</td><td><span class="badge badge-low">Low</span></td></tr>
+        <div id="tab-pending" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Discount</th><th>Value</th><th>Actions</th></tr></thead><tbody>
+          <tr><td><strong class="text-primary">QT-2024-0046</strong></td><td>Raha Kitchen Solutions</td><td>Marcus Al Harbi</td><td><span class="text-warning">8%</span></td><td>SAR 685.00</td><td><a href="request-details.html?id=QT-2024-0046" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+          <tr><td><strong class="text-primary">QT-2024-0040</strong></td><td>Al Jazeera Kitchen World</td><td>Marcus Al Harbi</td><td><span class="text-warning">10%</span></td><td>SAR 875.00</td><td><a href="request-details.html?id=QT-2024-0040" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
         </tbody></table></div></div></div></div>
-        <div id="tab-preparing" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th></tr></thead><tbody>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0046"><td><strong class="text-primary">REQ-2024-0046</strong></td><td>Summit Industrial Supply</td><td>Marcus Johnson</td><td>$587.20</td></tr>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0040"><td><strong class="text-primary">REQ-2024-0040</strong></td><td>Tiong Heng Hardware</td><td>Marcus Johnson</td><td>$672.30</td></tr>
+        <div id="tab-generated" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Value</th><th>Actions</th></tr></thead><tbody>
+          <tr><td><strong class="text-primary">QT-2024-0047</strong></td><td>Al Muhaidib Kitchens</td><td>Sarah Al Rashid</td><td>SAR 312.00</td><td><a href="request-details.html?id=QT-2024-0047" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+          <tr><td><strong class="text-primary">QT-2024-0041</strong></td><td>Crystal Kitchen Systems</td><td>Priya Nair</td><td>SAR 95.00</td><td><a href="request-details.html?id=QT-2024-0041" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
         </tbody></table></div></div></div></div>
-        <div id="tab-sent" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th></tr></thead><tbody>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0045"><td><strong class="text-primary">REQ-2024-0045</strong></td><td>RoyalTech Industries</td><td>Sarah Chen</td><td>$1,452.80</td></tr>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0039"><td><strong class="text-primary">REQ-2024-0039</strong></td><td>Keppel Marine Supplies</td><td>Sarah Chen</td><td>$348.90</td></tr>
+        <div id="tab-sent" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Value</th><th>Actions</th></tr></thead><tbody>
+          <tr><td><strong class="text-primary">QT-2024-0045</strong></td><td>Saudi Kitchen Supply Co.</td><td>Sarah Al Rashid</td><td>SAR 1,540.00</td><td><a href="request-details.html?id=QT-2024-0045" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+          <tr><td><strong class="text-primary">QT-2024-0039</strong></td><td>Dammam Interior Works</td><td>Sarah Al Rashid</td><td>SAR 415.00</td><td><a href="request-details.html?id=QT-2024-0039" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+          <tr><td><strong class="text-primary">QT-2024-0037</strong></td><td>Al Muhaidib Kitchens</td><td>Sarah Al Rashid</td><td>SAR 580.00</td><td><a href="request-details.html?id=QT-2024-0037" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
         </tbody></table></div></div></div></div>
-        <div id="tab-completed" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Total</th></tr></thead><tbody>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0043"><td><strong class="text-primary">REQ-2024-0043</strong></td><td>NorthStar Engineering</td><td>Marcus Johnson</td><td>$423.50</td></tr>
-          <tr class="clickable" data-href="request-details.html?id=REQ-2024-0042"><td><strong class="text-primary">REQ-2024-0042</strong></td><td>Falcon Equipment Pte Ltd</td><td>Sarah Chen</td><td>$534.70</td></tr>
+        <div id="tab-completed" class="tab-content"><div class="card"><div class="card-body-no-pad"><div class="table-wrapper"><table class="data-table"><thead><tr><th>ID</th><th>Customer</th><th>Salesperson</th><th>Value</th><th>Actions</th></tr></thead><tbody>
+          <tr><td><strong class="text-primary">QT-2024-0043</strong></td><td>Eastern Kitchens Factory</td><td>Marcus Al Harbi</td><td>SAR 490.00</td><td><a href="request-details.html?id=QT-2024-0043" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+          <tr><td><strong class="text-primary">QT-2024-0042</strong></td><td>Al Khobar Kitchen Showroom</td><td>Sarah Al Rashid</td><td>SAR 540.00</td><td><a href="request-details.html?id=QT-2024-0042" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
         </tbody></table></div></div></div></div>
       </main>
     </div>

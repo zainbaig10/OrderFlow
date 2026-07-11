@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delivery Note — EXION OrderFlow</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .dn-paper{background:#fff;border:1px solid #d1d5db;border-radius:4px;box-shadow:0 8px 30px rgba(0,0,0,.1);max-width:800px;width:100%;margin:0 auto 24px;padding:0;font-family:'Inter',sans-serif;color:#1f2937;font-size:13px;line-height:1.5}
+    .dn-paper *{box-sizing:border-box;margin:0;padding:0}
+    .dn-paper table{border-collapse:collapse;width:100%}
+    .dn-paper img{max-width:100%;display:block}
+    .dn-header-band{background:#0A1628;padding:28px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .dn-logo-area{display:flex;align-items:center;gap:14px}
+    .dn-logo-box{width:56px;height:56px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800;color:#1E5AA8;flex-shrink:0}
+    .dn-company-name{font-size:18px;font-weight:800;color:#fff;letter-spacing:-.3px}
+    .dn-company-sub{font-size:10px;color:rgba(255,255,255,.6);margin-top:2px}
+    .dn-title-area{text-align:right}
+    .dn-doc-title{font-size:22px;font-weight:800;color:#22C55E;letter-spacing:2px}
+    .dn-doc-number{font-size:12px;font-weight:600;color:rgba(255,255,255,.8);margin-top:4px}
+    .dn-meta-strip{display:flex;flex-wrap:wrap;border-bottom:2px solid #e5e7eb}
+    .dn-meta-cell{flex:1;min-width:140px;padding:10px 20px;border-right:1px solid #e5e7eb}
+    .dn-meta-cell:last-child{border-right:none}
+    .dn-meta-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#9ca3af;margin-bottom:2px}
+    .dn-meta-value{font-size:13px;font-weight:600;color:#1f2937}
+    .dn-body{padding:24px 40px}
+    .dn-info-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px}
+    .dn-info-block{}
+    .dn-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#1E5AA8;margin-bottom:4px}
+    .dn-info-value{font-size:13px;color:#1f2937;line-height:1.6}
+    .dn-info-value strong{font-weight:700;color:#111827}
+    .dn-products{margin-bottom:20px}
+    .dn-products thead th{background:#112D4E;color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 12px;text-align:left;white-space:nowrap}
+    .dn-products thead th.dn-right{text-align:right}
+    .dn-products tbody td{padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;vertical-align:middle}
+    .dn-products tbody td.dn-right{text-align:right}
+    .dn-products tbody tr:nth-child(even){background:#f9fafb}
+    .dn-prod-name{font-weight:600;color:#1f2937}
+    .dn-remarks{margin-bottom:28px}
+    .dn-remarks-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#1E5AA8;margin-bottom:4px}
+    .dn-remarks-box{background:#f9fafb;border:1px solid #e5e7eb;border-radius:6px;padding:12px 16px;min-height:60px;font-size:12px;color:#4b5563}
+    .dn-signatures{display:flex;justify-content:space-between;gap:32px;margin-bottom:28px}
+    .dn-sig-block{flex:1;text-align:center}
+    .dn-sig-label{font-size:11px;font-weight:600;color:#374151;margin-bottom:4px}
+    .dn-sig-line{border-top:1px solid #d1d5db;padding-top:6px;font-size:11px;color:#9ca3af}
+    .dn-sig-space{height:56px}
+    .dn-driver-row{margin-bottom:28px;display:flex;align-items:center;gap:16px}
+    .dn-driver-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#1E5AA8;white-space:nowrap}
+    .dn-driver-input{flex:1;border:1px solid #d1d5db;border-radius:6px;padding:8px 14px;font-size:13px;font-family:'Inter',sans-serif;color:#1f2937;background:#f9fafb}
+    .dn-driver-input:focus{outline:none;border-color:#1E5AA8;background:#fff}
+    .dn-footer{background:#f9fafb;border-top:2px solid #112D4E;padding:16px 40px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+    .dn-footer-company{font-size:11px;color:#6b7280;line-height:1.7}
+    .dn-footer-company strong{color:#374151}
+    .dn-footer-nums{text-align:right;font-size:11px;color:#6b7280;line-height:1.7}
+    .dn-footer-nums strong{color:#374151}
+    @media(max-width:768px){
+      .dn-header-band{flex-direction:column;align-items:flex-start;padding:20px 24px}
+      .dn-title-area{text-align:left}
+      .dn-meta-cell{min-width:120px;padding:8px 14px}
+      .dn-body{padding:20px 24px}
+      .dn-info-grid{grid-template-columns:1fr}
+      .dn-signatures{flex-direction:column;gap:24px}
+      .dn-driver-row{flex-direction:column;align-items:stretch}
+      .dn-footer{flex-direction:column;padding:12px 24px}
+      .dn-footer-nums{text-align:left}
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
+        <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Quotation</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Quotations</span></a>
+        <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="../admin/dashboard.html" class="nav-item"><i class="fas fa-shield-alt"></i><span>Admin Portal</span></a>
+        <a href="../index.html" class="nav-item"><i class="fas fa-sign-out-alt"></i><span>Sign Out</span></a>
+      </div>
+    </aside>
+    <div class="main-area">
+      <header class="topbar">
+        <button class="topbar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <div class="topbar-search"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+        <div class="topbar-actions">
+          <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
+          <div class="topbar-user"><div class="user-avatar">SR</div><div class="user-info"><span class="user-name">Sarah Al Rashid</span><span class="user-role">Sales Manager</span></div></div>
+        </div>
+      </header>
+      <main class="content" style="background:var(--gray-200);padding:24px;">
+        <div class="breadcrumb" style="color:var(--gray-500);"><a href="review.html" style="color:var(--primary-500);">Quotation Preview</a><span class="sep">/</span><span>Delivery Note</span></div>
+
+        <div class="quotation-preview-container">
+          <div class="dn-paper">
+            <!-- Header -->
+            <div class="dn-header-band">
+              <div class="dn-logo-area">
+                <div class="dn-logo-box">E</div>
+                <div>
+                  <div class="dn-company-name">EXION TRADING EST.</div>
+                  <div class="dn-company-sub">Melamine Tableware Manufacturer &amp; Distributor</div>
+                </div>
+              </div>
+              <div class="dn-title-area">
+                <div class="dn-doc-title">DELIVERY NOTE</div>
+                <div class="dn-doc-number" id="dnNumber">DN-2024-0000</div>
+              </div>
+            </div>
+
+            <!-- Meta -->
+            <div class="dn-meta-strip">
+              <div class="dn-meta-cell"><div class="dn-meta-label">Date</div><div class="dn-meta-value" id="dnDate">—</div></div>
+              <div class="dn-meta-cell"><div class="dn-meta-label">Quotation Ref</div><div class="dn-meta-value" id="dnQuotationRef">—</div></div>
+              <div class="dn-meta-cell"><div class="dn-meta-label">Salesperson</div><div class="dn-meta-value" id="dnSalesperson">—</div></div>
+            </div>
+
+            <!-- Body -->
+            <div class="dn-body">
+              <!-- Customer & Delivery Info -->
+              <div class="dn-info-grid">
+                <div class="dn-info-block">
+                  <div class="dn-section-label">Deliver To</div>
+                  <div class="dn-info-value">
+                    <strong id="dnCustomer">—</strong><br>
+                    <span id="dnAddress">—</span><br>
+                    <span id="dnPhone">—</span>
+                  </div>
+                </div>
+                <div class="dn-info-block">
+                  <div class="dn-section-label">Contact Person</div>
+                  <div class="dn-info-value">
+                    <strong id="dnContact">—</strong><br>
+                    <span id="dnEmail">—</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Products Table -->
+              <div class="dn-products">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width:36px">#</th>
+                      <th>SKU</th>
+                      <th>Product Name</th>
+                      <th class="dn-right" style="width:80px">Quantity</th>
+                    </tr>
+                  </thead>
+                  <tbody id="dnItems"></tbody>
+                </table>
+              </div>
+
+              <!-- Driver -->
+              <div class="dn-driver-row">
+                <div class="dn-driver-label">Driver Name</div>
+                <input type="text" class="dn-driver-input" id="dnDriver" placeholder="Enter driver name...">
+              </div>
+
+              <!-- Remarks -->
+              <div class="dn-remarks">
+                <div class="dn-remarks-label">Remarks</div>
+                <div class="dn-remarks-box" id="dnRemarks">—</div>
+              </div>
+
+              <!-- Signatures -->
+              <div class="dn-signatures">
+                <div class="dn-sig-block">
+                  <div class="dn-sig-label">Receiver Signature</div>
+                  <div class="dn-sig-space"></div>
+                  <div class="dn-sig-line">____________________</div>
+                  <div style="font-size:10px;color:#9ca3af;margin-top:2px">Name &amp; Date</div>
+                </div>
+                <div class="dn-sig-block">
+                  <div class="dn-sig-label">Driver Signature</div>
+                  <div class="dn-sig-space"></div>
+                  <div class="dn-sig-line" id="dnDriverSig">____________________</div>
+                  <div style="font-size:10px;color:#9ca3af;margin-top:2px">Name &amp; Date</div>
+                </div>
+                <div class="dn-sig-block">
+                  <div class="dn-sig-label">Company Signature</div>
+                  <div class="dn-sig-space"></div>
+                  <div class="dn-sig-line">____________________</div>
+                  <div style="font-size:10px;color:#9ca3af;margin-top:2px">Authorized Signatory</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="dn-footer">
+              <div class="dn-footer-company">
+                <strong>EXION TRADING EST.</strong><br>
+                P.O. Box 34521, Al Khobar 31952, Saudi Arabia<br>
+                Tel: +966 13 801 2345 · Fax: +966 13 801 2346<br>
+                Email: info@exion.sa · Web: www.exion.sa
+              </div>
+              <div class="dn-footer-nums">
+                <strong>CR No:</strong> 1010123456789<br>
+                <strong>VAT No:</strong> 310012345600003
+              </div>
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="quotation-actions">
+            <a href="review.html" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> Back to Quotation</a>
+            <button class="btn btn-white btn-lg" onclick="showToast('Delivery Note PDF download simulated','info')"><i class="fas fa-file-pdf"></i> Download PDF</button>
+            <button class="btn btn-whatsapp btn-lg" onclick="showToast('Delivery Note sent via WhatsApp (simulated)','success')"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="../assets/js/app.js"></script>
+  <script>
+    (function(){
+      var data = getSessionData('quotation_data');
+      if (!data) { showToast('No quotation data found. Go back to quotation preview.','error'); return; }
+      var el = function(id){ return document.getElementById(id); };
+
+      var dnNum = 'DN-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+      var qtNum = 'QT-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+      if (el('dnNumber')) el('dnNumber').textContent = dnNum;
+      if (el('dnDate')) el('dnDate').textContent = new Date().toLocaleDateString('en-SA',{year:'numeric',month:'long',day:'numeric'});
+      if (el('dnQuotationRef')) el('dnQuotationRef').textContent = qtNum;
+      if (el('dnSalesperson')) el('dnSalesperson').textContent = 'Sarah Al Rashid';
+
+      if (data.customer) {
+        if (el('dnCustomer')) el('dnCustomer').textContent = data.customer.company || '—';
+        if (el('dnAddress')) el('dnAddress').textContent = data.customer.address || '—';
+        if (el('dnPhone')) el('dnPhone').textContent = data.customer.phone || '—';
+        if (el('dnContact')) el('dnContact').textContent = data.customer.contact || '—';
+        if (el('dnEmail')) el('dnEmail').textContent = data.customer.email || '—';
+      }
+
+      var itemsEl = el('dnItems');
+      if (itemsEl && data.items) {
+        var totalQty = 0;
+        itemsEl.innerHTML = data.items.map(function(item, i){
+          totalQty += item.qty;
+          return '<tr>' +
+            '<td>'+(i+1)+'</td>' +
+            '<td style="font-size:11px;color:#6b7280;">'+item.sku+'</td>' +
+            '<td><span class="dn-prod-name">'+item.name+'</span>'+(item.nameAr?'<br><span style="font-size:11px;color:#9ca3af;" dir="rtl">'+item.nameAr+'</span>':'')+'</td>' +
+            '<td class="dn-right" style="font-weight:700;">'+item.qty+'</td>' +
+            '</tr>';
+        }).join('');
+      }
+
+      if (el('dnRemarks')) el('dnRemarks').textContent = data.remarks || 'No special remarks.';
+    })();
+  </script>
+</body>
+</html>

@@ -3,18 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quotation Preview — EXION DealerFlow</title>
+  <title>Quotation Preview — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* === Quotation Document Styles (scoped) === */
+    .qt2-paper{background:#fff;border:1px solid #d1d5db;border-radius:4px;box-shadow:0 8px 30px rgba(0,0,0,.1);max-width:800px;width:100%;margin:0 auto 24px;padding:0;font-family:'Inter',sans-serif;color:#1f2937;font-size:13px;line-height:1.5}
+    .qt2-paper *{box-sizing:border-box;margin:0;padding:0}
+    .qt2-paper table{border-collapse:collapse;width:100%}
+    .qt2-paper img{max-width:100%;display:block}
+    .qt2-header-band{background:#0A1628;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .qt2-logo-area{display:flex;align-items:center;gap:16px}
+    .qt2-logo-box{width:64px;height:64px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#1E5AA8;flex-shrink:0}
+    .qt2-company-name{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.3px}
+    .qt2-company-sub{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
+    .qt2-title-area{text-align:right}
+    .qt2-doc-title{font-size:26px;font-weight:800;color:#3E7BD6;letter-spacing:3px}
+    .qt2-doc-number{font-size:13px;font-weight:600;color:rgba(255,255,255,.8);margin-top:4px}
+    .qt2-meta-strip{display:flex;flex-wrap:wrap;border-bottom:2px solid #e5e7eb}
+    .qt2-meta-cell{flex:1;min-width:140px;padding:12px 20px;border-right:1px solid #e5e7eb}
+    .qt2-meta-cell:last-child{border-right:none}
+    .qt2-meta-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#9ca3af;margin-bottom:2px}
+    .qt2-meta-value{font-size:13px;font-weight:600;color:#1f2937}
+    .qt2-body{padding:28px 40px}
+    .qt2-customer-block{margin-bottom:24px}
+    .qt2-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#1E5AA8;margin-bottom:6px}
+    .qt2-customer-name{font-size:16px;font-weight:700;color:#111827;margin-bottom:2px}
+    .qt2-customer-detail{font-size:12px;color:#6b7280;line-height:1.7}
+    .qt2-products{margin-bottom:20px}
+    .qt2-products thead th{background:#112D4E;color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 12px;text-align:left;white-space:nowrap}
+    .qt2-products thead th.qt2-right{text-align:right}
+    .qt2-products tbody td{padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;vertical-align:middle}
+    .qt2-products tbody td.qt2-right{text-align:right}
+    .qt2-products tbody tr:nth-child(even){background:#f9fafb}
+    .qt2-prod-name{font-weight:600;color:#1f2937}
+    .qt2-totals{display:flex;justify-content:flex-end;margin-bottom:28px}
+    .qt2-totals-table{width:300px}
+    .qt2-totals-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#4b5563}
+    .qt2-totals-row.qt2-grand{border-top:3px solid #112D4E;padding-top:10px;margin-top:6px;font-size:17px;font-weight:800;color:#111827}
+    .qt2-terms{border-top:1px solid #e5e7eb;padding-top:16px;margin-bottom:28px}
+    .qt2-terms h4{font-size:12px;font-weight:700;color:#374151;margin-bottom:6px}
+    .qt2-terms ol{padding-left:18px;font-size:11px;color:#6b7280;line-height:1.9}
+    .qt2-signatures{display:flex;justify-content:space-between;gap:40px;margin-bottom:28px}
+    .qt2-sig-block{flex:1;text-align:center}
+    .qt2-sig-label{font-size:11px;font-weight:600;color:#374151;margin-bottom:4px}
+    .qt2-sig-line{border-top:1px solid #d1d5db;padding-top:6px;font-size:11px;color:#9ca3af}
+    .qt2-sig-space{height:60px}
+    .qt2-footer{background:#f9fafb;border-top:2px solid #112D4E;padding:20px 40px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+    .qt2-footer-company{font-size:11px;color:#6b7280;line-height:1.7}
+    .qt2-footer-company strong{color:#374151}
+    .qt2-footer-nums{text-align:right;font-size:11px;color:#6b7280;line-height:1.7}
+    .qt2-footer-nums strong{color:#374151}
+    @media(max-width:768px){
+      .qt2-header-band{flex-direction:column;align-items:flex-start;padding:20px 24px}
+      .qt2-title-area{text-align:left}
+      .qt2-meta-cell{min-width:120px;padding:10px 14px}
+      .qt2-body{padding:20px 24px}
+      .qt2-signatures{flex-direction:column;gap:24px}
+      .qt2-footer{flex-direction:column;padding:16px 24px}
+      .qt2-footer-nums{text-align:left}
+    }
+  </style>
 </head>
 <body>
   <div class="app">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
-        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Quotations</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
         <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
         <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
@@ -35,72 +93,201 @@
         </div>
       </header>
       <main class="content" style="background:var(--gray-200);padding:24px;">
-        <div class="breadcrumb" style="color:var(--gray-500);"><a href="requests.html" style="color:var(--primary-500);">Requests</a><span class="sep">/</span><a href="quotation.html" style="color:var(--primary-500);">Quotation</a><span class="sep">/</span><span>Preview</span></div>
+        <div class="breadcrumb" style="color:var(--gray-500);"><a href="requests.html" style="color:var(--primary-500);">Quotations</a><span class="sep">/</span><a href="quotation.html" style="color:var(--primary-500);">Quotation</a><span class="sep">/</span><span>Preview</span></div>
+
         <div class="quotation-preview-container">
-          <div class="quotation-paper">
-            <div class="qp-header">
-              <div>
-                <div class="qp-company-name">EXION TRADING EST.</div>
-                <div class="qp-company-details">
-                  P.O. Box 34521, Al Khobar 31952, Saudi Arabia<br>
-                  Tel: +966 13 801 2345 · Fax: +966 13 801 2346<br>
-                  CR No: 1010123456789<br> VAT No: 310012345600003
+          <!-- NEW QUOTATION DOCUMENT -->
+          <div class="qt2-paper">
+            <div class="qt2-header-band">
+              <div class="qt2-logo-area">
+                <div class="qt2-logo-box">E</div>
+                <div>
+                  <div class="qt2-company-name">EXION TRADING EST.</div>
+                  <div class="qt2-company-sub">Melamine Tableware Manufacturer &amp; Distributor</div>
                 </div>
               </div>
-              <div class="qp-title-block">
-                <div class="qp-title">QUOTATION</div>
-                <div style="font-size:14px;font-weight:600;color:var(--gray-600);margin-top:4px;" id="qpNumber">QT-2024-1234</div>
+              <div class="qt2-title-area">
+                <div class="qt2-doc-title">QUOTATION</div>
+                <div class="qt2-doc-number" id="qpNumber">QT-2024-1234</div>
               </div>
             </div>
-            <div class="qp-meta">
-              <div class="qp-meta-block"><div class="label">Quotation Date</div><div class="value" id="qpDate"></div></div>
-              <div class="qp-meta-block"><div class="label">Valid Until</div><div class="value" id="qpValidity"></div></div>
-              <div class="qp-meta-block"><div class="label">Payment Terms</div><div class="value" id="qpPayment">Net 30</div></div>
-              <div class="qp-meta-block"><div class="label">Salesperson</div><div class="value">Sarah Al Rashid</div></div>
+
+            <div class="qt2-meta-strip">
+              <div class="qt2-meta-cell"><div class="qt2-meta-label">Date</div><div class="qt2-meta-value" id="qpDate">—</div></div>
+              <div class="qt2-meta-cell"><div class="qt2-meta-label">Valid Until</div><div class="qt2-meta-value" id="qpValidity">—</div></div>
+              <div class="qt2-meta-cell"><div class="qt2-meta-label">Salesperson</div><div class="qt2-meta-value" id="qpSalesperson">Sarah Al Rashid</div></div>
+              <div class="qt2-meta-cell"><div class="qt2-meta-label">Payment Terms</div><div class="qt2-meta-value" id="qpPayment">Net 30</div></div>
+              <div class="qt2-meta-cell"><div class="qt2-meta-label">Delivery Terms</div><div class="qt2-meta-value">5-7 Working Days</div></div>
             </div>
-            <div class="qp-bill-to">
-              <div class="label">Bill To</div>
-              <div class="name" id="qpBillCompany"></div>
-              <div class="detail" id="qpBillContact"></div>
-              <div class="detail" id="qpBillAddress"></div>
-              <div class="detail" id="qpBillPhone"></div>
-              <div class="detail" id="qpBillEmail"></div>
-            </div>
-            <table class="qp-table">
-              <thead><tr><th style="width:40px;">#</th><th>Description</th><th class="text-right" style="width:60px;">Qty</th><th class="text-right" style="width:100px;">Unit Price</th><th class="text-right" style="width:110px;">Amount</th></tr></thead>
-              <tbody id="qpItems"></tbody>
-            </table>
-            <div class="qp-totals">
-              <div class="qp-totals-table">
-                <div class="qp-totals-row"><span>Subtotal</span><span id="qpSubtotal"></span></div>
-                <div class="qp-totals-row" id="qpDiscountRow"><span>Discount</span><span id="qpDiscount"></span></div>
-                <div class="qp-tots-row"><span>VAT (15%)</span><span id="qpTax"></span></div>
-                <div class="qp-totals-row grand"><span>Grand Total</span><span id="qpGrand"></span></div>
+
+            <div class="qt2-body">
+              <div class="qt2-customer-block">
+                <div class="qt2-section-label">Bill To</div>
+                <div class="qt2-customer-name" id="qpBillCompany">—</div>
+                <div class="qt2-customer-detail">
+                  <div id="qpBillContact">—</div>
+                  <div id="qpBillAddress">—</div>
+                  <div id="qpBillPhone">—</div>
+                  <div id="qpBillEmail">—</div>
+                </div>
+              </div>
+
+              <div class="qt2-products">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style="width:36px">#</th>
+                      <th>SKU</th>
+                      <th>Product Name</th>
+                      <th class="qt2-right" style="width:60px">Qty</th>
+                      <th class="qt2-right" style="width:100px">Unit Price</th>
+                      <th class="qt2-right" style="width:70px">Disc %</th>
+                      <th class="qt2-right" style="width:70px">VAT %</th>
+                      <th class="qt2-right" style="width:110px">Line Total</th>
+                    </tr>
+                  </thead>
+                  <tbody id="qpItems"></tbody>
+                </table>
+              </div>
+
+              <div class="qt2-totals">
+                <div class="qt2-totals-table">
+                  <div class="qt2-totals-row"><span>Subtotal</span><span id="qpSubtotal">—</span></div>
+                  <div class="qt2-totals-row" id="qpDiscountRow"><span>Discount</span><span id="qpDiscount">—</span></div>
+                  <div class="qt2-totals-row"><span>VAT (15%)</span><span id="qpTax">—</span></div>
+                  <div class="qt2-totals-row qt2-grand"><span>Grand Total</span><span id="qpGrand">—</span></div>
+                </div>
+              </div>
+
+              <div class="qt2-terms">
+                <h4>Terms &amp; Conditions</h4>
+                <ol>
+                  <li>Prices are valid for 30 days from the date of this quotation.</li>
+                  <li>Delivery within 5-7 working days upon order confirmation.</li>
+                  <li>Payment terms: Net 30 days from invoice date.</li>
+                  <li>Goods remain the property of Waleed Mohammed Al Suwat Holding Co. until full payment is received.</li>
+                  <li>All prices are in Saudi Riyals (SAR) and inclusive of 15% VAT unless stated otherwise.</li>
+                  <li>Claims for damaged goods must be reported within 48 hours of delivery.</li>
+                </ol>
+              </div>
+
+              <div class="qt2-signatures">
+                <div class="qt2-sig-block">
+                  <div class="qt2-sig-label">Prepared By</div>
+                  <div class="qt2-sig-space"></div>
+                  <div class="qt2-sig-line" id="qpPreparedBy">Sarah Al Rashid</div>
+                  <div style="font-size:10px;color:#9ca3af;margin-top:2px">Sales Manager</div>
+                </div>
+                <div class="qt2-sig-block">
+                  <div class="qt2-sig-label">Approved By</div>
+                  <div class="qt2-sig-space"></div>
+                  <div class="qt2-sig-line">____________________</div>
+                  <div style="font-size:10px;color:#9ca3af;margin-top:2px">Authorized Signatory</div>
+                </div>
+                <div class="qt2-sig-block">
+                  <div class="qt2-sig-label">Accepted By</div>
+                  <div class="qt2-sig-space"></div>
+                  <div class="qt2-sig-line">____________________</div>
+                  <div style="font-size:10px;color:#9ca3af;margin-top:2px">Customer Signature &amp; Stamp</div>
+                </div>
               </div>
             </div>
-            <div class="qp-terms">
-              <h4>Terms &amp; Conditions</h4>
-              1. Prices are valid for 30 days from the date of this quotation.<br>
-              2. Delivery within 5-7 working days upon order confirmation.<br>
-              3. Payment terms: Net 30 days from invoice date.<br>
-              4. Goods remain the property of EXION Trading Est. until full payment is received.<br>
-              5. All prices are in Saudi Riyals and inclusive of 15% VAT unless stated otherwise.
-            </div>
-            <div class="qp-signatures">
-              <div class="qp-sig-block"><div class="qp-sig-line">Authorized Signature</div></div>
-              <div class="qp-sig-block"><div class="qp-sig-line">Accepted By</div></div>
+
+            <div class="qt2-footer">
+              <div class="qt2-footer-company">
+                <strong>EXION TRADING EST.</strong><br>
+                P.O. Box 34521, Al Khobar 31952, Saudi Arabia<br>
+                Tel: +966 13 801 2345 · Fax: +966 13 801 2346<br>
+                Email: info@exion.sa · Web: www.exion.sa
+              </div>
+              <div class="qt2-footer-nums">
+                <strong>CR No:</strong> 1010123456789<br>
+                <strong>VAT No:</strong> 310012345600003
+              </div>
             </div>
           </div>
+          <!-- END QUOTATION DOCUMENT -->
+
           <div class="quotation-actions">
-            <a href="quotation.html" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> Edit Quotation</a>
-            <button class="btn btn-primary btn-lg" onclick="markAsSent()"><i class="fas fa-check"></i> Mark as Sent</button>
-            <button class="btn btn-success btn-lg" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
-            <button class="btn btn-white btn-lg" onclick="showToast('PDF download simulated','info')"><i class="fas fa-file-pdf"></i> Download PDF</button>
-          </div>
+  <a href="quotation.html" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> Edit Quotation</a>
+  <button class="btn btn-primary btn-lg" onclick="markAsSent()"><i class="fas fa-check"></i> Mark as Sent</button>
+  <button class="btn btn-whatsapp btn-lg" onclick="sendWhatsApp()"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
+  <button class="btn btn-white btn-lg" onclick="showToast('PDF download simulated','info')"><i class="fas fa-file-pdf"></i> Download PDF</button>
+  <button class="btn btn-primary btn-lg" style="background:var(--primary-700);" onclick="window.location.href='delivery-note.html'"><i class="fas fa-truck"></i> Create Delivery Note</button>
+</div>
         </div>
       </main>
     </div>
   </div>
   <script src="../assets/js/app.js"></script>
+  <script>
+    /* Admin quotation preview loader */
+    (function(){
+      var req = getSessionData('current_request');
+      if (!req) return;
+      var el = function(id){ return document.getElementById(id); };
+
+      if (el('qpNumber')) el('qpNumber').textContent = document.getElementById('qRef') ? document.getElementById('qRef').value : 'QT-2024-1234';
+      if (el('qpDate')) el('qpDate').textContent = new Date().toLocaleDateString('en-SA',{year:'numeric',month:'long',day:'numeric'});
+      if (el('qpValidity')) el('qpValidity').textContent = document.getElementById('qValidity') ? document.getElementById('qValidity').value : '2025-01-18';
+      if (el('qpPayment')) el('qpPayment').textContent = document.getElementById('qPayment') ? document.getElementById('qPayment').value : 'Net 30';
+      if (req.salesperson && el('qpSalesperson')) el('qpSalesperson').textContent = req.salesperson;
+      if (req.salesperson && el('qpPreparedBy')) el('qpPreparedBy').textContent = req.salesperson;
+
+      var cust = req.customer;
+      if (typeof cust === 'object') {
+        if (el('qpBillCompany')) el('qpBillCompany').textContent = cust.company || '';
+        if (el('qpBillContact')) el('qpBillContact').textContent = cust.contact || '';
+        if (el('qpBillAddress')) el('qpBillAddress').textContent = cust.address || '—';
+        if (el('qpBillPhone')) el('qpBillPhone').textContent = 'Tel: ' + (cust.phone || '—');
+        if (el('qpBillEmail')) el('qpBillEmail').textContent = 'Email: ' + (cust.email || '—');
+      }
+
+      var discount = parseFloat(document.getElementById('qDiscount') ? document.getElementById('qDiscount').value : 0) || 0;
+      var tax = parseFloat(document.getElementById('qTax') ? document.getElementById('qTax').value : 15) || 15;
+
+      var itemsEl = el('qpItems');
+      if (itemsEl && req.items) {
+        var subtotal = 0;
+        itemsEl.innerHTML = req.items.map(function(p, i){
+          var qty = [2,1,3,5,1,2,4,1,2,3][i%10];
+          var lineBeforeDisc = p.price * qty;
+          subtotal += lineBeforeDisc;
+          var discAmt = lineBeforeDisc * (discount / 100);
+          var afterDisc = lineBeforeDisc - discAmt;
+          var vatAmt = afterDisc * (tax / 100);
+          var lineTotal = afterDisc + vatAmt;
+          var discCell = discount > 0 ? discount + '%' : '—';
+          return '<tr>' +
+            '<td>'+(i+1)+'</td>' +
+            '<td style="font-size:11px;color:#6b7280;">'+p.sku+'</td>' +
+            '<td><span class="qt2-prod-name">'+p.name+'</span>'+(p.nameAr?'<br><span style="font-size:11px;color:#9ca3af;" dir="rtl">'+p.nameAr+'</span>':'')+'</td>' +
+            '<td class="qt2-right">'+qty+'</td>' +
+            '<td class="qt2-right">SAR '+p.price.toFixed(2)+'</td>' +
+            '<td class="qt2-right">'+discCell+'</td>' +
+            '<td class="qt2-right">'+tax+'%</td>' +
+            '<td class="qt2-right" style="font-weight:700;">SAR '+lineTotal.toFixed(2)+'</td>' +
+            '</tr>';
+        }).join('');
+
+        var discTotal = subtotal * (discount / 100);
+        var net = subtotal - discTotal;
+        var vatTotal = net * (tax / 100);
+        var grand = net + vatTotal;
+
+        if (el('qpSubtotal')) el('qpSubtotal').textContent = 'SAR ' + subtotal.toFixed(2);
+        if (el('qpDiscount')) {
+          el('qpDiscount').textContent = '-SAR ' + discTotal.toFixed(2);
+          var dRow = el('qpDiscountRow');
+          if (dRow) dRow.style.display = discount > 0 ? 'flex' : 'none';
+        }
+        if (el('qpTax')) el('qpTax').textContent = 'SAR ' + vatTotal.toFixed(2);
+        if (el('qpGrand')) el('qpGrand').textContent = 'SAR ' + grand.toFixed(2);
+      }
+    })();
+
+    function markAsSent(){ showToast('Quotation marked as sent','success'); setTimeout(function(){ window.location.href='requests.html'; },1000); }
+    function sendWhatsApp(){ showToast('Opening WhatsApp...','info'); setTimeout(function(){ showToast('Quotation sent via WhatsApp (simulated)','success'); },1500); }
+  </script>
 </body>
 </html>

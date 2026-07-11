@@ -3,9 +3,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product Catalog — EXION OrderFlow</title>
+  <title>New Quotation — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .main-area { overflow-x: hidden !important; }
+    .content { overflow-y: auto !important; overflow-x: hidden !important; min-height: 0; }
+    .topbar { overflow: visible !important; position: relative; z-index: 100 !important; }
+    .sidebar { z-index: 500 !important; }
+    .pc-name-ar { font-size: 12px; color: var(--gray-500); margin-bottom: 4px; font-weight: 500; line-height: 1.4; }
+    .fp-card { display: flex; align-items: center; gap: 14px; padding: 12px 16px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); min-width: 280px; max-width: 320px; cursor: pointer; transition: all var(--transition); flex-shrink: 0; }
+    .fp-card:hover { border-color: var(--primary-300); box-shadow: var(--shadow-md); transform: translateY(-1px); }
+    .fp-img { width: 64px; height: 64px; border-radius: var(--radius-md); overflow: hidden; flex-shrink: 0; background: var(--gray-100); }
+    .fp-img img { width: 100%; height: 100%; object-fit: cover; }
+    .fp-info { flex: 1; min-width: 0; }
+    .fp-name { font-size: 13px; font-weight: 600; color: var(--gray-800); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fp-ar { font-size: 11px; color: var(--gray-500); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fp-meta { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+    .fp-sku { font-size: 10px; color: var(--gray-400); font-weight: 600; }
+    .fp-price { font-size: 13px; font-weight: 700; color: var(--primary-600); }
+    .fp-add { width: 36px; height: 36px; border-radius: var(--radius-md); background: var(--primary-500); color: var(--white); display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; transition: background var(--transition); }
+    .fp-card:hover .fp-add { background: var(--primary-600); }
+  </style>
 </head>
 <body>
   <div class="app">
@@ -15,8 +34,8 @@
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
-        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
-        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Quotation</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Quotations</span></a>
         <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
       </nav>
       <div class="sidebar-footer">
@@ -31,59 +50,55 @@
         <div class="topbar-actions">
           <a href="cart.html" class="topbar-btn" style="position:relative;"><i class="fas fa-shopping-cart"></i><span class="notif-badge" id="cartBadge" style="display:none;">0</span></a>
           <button class="topbar-btn" id="notifBtn"><i class="fas fa-bell"></i><span class="notif-badge">3</span></button>
-          <div class="topbar-user"><div class="user-avatar">SC</div><div class="user-info"><span class="user-name">Sarah Chen</span><span class="user-role">Sales Manager</span></div></div>
+          <div class="topbar-user"><div class="user-avatar">SR</div><div class="user-info"><span class="user-name">Sarah Al Rashid</span><span class="user-role">Sales Manager</span></div></div>
         </div>
       </header>
       <main class="content">
         <div class="page-header">
-          <div><h1 class="page-title">Product Catalog</h1><p class="page-subtitle">Step 2 of 3 — Add Products to Cart</p></div>
-          <div class="flex gap-2">
-            <a href="cart.html" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> View Cart</a>
-            <a href="new-order.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
-          </div>
+          <div><h1 class="page-title">New Quotation</h1><p class="page-subtitle">Step 2 of 3 — Select Products</p></div>
+          <a href="new-order.html" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</a>
         </div>
-
         <div class="steps">
           <div class="step completed"><div class="step-num"><i class="fas fa-check" style="font-size:12px;"></i></div><div class="step-label">Customer</div></div>
           <div class="step current"><div class="step-num">2</div><div class="step-label">Products</div></div>
-          <div class="step"><div class="step-num">3</div><div class="step-label">Review</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-label">Generate</div></div>
         </div>
-
-        <div class="products-counter">
-          <div><span class="pc-label">Selected Products</span><span class="pc-count" id="productsCounter">0</span></div>
+        <div class="products-counter" id="productsCounterBar">
+          <span class="pc-label"><i class="fas fa-boxes-stacked" style="margin-right:8px;"></i>Products in cart:<span class="pc-count" id="productsCounter">0</span></span>
           <a href="cart.html"><i class="fas fa-shopping-cart"></i> View Cart</a>
         </div>
-
-        <div class="filters-bar">
-          <div class="filter-search"><i class="fas fa-search"></i><input type="text" id="productSearch" placeholder="Search products or SKU..."></div>
-          <div class="filter-group">
-            <label>Sort:</label>
-            <select class="form-select" id="productSort" style="width:auto;min-width:160px;">
-              <option value="name-asc">Name A–Z</option>
-              <option value="name-desc">Name Z–A</option>
-              <option value="price-asc">Price Low–High</option>
-              <option value="price-desc">Price High–Low</option>
-            </select>
+        <div class="card mb-6">
+          <div class="card-header"><h3 class="card-title"><i class="fas fa-fire" style="margin-right:8px;color:var(--warning);"></i>Frequently Ordered</h3><span class="text-muted" style="font-size:12px;">Click to add to cart</span></div>
+          <div class="card-body" style="overflow-x:auto;padding:16px 20px;">
+            <div id="frequentProductsGrid" style="display:flex;gap:12px;min-width:max-content;"></div>
           </div>
         </div>
-        <div class="chips">
-          <button class="chip active" data-category="All">All Products</button>
-          <button class="chip" data-category="Bearings">Bearings</button>
-          <button class="chip" data-category="Filters">Filters</button>
-          <button class="chip" data-category="Belts">Belts</button>
-          <button class="chip" data-category="Hoses">Hoses</button>
-          <button class="chip" data-category="Seals">Seals</button>
-          <button class="chip" data-category="Adhesives">Adhesives</button>
+        <div class="filters-bar">
+          <div class="filter-search"><i class="fas fa-search"></i><input type="text" id="productSearch" placeholder="Search by name, SKU, or Arabic..."></div>
+          <div class="filter-group"><label>Sort:</label><select class="form-select" id="productSort" style="width:auto;min-width:160px;"><option value="name-asc">Name A-Z</option><option value="name-desc">Name Z-A</option><option value="price-asc">Price Low-High</option><option value="price-desc">Price High-Low</option></select></div>
         </div>
-
+        <div class="chips">
+          <button class="chip active" data-category="All">All</button>
+          <button class="chip" data-category="Dinner Plates">Dinner Plates</button>
+          <button class="chip" data-category="Bowls">Bowls</button>
+          <button class="chip" data-category="Platters">Platters</button>
+          <button class="chip" data-category="Serving">Serving</button>
+          <button class="chip" data-category="Trays">Trays</button>
+          <button class="chip" data-category="Accessories">Accessories</button>
+        </div>
         <div class="product-grid" id="productGrid"></div>
-
-        <div class="mt-6" style="text-align:center;">
-          <a href="cart.html" class="btn btn-primary btn-lg"><i class="fas fa-shopping-cart"></i> Go to Cart</a>
+        <div style="display:flex;justify-content:flex-end;gap:12px;margin-top:24px;">
+          <a href="new-order.html" class="btn btn-secondary btn-lg"><i class="fas fa-arrow-left"></i> Back to Customer</a>
+          <a href="cart.html" class="btn btn-primary btn-lg"><i class="fas fa-arrow-right"></i> Review Cart</a>
         </div>
       </main>
     </div>
   </div>
   <script src="../assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      loadFrequentProducts();
+    });
+  </script>
 </body>
 </html>

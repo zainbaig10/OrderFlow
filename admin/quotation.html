@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generate Quotation — EXION DealerFlow</title>
+  <title>Quotation — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -11,10 +11,10 @@
   <div class="app">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
-        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Quotations</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
         <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
         <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
@@ -35,16 +35,16 @@
         </div>
       </header>
       <main class="content">
-        <div class="breadcrumb"><a href="requests.html">Requests</a><span class="sep">/</span><a href="request-details.html">REQ-2024-0047</a><span class="sep">/</span><span>Quotation</span></div>
+        <div class="breadcrumb"><a href="requests.html">Quotations</a><span class="sep">/</span><a href="request-details.html">QT-2024-0047</a><span class="sep">/</span><span>Quotation</span></div>
         <div class="page-header">
-          <div><h1 class="page-title">Generate Quotation</h1><p class="page-subtitle">Review and adjust before generating</p></div>
+          <div><h1 class="page-title">Quotation</h1><p class="page-subtitle">Review and adjust before generating</p></div>
           <a href="request-details.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back</a>
         </div>
         <div class="card">
           <div class="card-header"><h3 class="card-title"><i class="fas fa-cog" style="margin-right:8px;color:var(--primary-400);"></i>Quotation Settings</h3></div>
           <div class="card-body"><div class="form-grid">
             <div class="form-group"><label>Quotation Reference</label><input type="text" class="form-input" id="qRef" value="QT-2024-1234"></div>
-            <div class="form-group"><label>Related Request</label><input type="text" class="form-input" id="qReqId" disabled style="background:var(--gray-50);"></div>
+            <div class="form-group"><label>Related Quotation</label><input type="text" class="form-input" id="qReqId" disabled style="background:var(--gray-50);"></div>
             <div class="form-group"><label>Customer</label><input type="text" class="form-input" id="qCustomer" disabled style="background:var(--gray-50);"></div>
             <div class="form-group"><label>Salesperson</label><input type="text" class="form-input" value="Sarah Al Rashid" disabled style="background:var(--gray-50);"></div>
             <div class="form-group"><label>Quotation Date</label><input type="date" class="form-input" id="qDate"></div>
@@ -82,7 +82,7 @@
           <div class="flex gap-2" style="justify-content:flex-end;">
             <button class="btn btn-secondary btn-lg" onclick="saveQuotationDraft()"><i class="fas fa-save"></i> Save Draft</button>
             <a href="quotation-preview.html" class="btn btn-primary btn-lg"><i class="fas fa-eye"></i> Preview</a>
-            <button class="btn btn-success btn-lg" onclick="sendQuotationDirect()"><i class="fas fa-paper-plane"></i> Send</button>
+            <button class="btn btn-whatsapp btn-lg" onclick="sendQuotationDirect()"><i class="fab fa-whatsapp"></i> Send via WhatsApp</button>
           </div>
         </div>
       </main>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings — EXION DealerFlow</title>
+  <title>Settings — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
@@ -11,10 +11,10 @@
   <div class="app">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
-        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Requests</span></a>
+        <a href="requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>Quotations</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
         <a href="products.html" class="nav-item"><i class="fas fa-boxes-stacked"></i><span>Products</span></a>
         <a href="users.html" class="nav-item"><i class="fas fa-user-shield"></i><span>Users</span></a>
@@ -35,7 +35,7 @@
         </div>
       </header>
       <main class="content">
-        <div class="page-header"><div><h1 class="page-title">Settings</h1><p class="page-subtitle">Configure your DealerFlow instance</p></div></div>
+        <div class="page-header"><div><h1 class="page-title">Settings</h1><p class="page-subtitle">Configure your OrderFlow instance</p></div></div>
         <div class="settings-section">
           <h3>Company Information</h3>
           <p>These details appear on all quotations and documents.</p>
@@ -70,15 +70,19 @@
           <p>Control which notifications are sent to users.</p>
           <div class="settings-card">
             <div class="setting-row">
-              <div><div class="setting-label">New Request Submitted</div><div class="setting-desc">Notify office staff when a salesperson submits a new request</div></div>
+              <div><div class="setting-label">New Quotation Generated</div><div class="setting-desc">Notify office staff when a salesperson generates a new quotation</div></div>
               <div class="toggle on"></div>
             </div>
             <div class="setting-row">
-              <div><div class="setting-label">Quotation Sent</div><div class="setting-desc">Notify the salesperson when their request quotation is sent</div></div>
+              <div><div class="setting-label">Quotation Sent</div><div class="setting-desc">Notify when a quotation is sent to a customer</div></div>
               <div class="toggle on"></div>
             </div>
             <div class="setting-row">
-              <div><div class="setting-label">Order Confirmed</div><div class="setting-desc">Notify when a customer confirms the order</div></div>
+              <div><div class="setting-label">Discount Approval Required</div><div class="setting-desc">Notify admin when a quotation exceeds 5% discount</div></div>
+              <div class="toggle on"></div>
+            </div>
+            <div class="setting-row">
+              <div><div class="setting-label">Customer Accepted</div><div class="setting-desc">Notify when a customer accepts the quotation</div></div>
               <div class="toggle on"></div>
             </div>
             <div class="setting-row">
@@ -114,7 +118,7 @@
           <p>Irreversible actions — proceed with caution.</p>
           <div class="settings-card" style="border-color:var(--danger-light);">
             <div class="setting-row">
-              <div><div class="setting-label" style="color:var(--danger-text);">Reset All Data</div><div class="setting-desc">Permanently delete all requests, customers, and quotations</div></div>
+              <div><div class="setting-label" style="color:var(--danger-text);">Reset All Data</div><div class="setting-desc">Permanently delete all quotations, customers, and products</div></div>
               <button class="btn btn-sm btn-danger" onclick="showToast('This action is disabled in the demo','error')">Reset Data</button>
             </div>
           </div>

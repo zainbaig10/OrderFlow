@@ -3,20 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Review Order — EXION DealerFlow</title>
+  <title>Review Quotation — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* === Quotation Document Styles (scoped) === */
+    .qt2-paper{background:#fff;border:1px solid #d1d5db;border-radius:4px;box-shadow:0 8px 30px rgba(0,0,0,.1);max-width:800px;width:100%;margin:0 auto 24px;padding:0;font-family:'Inter',sans-serif;color:#1f2937;font-size:13px;line-height:1.5}
+    .qt2-paper *{box-sizing:border-box;margin:0;padding:0}
+    .qt2-paper table{border-collapse:collapse;width:100%}
+    .qt2-paper img{max-width:100%;display:block}
+    .qt2-header-band{background:#0A1628;padding:32px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .qt2-logo-area{display:flex;align-items:center;gap:16px}
+    .qt2-logo-box{width:64px;height:64px;background:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800;color:#1E5AA8;flex-shrink:0}
+    .qt2-company-name{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.3px}
+    .qt2-company-sub{font-size:11px;color:rgba(255,255,255,.6);margin-top:2px}
+    .qt2-title-area{text-align:right}
+    .qt2-doc-title{font-size:26px;font-weight:800;color:#3E7BD6;letter-spacing:3px}
+    .qt2-doc-number{font-size:13px;font-weight:600;color:rgba(255,255,255,.8);margin-top:4px}
+    .qt2-meta-strip{display:flex;flex-wrap:wrap;border-bottom:2px solid #e5e7eb}
+    .qt2-meta-cell{flex:1;min-width:140px;padding:12px 20px;border-right:1px solid #e5e7eb}
+    .qt2-meta-cell:last-child{border-right:none}
+    .qt2-meta-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:#9ca3af;margin-bottom:2px}
+    .qt2-meta-value{font-size:13px;font-weight:600;color:#1f2937}
+    .qt2-body{padding:28px 40px}
+    .qt2-customer-block{margin-bottom:24px}
+    .qt2-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:#1E5AA8;margin-bottom:6px}
+    .qt2-customer-name{font-size:16px;font-weight:700;color:#111827;margin-bottom:2px}
+    .qt2-customer-detail{font-size:12px;color:#6b7280;line-height:1.7}
+    .qt2-products{margin-bottom:20px}
+    .qt2-products table{table-layout:fixed;width:100%}
+    .qt2-products col.col-num{width:6%}
+    .qt2-products col.col-product{width:44%}
+    .qt2-products col.col-qty{width:10%}
+    .qt2-products col.col-price{width:15%}
+    .qt2-products col.col-disc{width:10%}
+    .qt2-products col.col-total{width:15%}
+    .qt2-products thead th{background:#112D4E;color:#fff;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:10px 12px;text-align:left;white-space:nowrap;vertical-align:middle}
+    .qt2-products thead th.qt2-right{text-align:right}
+    .qt2-products tbody td{padding:10px 12px;border-bottom:1px solid #f3f4f6;font-size:12px;vertical-align:middle;height:48px}
+    .qt2-products tbody td.qt2-right{text-align:right}
+    .qt2-products tbody tr:nth-child(even){background:#f9fafb}
+    .qt2-prod-name{font-weight:600;color:#1f2937}
+    .qt2-totals{display:flex;justify-content:flex-end;margin-bottom:28px}
+    .qt2-totals-table{width:45%}
+    .qt2-totals-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#4b5563}
+    .qt2-totals-row.qt2-grand{border-top:3px solid #112D4E;padding-top:10px;margin-top:6px;font-size:17px;font-weight:800;color:#111827}
+    .qt2-terms{border-top:1px solid #e5e7eb;padding-top:16px;margin-bottom:28px}
+    .qt2-terms h4{font-size:12px;font-weight:700;color:#374151;margin-bottom:6px}
+    .qt2-terms ol{padding-left:18px;font-size:11px;color:#6b7280;line-height:1.9}
+    .qt2-signatures{display:flex;justify-content:space-between;gap:40px;margin-bottom:28px}
+    .qt2-sig-block{flex:1;text-align:center}
+    .qt2-sig-label{font-size:11px;font-weight:600;color:#374151;margin-bottom:4px}
+    .qt2-sig-line{border-top:1px solid #d1d5db;padding-top:6px;margin-top:60px;font-size:12px;color:#9ca3af}
+    .qt2-sig-space{height:60px}
+    .qt2-footer{background:#f9fafb;border-top:2px solid #112D4E;padding:20px 40px;display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
+    .qt2-footer-company{font-size:11px;color:#6b7280;line-height:1.7}
+    .qt2-footer-company strong{color:#374151}
+    .qt2-footer-nums{text-align:right;font-size:11px;color:#6b7280;line-height:1.7}
+    .qt2-footer-nums strong{color:#374151}
+    @media(max-width:768px){
+      .qt2-header-band{flex-direction:column;align-items:flex-start;padding:20px 24px}
+      .qt2-title-area{text-align:left}
+      .qt2-meta-cell{min-width:120px;padding:10px 14px}
+      .qt2-body{padding:20px 24px}
+      .qt2-signatures{flex-direction:column;gap:24px}
+      .qt2-footer{flex-direction:column;padding:16px 24px}
+      .qt2-footer-nums{text-align:left}
+    }
+  </style>
 </head>
 <body>
   <div class="app">
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
     <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION DealerFlow</span></a></div>
+      <div class="sidebar-header"><a href="../index.html" class="sidebar-brand"><span class="brand-icon">E</span><span class="brand-text">EXION OrderFlow</span></a></div>
       <nav class="sidebar-nav">
         <a href="dashboard.html" class="nav-item"><i class="fas fa-th-large"></i><span>Dashboard</span></a>
         <a href="customers.html" class="nav-item"><i class="fas fa-users"></i><span>Customers</span></a>
-        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Order</span></a>
-        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Requests</span></a>
+        <a href="new-order.html" class="nav-item"><i class="fas fa-plus-circle"></i><span>New Quotation</span></a>
+        <a href="my-requests.html" class="nav-item"><i class="fas fa-file-alt"></i><span>My Quotations</span></a>
         <a href="profile.html" class="nav-item"><i class="fas fa-user-circle"></i><span>Profile</span></a>
       </nav>
       <div class="sidebar-footer">
@@ -34,48 +99,249 @@
         </div>
       </header>
       <main class="content">
-        <div class="page-header">
-          <div><h1 class="page-title">Review &amp; Submit</h1><p class="page-subtitle">Step 3 of 3 — Confirm your order details</p></div>
-          <a href="cart.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Cart</a>
-        </div>
-        <div class="steps">
-          <div class="step completed"><div class="step-num"><i class="fas fa-check" style="font-size:12px;"></i></div><div class="step-label">Customer</div></div>
-          <div class="step completed"><div class="step-num"><i class="fas fa-check" style="font-size:12px;"></i></div><div class="step-label">Products</div></div>
-          <div class="step current"><div class="step-num">3</div><div class="step-label">Review</div></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><h3 class="card-title"><i class="fas fa-route" style="margin-right:8px;color:var(--primary-400);"></i>Status Preview</h3></div>
-          <div class="card-body">
-            <div class="status-flow" id="statusFlow"></div>
-            <p class="text-muted" style="font-size:12px;">This shows the expected workflow after submission.</p>
+
+        <!-- ========== REVIEW SECTION (UNCHANGED) ========== -->
+        <div id="reviewSection">
+          <div class="page-header">
+            <div><h1 class="page-title">Review &amp; Generate Quotation</h1><p class="page-subtitle">Step 3 of 3 — Confirm your quotation details</p></div>
+            <a href="cart.html" class="btn btn-secondary"><i class="fas fa-arrow-left"></i> Back to Cart</a>
+          </div>
+          <div class="steps">
+            <div class="step completed"><div class="step-num"><i class="fas fa-check" style="font-size:12px;"></i></div><div class="step-label">Customer</div></div>
+            <div class="step completed"><div class="step-num"><i class="fas fa-check" style="font-size:12px;"></i></div><div class="step-label">Products</div></div>
+            <div class="step current"><div class="step-num">3</div><div class="step-label">Generate</div></div>
+          </div>
+
+          <div class="discount-warning hidden" id="discountWarning"></div>
+
+          <div class="card">
+            <div class="card-header"><h3 class="card-title"><i class="fas fa-route" style="margin-right:8px;color:var(--primary-400);"></i>Status Preview</h3></div>
+            <div class="card-body">
+              <div class="status-flow" id="statusFlow"></div>
+              <p class="text-muted" style="font-size:12px;">This shows the expected workflow after generation.</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3 class="card-title"><i class="fas fa-user" style="margin-right:8px;color:var(--primary-400);"></i>Customer</h3></div>
+            <div class="card-body" id="reviewCustomer"><div class="detail-value text-muted">No customer selected</div></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3 class="card-title"><i class="fas fa-box" style="margin-right:8px;color:var(--primary-400);"></i>Quotation Items</h3></div>
+            <div class="card-body-no-pad"><div class="table-wrapper">
+              <table class="data-table">
+                <thead><tr><th>#</th><th>Product</th><th class="text-right">Qty</th><th class="text-right">Unit Price</th><th class="text-right">Discount</th><th class="text-right">Amount</th></tr></thead>
+                <tbody id="reviewItems"><tr><td colspan="6" class="text-center text-muted" style="padding:24px;">No items in cart</td></tr></tbody>
+              </table>
+            </div></div>
+            <div class="cart-summary" id="reviewSummaryRows"></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3 class="card-title"><i class="fas fa-sticky-note" style="margin-right:8px;color:var(--primary-400);"></i>Remarks</h3></div>
+            <div class="card-body"><p id="reviewRemarks" class="text-muted">No remarks provided.</p></div>
+          </div>
+          <div style="text-align:right;display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:10px;" class="mt-4">
+            <a href="cart.html" class="btn btn-secondary btn-lg"><i class="fas fa-edit"></i> Edit Quotation</a>
+            <span id="normalActions">
+              <button class="btn btn-primary btn-lg" onclick="generateQuotation()"><i class="fas fa-file-invoice"></i> Generate Quotation</button>
+            </span>
+            <span id="approvalActions" class="hidden">
+              <button class="btn btn-outline btn-lg" onclick="submitForApproval()"><i class="fas fa-clock"></i> Submit for Discount Approval</button>
+            </span>
           </div>
         </div>
-        <div class="card">
-          <div class="card-header"><h3 class="card-title"><i class="fas fa-user" style="margin-right:8px;color:var(--primary-400);"></i>Customer</h3></div>
-          <div class="card-body" id="reviewCustomer"><div class="detail-value text-muted">No customer selected</div></div>
+
+        <!-- ========== PREVIEW SECTION ========== -->
+        <div id="previewSection" class="hidden" style="background:var(--gray-200);padding:24px;margin:-24px;margin-top:-24px;min-height:100vh;">
+          <div class="breadcrumb" style="color:var(--gray-500);"><a href="review.html" style="color:var(--primary-500);" onclick="event.preventDefault();document.getElementById('previewSection').classList.add('hidden');document.getElementById('reviewSection').classList.remove('hidden');">Review</a><span class="sep">/</span><span>Quotation Preview</span></div>
+
+          <div class="quotation-preview-container">
+            <div class="qt2-paper">
+              <!-- Header Band -->
+              <div class="qt2-header-band">
+                <div class="qt2-logo-area">
+                  <div class="qt2-logo-box">E</div>
+                  <div>
+                    <div class="qt2-company-name">EXION TRADING EST.</div>
+                    <div class="qt2-company-sub">Melamine Tableware Manufacturer &amp; Distributor</div>
+                  </div>
+                </div>
+                <div class="qt2-title-area">
+                  <div class="qt2-doc-title">QUOTATION</div>
+                  <div class="qt2-doc-number" id="sqpNumber">QT-2024-0000</div>
+                </div>
+              </div>
+
+              <!-- Meta Strip -->
+              <div class="qt2-meta-strip">
+                <div class="qt2-meta-cell"><div class="qt2-meta-label">Date</div><div class="qt2-meta-value" id="sqpDate">—</div></div>
+                <div class="qt2-meta-cell"><div class="qt2-meta-label">Valid Until</div><div class="qt2-meta-value" id="sqpValidity">—</div></div>
+                <div class="qt2-meta-cell"><div class="qt2-meta-label">Salesperson</div><div class="qt2-meta-value">Sarah Al Rashid</div></div>
+                <div class="qt2-meta-cell"><div class="qt2-meta-label">Payment Terms</div><div class="qt2-meta-value" id="sqpPayment">Net 30</div></div>
+                <div class="qt2-meta-cell"><div class="qt2-meta-label">Delivery Terms</div><div class="qt2-meta-value">5-7 Working Days</div></div>
+              </div>
+
+              <!-- Body -->
+              <div class="qt2-body">
+                <!-- Customer -->
+                <div class="qt2-customer-block">
+                  <div class="qt2-section-label">Bill To</div>
+                  <div class="qt2-customer-name" id="sqpBillCompany">—</div>
+                  <div class="qt2-customer-detail">
+                    <div id="sqpBillContact">—</div>
+                    <div id="sqpBillAddress">—</div>
+                    <div id="sqpBillPhone">—</div>
+                    <div id="sqpBillEmail">—</div>
+                  </div>
+                </div>
+
+                <!-- Products Table — fixed layout with colgroup -->
+                <div class="qt2-products">
+                  <table>
+                    <colgroup>
+                      <col class="col-num">
+                      <col class="col-product">
+                      <col class="col-qty">
+                      <col class="col-price">
+                      <col class="col-disc">
+                      <col class="col-total">
+                    </colgroup>
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Product</th>
+                        <th class="qt2-right">Qty</th>
+                        <th class="qt2-right">Unit Price</th>
+                        <th class="qt2-right">Discount</th>
+                        <th class="qt2-right">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody id="sqpItems"></tbody>
+                  </table>
+                </div>
+
+                <!-- Totals — flex-end aligns right edge with Amount column -->
+                <div class="qt2-totals">
+                  <div class="qt2-totals-table">
+                    <div class="qt2-totals-row"><span>Subtotal</span><span id="sqpSubtotal">—</span></div>
+                    <div class="qt2-totals-row" id="sqpDiscountRow"><span>Discount</span><span id="sqpDiscount">—</span></div>
+                    <div class="qt2-totals-row"><span>VAT (15%)</span><span id="sqpTax">—</span></div>
+                    <div class="qt2-totals-row qt2-grand"><span>Grand Total</span><span id="sqpGrand">—</span></div>
+                  </div>
+                </div>
+
+                <!-- Terms -->
+                <div class="qt2-terms">
+                  <h4>Terms &amp; Conditions</h4>
+                  <ol>
+                    <li>Prices are valid for 30 days from the date of this quotation.</li>
+                    <li>Delivery within 5-7 working days upon order confirmation.</li>
+                    <li>Payment terms: Net 30 days from invoice date.</li>
+                    <li>Goods remain the property of Waleed Mohammed Al Suwat Holding Co. until full payment is received.</li>
+                    <li>All prices are in Saudi Riyals (SAR) and inclusive of 15% VAT unless stated otherwise.</li>
+                    <li>Claims for damaged goods must be reported within 48 hours of delivery.</li>
+                  </ol>
+                </div>
+
+                <!-- Signatures -->
+                <div class="qt2-signatures">
+                  <div class="qt2-sig-block">
+                    <div class="qt2-sig-label">Prepared By</div>
+                    <div class="qt2-sig-space"></div>
+                    <div class="qt2-sig-line">Sarah Al Rashid</div>
+                    <div style="font-size:10px;color:#9ca3af;margin-top:2px">Sales Manager</div>
+                  </div>
+                  <div class="qt2-sig-block">
+                    <div class="qt2-sig-label">Approved By</div>
+                    <div class="qt2-sig-space"></div>
+                    <div class="qt2-sig-line">____________________</div>
+                    <div style="font-size:10px;color:#9ca3af;margin-top:2px">Authorized Signatory</div>
+                  </div>
+                  <div class="qt2-sig-block">
+                    <div class="qt2-sig-label">Accepted By</div>
+                    <div class="qt2-sig-space"></div>
+                    <div class="qt2-sig-line">____________________</div>
+                    <div style="font-size:10px;color:#9ca3af;margin-top:2px">Customer Signature &amp; Stamp</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="qt2-footer">
+                <div class="qt2-footer-company">
+                  <strong>EXION TRADING EST.</strong><br>
+                  P.O. Box 34521, Al Khobar 31952, Saudi Arabia<br>
+                  Tel: +966 13 801 2345 · Fax: +966 13 801 2346<br>
+                  Email: info@exion.sa · Web: www.exion.sa
+                </div>
+                <div class="qt2-footer-nums">
+                  <strong>CR No:</strong> 1010123456789<br>
+                  <strong>VAT No:</strong> 310012345600003
+                </div>
+              </div>
+            </div>
+            <!-- END QUOTATION DOCUMENT -->
+
+            <!-- Action Buttons -->
+            <div class="quotation-actions">
+              <button class="btn btn-secondary btn-lg" onclick="document.getElementById('previewSection').classList.add('hidden');document.getElementById('reviewSection').classList.remove('hidden');"><i class="fas fa-arrow-left"></i> Edit Quotation</button>
+              <button class="btn btn-white btn-lg" onclick="showToast('PDF download simulated','info')"><i class="fas fa-file-pdf"></i> Download PDF</button>
+              <button class="btn btn-whatsapp btn-lg" onclick="sendQuotationWhatsApp()"><i class="fab fa-whatsapp"></i> Send Quotation via WhatsApp</button>
+              <button class="btn btn-primary btn-lg" style="background:var(--primary-700);" onclick="window.location.href='delivery-note.html'"><i class="fas fa-truck"></i> Create Delivery Note</button>
+            </div>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-header"><h3 class="card-title"><i class="fas fa-box" style="margin-right:8px;color:var(--primary-400);"></i>Order Items</h3></div>
-          <div class="card-body-no-pad"><div class="table-wrapper">
-            <table class="data-table">
-              <thead><tr><th>#</th><th>Product</th><th class="text-right">Qty</th><th class="text-right">Unit Price</th><th class="text-right">Amount</th></tr></thead>
-              <tbody id="reviewItems"><tr><td colspan="5" class="text-center text-muted" style="padding:24px;">No items in cart</td></tr></tbody>
-            </table>
-          </div></div>
-          <div class="cart-summary"><div class="cart-summary-row total"><span>Total</span><span id="reviewTotal">SAR 0.00</span></div></div>
-        </div>
-        <div class="card">
-          <div class="card-header"><h3 class="card-title"><i class="fas fa-sticky-note" style="margin-right:8px;color:var(--primary-400);"></i>Remarks</h3></div>
-          <div class="card-body"><p id="reviewRemarks" class="text-muted">No remarks provided.</p></div>
-        </div>
-        <div style="text-align:right;" class="mt-4">
-          <a href="cart.html" class="btn btn-secondary btn-lg" style="margin-right:12px;"><i class="fas fa-edit"></i> Edit Order</a>
-          <button class="btn btn-success btn-lg" onclick="submitOrder()"><i class="fas fa-paper-plane"></i> Submit Order Request</button>
-        </div>
+
       </main>
     </div>
   </div>
   <script src="../assets/js/app.js"></script>
-  <script>document.addEventListener('DOMContentLoaded', function() { renderStatusFlow('submitted'); });</script>
+  <script>
+    /* Override the quotation preview loader for the new template */
+    function loadSalesQuotationPreview() {
+      var data = getSessionData('quotation_data');
+      if (!data) return;
+      var el = function(id) { return document.getElementById(id); };
+      var qtNum = 'QT-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+      if (el('sqpNumber')) el('sqpNumber').textContent = qtNum;
+      if (el('sqpDate')) el('sqpDate').textContent = new Date().toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
+      var validUntil = new Date(); validUntil.setDate(validUntil.getDate() + 30);
+      if (el('sqpValidity')) el('sqpValidity').textContent = validUntil.toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
+      if (el('sqpPayment')) el('sqpPayment').textContent = 'Net 30';
+      if (data.customer) {
+        if (el('sqpBillCompany')) el('sqpBillCompany').textContent = data.customer.company;
+        if (el('sqpBillContact')) el('sqpBillContact').textContent = data.customer.contact;
+        if (el('sqpBillAddress')) el('sqpBillAddress').textContent = data.customer.address || '—';
+        if (el('sqpBillPhone')) el('sqpBillPhone').textContent = 'Tel: ' + data.customer.phone;
+        if (el('sqpBillEmail')) el('sqpBillEmail').textContent = 'Email: ' + (data.customer.email || '—');
+      }
+      var itemsEl = el('sqpItems');
+      if (itemsEl && data.items) {
+        itemsEl.innerHTML = data.items.map(function(item, i) {
+          var lineBeforeDisc = item.price * item.qty;
+          var discAmt = lineBeforeDisc * (item.discount || 0) / 100;
+          var afterDisc = lineBeforeDisc - discAmt;
+          var vatAmt = afterDisc * (15 / 100);
+          var lineTotal = afterDisc + vatAmt;
+          var discCell = item.discount > 0 ? item.discount + '%' : '—';
+          return '<tr>' +
+            '<td>' + (i + 1) + '</td>' +
+            '<td><span class="qt2-prod-name">' + item.name + '</span><br><span style="font-size:11px;color:#9ca3af;">' + item.sku + '</span></td>' +
+            '<td class="qt2-right">' + item.qty + '</td>' +
+            '<td class="qt2-right">SAR ' + item.price.toFixed(2) + '</td>' +
+            '<td class="qt2-right">' + discCell + '</td>' +
+            '<td class="qt2-right">SAR ' + lineTotal.toFixed(2) + '</td>' +
+            '</tr>';
+        }).join('');
+      }
+      if (el('sqpSubtotal')) el('sqpSubtotal').textContent = 'SAR ' + data.subtotal.toFixed(2);
+      if (el('sqpDiscount')) {
+        el('sqpDiscount').textContent = '-SAR ' + data.discountTotal.toFixed(2);
+        var row = el('sqpDiscount').closest('.qt2-totals-row');
+        if (row) row.style.display = data.discountTotal > 0 ? 'flex' : 'none';
+      }
+      if (el('sqpTax')) el('sqpTax').textContent = 'SAR ' + data.vat.toFixed(2);
+      if (el('sqpGrand')) el('sqpGrand').textContent = 'SAR ' + data.grandTotal.toFixed(2);
+    }
+    setTimeout(function() { applyDocumentBranding(); }, 150);
+  </script>
 </body>
 </html>
