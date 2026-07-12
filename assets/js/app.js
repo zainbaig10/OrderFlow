@@ -1436,7 +1436,22 @@ function applyTranslations() {
 /* ---- Document Branding Injector ---- */
 function applyDocumentBranding() {
   var c = DOCUMENT_COMPANY;
-  document.querySelectorAll('.qt2-logo-box, .dn-logo-box').forEach(function(el) { el.textContent = c.logo || c.logoTextLeft || ''; });
+  var imgBase = (window.location.pathname.indexOf('/sales/') !== -1 || window.location.pathname.indexOf('/admin/') !== -1) ? '../assets/img/' : 'assets/img/';
+
+  function loadLogo(selector, src) {
+    var img = new Image();
+    img.onload = function() {
+      document.querySelectorAll(selector).forEach(function(el) {
+        el.innerHTML = '';
+        el.style.cssText = 'width:auto;height:52px;max-width:120px;object-fit:contain;display:flex;align-items:center;background:transparent;border-radius:0;';
+        el.appendChild(img.cloneNode());
+      });
+    };
+    img.src = src;
+  }
+
+  loadLogo('.qt2-logo-box, .dn-logo-box', imgBase + 'logo-left.png');
+  loadLogo('.qt2-logo-right, .dn-logo-right', imgBase + 'logo-right.png');
   document.querySelectorAll('.qt2-company-name, .dn-company-name').forEach(function(el) { el.textContent = c.name; });
   document.querySelectorAll('.qt2-company-sub, .dn-company-sub').forEach(function(el) { el.textContent = c.subtitle; });
   document.querySelectorAll('.qt2-footer-company, .dn-footer-company').forEach(function(el) {
