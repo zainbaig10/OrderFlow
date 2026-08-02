@@ -51,6 +51,9 @@
     .qt2-terms{border-top:1px solid #e5e7eb;padding-top:16px;margin-bottom:28px}
     .qt2-terms h4{font-size:12px;font-weight:700;color:#374151;margin-bottom:6px}
     .qt2-terms ol{padding-left:18px;font-size:11px;color:#6b7280;line-height:1.9}
+    .terms-clause{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+    .terms-clause .form-input{flex:1}
+    .terms-clause-actions{display:flex;gap:4px;flex-shrink:0}
     .qt2-signatures{display:flex;justify-content:space-between;gap:40px;margin-bottom:28px}
     .qt2-sig-block{flex:1;text-align:center}
     .qt2-sig-label{font-size:11px;font-weight:600;color:#374151;margin-bottom:4px}
@@ -138,6 +141,13 @@
           <div class="card">
             <div class="card-header"><h3 class="card-title"><i class="fas fa-sticky-note" style="margin-right:8px;color:var(--primary-400);"></i>Remarks</h3></div>
             <div class="card-body"><p id="reviewRemarks" class="text-muted">No remarks provided.</p></div>
+          </div>
+          <div class="card">
+            <div class="card-header"><h3 class="card-title"><i class="fas fa-file-contract" style="margin-right:8px;color:var(--primary-400);"></i>Terms &amp; Conditions</h3></div>
+            <div class="card-body">
+              <div class="form-group"><label>Payment Terms</label><input type="text" class="form-input" id="orderPaymentTerms" list="paymentTermsOptions" placeholder="e.g. Net 30 Days" onchange="saveOrderPaymentTerms()"><datalist id="paymentTermsOptions"><option value="Net 30 Days"></option><option value="Net 45 Days"></option><option value="Net 60 Days"></option><option value="Advance Payment"></option><option value="50% Advance, 50% on Delivery"></option><option value="Cash on Delivery"></option></datalist></div>
+              <div class="form-group"><label>Terms &amp; Conditions Clauses</label><div id="termsEditor"></div><button type="button" class="btn btn-sm btn-secondary" onclick="addTermClause()"><i class="fas fa-plus"></i> Add Clause</button></div>
+            </div>
           </div>
           <div style="text-align:right;display:flex;justify-content:flex-end;align-items:center;flex-wrap:wrap;gap:10px;" class="mt-4">
             <a href="cart.html" class="btn btn-secondary btn-lg"><i class="fas fa-edit"></i> Edit Quotation</a>
@@ -233,14 +243,7 @@
                 <!-- Terms -->
                 <div class="qt2-terms">
                   <h4>Terms &amp; Conditions</h4>
-                  <ol>
-                    <li>Prices are valid for 30 days from the date of this quotation.</li>
-                    <li>Delivery within 5-7 working days upon order confirmation.</li>
-                    <li>Payment terms: Net 30 days from invoice date.</li>
-                    <li>Goods remain the property of Waleed Mohammed Al Suwat Holding Company until full payment is received.</li>
-                    <li>All prices are in Saudi Riyals (SAR) and inclusive of 15% VAT unless stated otherwise.</li>
-                    <li>Claims for damaged goods must be reported within 48 hours of delivery.</li>
-                  </ol>
+                  <ol id="sqpTerms"></ol>
                 </div>
 
                 <!-- Signatures -->
@@ -306,7 +309,12 @@
       if (el('sqpDate')) el('sqpDate').textContent = new Date().toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
       var validUntil = new Date(); validUntil.setDate(validUntil.getDate() + 30);
       if (el('sqpValidity')) el('sqpValidity').textContent = validUntil.toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
-      if (el('sqpPayment')) el('sqpPayment').textContent = 'Net 30';
+      if (el('sqpPayment')) el('sqpPayment').textContent = data.paymentTerms || 'Net 30 Days';
+      var termsEl = el('sqpTerms');
+      if (termsEl) {
+        var terms = (data.terms && data.terms.length) ? data.terms : DEFAULT_QUOTATION_TERMS;
+        termsEl.innerHTML = terms.map(function(t) { return '<li>' + t + '</li>'; }).join('');
+      }
       if (data.customer) {
         if (el('sqpBillCompany')) el('sqpBillCompany').textContent = data.customer.company;
         if (el('sqpBillContact')) el('sqpBillContact').textContent = data.customer.contact;

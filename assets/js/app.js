@@ -191,6 +191,61 @@ function getExpectedDelivery(item) {
   return { available: p.stockQty, required: item.qty, remaining: remaining, days: days };
 }
 
+/* ---- Terms & Conditions ---- */
+var DEFAULT_QUOTATION_TERMS = [
+  'We are committed to supplying products as per the approved sample. In case of any quality discrepancy, the company will accept the return of the products without any additional charges.',
+  'If the delivered products do not meet the agreed quality standards, the company will replace them accordingly.',
+  'Any complaints regarding the products must be registered within three (3) days of delivery.',
+  'The company will not entertain any claims made after three (3) days from the date of delivery.',
+  'Delivery of products will only be made if previously agreed upon.',
+  'Payment Terms: Net ___ Days from Invoice Date.'
+];
+function getOrderTerms() {
+  var t = getSessionData('order_terms');
+  if (t && t.length) return t;
+  return DEFAULT_QUOTATION_TERMS.slice();
+}
+function setOrderTerms(terms) { setSessionData('order_terms', terms); }
+function getOrderPaymentTerms() { return getSessionData('order_payment_terms') || 'Net 30 Days'; }
+function setOrderPaymentTerms(val) { setSessionData('order_payment_terms', val); }
+function renderTermsEditor() {
+  var wrap = document.getElementById('termsEditor');
+  if (!wrap) return;
+  var terms = getOrderTerms();
+  wrap.innerHTML = terms.map(function(t, i) {
+    return '<div class="terms-clause">' +
+      '<textarea class="form-input" rows="2" onchange="updateTermClause(' + i + ', this.value)">' + t + '</textarea>' +
+      '<div class="terms-clause-actions">' +
+        '<button type="button" class="btn btn-sm btn-secondary" onclick="moveTermClause(' + i + ',-1)"' + (i === 0 ? ' disabled' : '') + '><i class="fas fa-arrow-up"></i></button>' +
+        '<button type="button" class="btn btn-sm btn-secondary" onclick="moveTermClause(' + i + ',1)"' + (i === terms.length - 1 ? ' disabled' : '') + '><i class="fas fa-arrow-down"></i></button>' +
+        '<button type="button" class="btn btn-sm btn-danger" onclick="removeTermClause(' + i + ')"><i class="fas fa-trash"></i></button>' +
+      '</div>' +
+    '</div>';
+  }).join('');
+}
+function addTermClause() { var t = getOrderTerms(); t.push(''); setOrderTerms(t); renderTermsEditor(); }
+function removeTermClause(i) { var t = getOrderTerms(); t.splice(i, 1); setOrderTerms(t); renderTermsEditor(); }
+function moveTermClause(i, dir) {
+  var t = getOrderTerms(); var j = i + dir;
+  if (j < 0 || j >= t.length) return;
+  var tmp = t[i]; t[i] = t[j]; t[j] = tmp;
+  setOrderTerms(t); renderTermsEditor();
+}
+function updateTermClause(i, val) { var t = getOrderTerms(); t[i] = val; setOrderTerms(t); }
+function saveOrderPaymentTerms() {
+  var inp = document.getElementById('orderPaymentTerms');
+  if (inp) setOrderPaymentTerms(inp.value);
+}
+function saveAdminTerms(text) {
+  var lines = (text || '').split('\n').map(function(l) { return l.replace(/^\s*\d+\.\s*/, '').trim(); }).filter(function(l) { return l.length > 0; });
+  setOrderTerms(lines);
+}
+function initTermsEditor() {
+  renderTermsEditor();
+  var inp = document.getElementById('orderPaymentTerms');
+  if (inp) inp.value = getOrderPaymentTerms();
+}
+
 /* ---- Cart ---- */
 function getCart() { try { return JSON.parse(sessionStorage.getItem('df_cart')) || []; } catch(e) { return []; } }
 function setCart(cart) { sessionStorage.setItem('df_cart', JSON.stringify(cart)); }
@@ -561,6 +616,8 @@ function generateQuotation() {
     grandTotal: getCartGrandTotal(),
     maxDiscount: getCartMaxDiscount(),
     remarks: getSessionData('order_remarks'),
+    terms: getOrderTerms(),
+    paymentTerms: getOrderPaymentTerms(),
     date: new Date().toISOString()
   });
   var reviewSection = document.getElementById('reviewSection');
@@ -588,6 +645,8 @@ function submitForApproval() {
     grandTotal: getCartGrandTotal(),
     maxDiscount: getCartMaxDiscount(),
     remarks: getSessionData('order_remarks'),
+    terms: getOrderTerms(),
+    paymentTerms: getOrderPaymentTerms(),
     date: new Date().toISOString()
   });
   showToast('Quotation submitted for discount approval', 'info');
@@ -610,7 +669,12 @@ function loadSalesQuotationPreview() {
   if (el('sqpDate')) el('sqpDate').textContent = new Date().toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
   var validUntil = new Date(); validUntil.setDate(validUntil.getDate() + 30);
   if (el('sqpValidity')) el('sqpValidity').textContent = validUntil.toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
-  if (el('sqpPayment')) el('sqpPayment').textContent = 'Net 30';
+  if (el('sqpPayment')) el('sqpPayment').textContent = data.paymentTerms || 'Net 30 Days';
+  var termsEl = el('sqpTerms');
+  if (termsEl) {
+    var terms = (data.terms && data.terms.length) ? data.terms : DEFAULT_QUOTATION_TERMS;
+    termsEl.innerHTML = terms.map(function(t) { return '<li>' + t + '</li>'; }).join('');
+  }
   if (data.customer) {
     if (el('sqpBillCompany')) el('sqpBillCompany').textContent = data.customer.company;
     if (el('sqpBillContact')) el('sqpBillContact').textContent = data.customer.contact;
@@ -845,6 +909,13 @@ function initQuotationForm() {
   if (el('qRef')) el('qRef').value = 'QT-' + today.getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
   if (el('qTax')) el('qTax').value = VAT_RATE;
   if (el('qDiscount')) el('qDiscount').value = req.discount || 0;
+  var qTermsEl = el('qTerms');
+  if (qTermsEl) {
+    var savedTerms = getOrderTerms();
+    qTermsEl.value = savedTerms.map(function(t, i) { return (i + 1) + '. ' + t; }).join('\n');
+  }
+  var qPayEl = el('qPayment');
+  if (qPayEl) qPayEl.value = getOrderPaymentTerms();
   var itemsEl = el('qItems');
   if (itemsEl && req.items) {
     var runningTotal = 0;
@@ -884,7 +955,13 @@ function loadQuotationPreview() {
   if (el('qpNumber')) el('qpNumber').textContent = document.getElementById('qRef') ? document.getElementById('qRef').value : 'QT-2024-1234';
   if (el('qpDate')) el('qpDate').textContent = new Date().toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
   if (el('qpValidity')) el('qpValidity').textContent = document.getElementById('qValidity') ? document.getElementById('qValidity').value : '2025-01-18';
-  if (el('qpPayment')) el('qpPayment').textContent = document.getElementById('qPayment') ? document.getElementById('qPayment').value : 'Net 30';
+  if (el('qpPayment')) el('qpPayment').textContent = document.getElementById('qPayment') ? document.getElementById('qPayment').value : (getSessionData('order_payment_terms') || 'Net 30 Days');
+  var termsEl = el('qpTerms');
+  if (termsEl) {
+    var terms = getSessionData('order_terms');
+    if (!terms || !terms.length) terms = DEFAULT_QUOTATION_TERMS;
+    termsEl.innerHTML = terms.map(function(t) { return '<li>' + t + '</li>'; }).join('');
+  }
   var cust = req.customer;
   if (typeof cust === 'object') {
     if (el('qpBillCompany')) el('qpBillCompany').textContent = cust.company;
@@ -1504,6 +1581,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (document.getElementById('productGrid')) initProductCatalog();
   if (document.getElementById('cartItems')) initCartPage();
   if (document.getElementById('reviewItems')) initReviewPage();
+  if (document.getElementById('termsEditor')) initTermsEditor();
   if (document.getElementById('srdId')) loadSalesQuotationDetails();
   if (document.getElementById('reqId')) loadAdminQuotationDetails();
   if (document.getElementById('qReqId')) initQuotationForm();
