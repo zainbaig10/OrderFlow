@@ -97,24 +97,24 @@ var CUSTOMERS = [
 ];
 
 var PRODUCTS = [
-  { id: 1, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'White', price: 12.50, category: 'Dinner Plates', stock: 'in', stockQty: 20, frequent: true, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Dinner+Plate+11%E2%80%B3' },
-  { id: 17, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'Black', price: 12.50, category: 'Dinner Plates', stock: 'in', stockQty: 20, frequent: false, image: 'https://placehold.co/400x280/2b2b2b/d0d0d0?text=Dinner+Plate+11%E2%80%B3+Black' },
-  { id: 18, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'Blue', price: 12.50, category: 'Dinner Plates', stock: 'in', stockQty: 20, frequent: false, image: 'https://placehold.co/400x280/1e3a8a/e0e7ff?text=Dinner+Plate+11%E2%80%B3+Blue' },
-  { id: 2, name: 'Deep Plate 9"', nameAr: 'طبق عميق 9 بوصة', sku: 'DP-090', color: 'White', price: 10.00, category: 'Dinner Plates', stock: 'in', stockQty: 50, frequent: true, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Deep+Plate+9%E2%80%B3' },
-  { id: 3, name: 'Soup Bowl', nameAr: 'طبق شوربة', sku: 'SB-200', color: 'White', price: 8.50, category: 'Bowls', stock: 'in', stockQty: 80, frequent: true, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Soup+Bowl' },
-  { id: 4, name: 'Serving Bowl', nameAr: 'طبق تقديم كبير', sku: 'SB-300', color: 'White', price: 22.00, category: 'Bowls', stock: 'in', stockQty: 30, frequent: false, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Serving+Bowl' },
-  { id: 5, name: 'Matt Bowl 7"', nameAr: 'طبق مات 7 بوصة', sku: 'MB-210', color: 'Beige', price: 9.00, category: 'Bowls', stock: 'out', stockQty: 0, frequent: false, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Matt+Bowl+7%E2%80%B3' },
-  { id: 6, name: 'Oval Platter 14"', nameAr: 'طبق بيضاوي 14 بوصة', sku: 'OP-350', color: 'White', price: 28.00, category: 'Platters', stock: 'in', stockQty: 25, frequent: false, image: 'https://placehold.co/400x280/f0f5f0/558855?text=Oval+Platter+14%E2%80%B3' },
-  { id: 7, name: 'Leaf Platter 12"', nameAr: 'طبق ورقة 12 بوصة', sku: 'LP-360', color: 'Green', price: 32.00, category: 'Platters', stock: 'low', stockQty: 5, frequent: false, image: 'https://placehold.co/400x280/f0f5f0/558855?text=Leaf+Platter+12%E2%80%B3' },
-  { id: 8, name: 'Serving Plate 10"', nameAr: 'طبق تقديم 10 بوصة', sku: 'SP-320', color: 'White', price: 25.00, category: 'Serving', stock: 'in', stockQty: 40, frequent: true, image: 'https://placehold.co/400x280/faf5ef/887755?text=Serving+Plate+10%E2%80%B3' },
-  { id: 9, name: 'Serving Platter 15"', nameAr: 'طبق تقديم كبير 15 بوصة', sku: 'SPL-380', color: 'White', price: 42.00, category: 'Serving', stock: 'in', stockQty: 15, frequent: false, image: 'https://placehold.co/400x280/faf5ef/887755?text=Serving+Platter+15%E2%80%B3' },
-  { id: 10, name: 'Sauce Bowl Set', nameAr: 'طقم أطباق صوص', sku: 'SBS-160', color: 'White', price: 18.00, category: 'Serving', stock: 'low', stockQty: 4, frequent: false, image: 'https://placehold.co/400x280/faf5ef/887755?text=Sauce+Bowl+Set' },
-  { id: 11, name: 'Round Tray 10"', nameAr: 'صينية دائرية 10 بوصة', sku: 'RT-280', color: 'White', price: 18.00, category: 'Trays', stock: 'in', stockQty: 35, frequent: true, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Round+Tray+10%E2%80%B3' },
-  { id: 12, name: 'Square Tray 10"', nameAr: 'صينية مربعة 10 بوصة', sku: 'ST-290', color: 'White', price: 20.00, category: 'Trays', stock: 'in', stockQty: 30, frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Square+Tray+10%E2%80%B3' },
-  { id: 13, name: 'Serving Tray 14"', nameAr: 'صينية تقديم 14 بوصة', sku: 'STR-400', color: 'Brown', price: 35.00, category: 'Trays', stock: 'low', stockQty: 6, frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Serving+Tray+14%E2%80%B3' },
-  { id: 14, name: 'Cup & Saucer Set', nameAr: 'فنجان وصحن', sku: 'CS-150', color: 'White', price: 14.00, category: 'Accessories', stock: 'in', stockQty: 45, frequent: true, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Cup+%26+Saucer' },
-  { id: 15, name: 'Tumbler Glass 300ml', nameAr: 'كأس شفاف 300 مل', sku: 'TG-300', color: 'Clear', price: 6.50, category: 'Accessories', stock: 'in', stockQty: 100, frequent: false, image: 'https://placehold.co/400x280/f0f5f5/557777?text=Tumbler+300ml' },
-  { id: 16, name: 'Salad Server Set', nameAr: 'طقم سلطات', sku: 'SSS-170', color: 'Black', price: 16.00, category: 'Accessories', stock: 'in', stockQty: 25, frequent: false, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Salad+Server+Set' }
+  { id: 1, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'White', price: 12.50, category: 'Dinner Plates', stockQty: 20, minStock: 10, lastUpdated: '2024-12-18', frequent: true, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Dinner+Plate+11%E2%80%B3' },
+  { id: 17, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'Black', price: 12.50, category: 'Dinner Plates', stockQty: 20, minStock: 10, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/2b2b2b/d0d0d0?text=Dinner+Plate+11%E2%80%B3+Black' },
+  { id: 18, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'Blue', price: 12.50, category: 'Dinner Plates', stockQty: 20, minStock: 10, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/1e3a8a/e0e7ff?text=Dinner+Plate+11%E2%80%B3+Blue' },
+  { id: 2, name: 'Deep Plate 9"', nameAr: 'طبق عميق 9 بوصة', sku: 'DP-090', color: 'White', price: 10.00, category: 'Dinner Plates', stockQty: 50, minStock: 15, lastUpdated: '2024-12-17', frequent: true, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Deep+Plate+9%E2%80%B3' },
+  { id: 3, name: 'Soup Bowl', nameAr: 'طبق شوربة', sku: 'SB-200', color: 'White', price: 8.50, category: 'Bowls', stockQty: 80, minStock: 20, lastUpdated: '2024-12-16', frequent: true, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Soup+Bowl' },
+  { id: 4, name: 'Serving Bowl', nameAr: 'طبق تقديم كبير', sku: 'SB-300', color: 'White', price: 22.00, category: 'Bowls', stockQty: 30, minStock: 10, lastUpdated: '2024-12-15', frequent: false, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Serving+Bowl' },
+  { id: 5, name: 'Matt Bowl 7"', nameAr: 'طبق مات 7 بوصة', sku: 'MB-210', color: 'Beige', price: 9.00, category: 'Bowls', stockQty: 0, minStock: 10, expectedDelivery: '2026-08-15', lastUpdated: '2024-12-14', frequent: false, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Matt+Bowl+7%E2%80%B3' },
+  { id: 6, name: 'Oval Platter 14"', nameAr: 'طبق بيضاوي 14 بوصة', sku: 'OP-350', color: 'White', price: 28.00, category: 'Platters', stockQty: 25, minStock: 10, lastUpdated: '2024-12-13', frequent: false, image: 'https://placehold.co/400x280/f0f5f0/558855?text=Oval+Platter+14%E2%80%B3' },
+  { id: 7, name: 'Leaf Platter 12"', nameAr: 'طبق ورقة 12 بوصة', sku: 'LP-360', color: 'Green', price: 32.00, category: 'Platters', stockQty: 5, minStock: 10, expectedDelivery: '2026-08-20', lastUpdated: '2024-12-12', frequent: false, image: 'https://placehold.co/400x280/f0f5f0/558855?text=Leaf+Platter+12%E2%80%B3' },
+  { id: 8, name: 'Serving Plate 10"', nameAr: 'طبق تقديم 10 بوصة', sku: 'SP-320', color: 'White', price: 25.00, category: 'Serving', stockQty: 40, minStock: 12, lastUpdated: '2024-12-11', frequent: true, image: 'https://placehold.co/400x280/faf5ef/887755?text=Serving+Plate+10%E2%80%B3' },
+  { id: 9, name: 'Serving Platter 15"', nameAr: 'طبق تقديم كبير 15 بوصة', sku: 'SPL-380', color: 'White', price: 42.00, category: 'Serving', stockQty: 15, minStock: 10, lastUpdated: '2024-12-10', frequent: false, image: 'https://placehold.co/400x280/faf5ef/887755?text=Serving+Platter+15%E2%80%B3' },
+  { id: 10, name: 'Sauce Bowl Set', nameAr: 'طقم أطباق صوص', sku: 'SBS-160', color: 'White', price: 18.00, category: 'Serving', stockQty: 4, minStock: 10, expectedDelivery: '2026-08-18', lastUpdated: '2024-12-09', frequent: false, image: 'https://placehold.co/400x280/faf5ef/887755?text=Sauce+Bowl+Set' },
+  { id: 11, name: 'Round Tray 10"', nameAr: 'صينية دائرية 10 بوصة', sku: 'RT-280', color: 'White', price: 18.00, category: 'Trays', stockQty: 35, minStock: 12, lastUpdated: '2024-12-08', frequent: true, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Round+Tray+10%E2%80%B3' },
+  { id: 12, name: 'Square Tray 10"', nameAr: 'صينية مربعة 10 بوصة', sku: 'ST-290', color: 'White', price: 20.00, category: 'Trays', stockQty: 30, minStock: 10, lastUpdated: '2024-12-07', frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Square+Tray+10%E2%80%B3' },
+  { id: 13, name: 'Serving Tray 14"', nameAr: 'صينية تقديم 14 بوصة', sku: 'STR-400', color: 'Brown', price: 35.00, category: 'Trays', stockQty: 6, minStock: 10, expectedDelivery: '2026-08-25', lastUpdated: '2024-12-06', frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Serving+Tray+14%E2%80%B3' },
+  { id: 14, name: 'Cup & Saucer Set', nameAr: 'فنجان وصحن', sku: 'CS-150', color: 'White', price: 14.00, category: 'Accessories', stockQty: 45, minStock: 15, lastUpdated: '2024-12-05', frequent: true, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Cup+%26+Saucer' },
+  { id: 15, name: 'Tumbler Glass 300ml', nameAr: 'كأس شفاف 300 مل', sku: 'TG-300', color: 'Clear', price: 6.50, category: 'Accessories', stockQty: 100, minStock: 25, lastUpdated: '2024-12-04', frequent: false, image: 'https://placehold.co/400x280/f0f5f5/557777?text=Tumbler+300ml' },
+  { id: 16, name: 'Salad Server Set', nameAr: 'طقم سلطات', sku: 'SSS-170', color: 'Black', price: 16.00, category: 'Accessories', stockQty: 25, minStock: 10, lastUpdated: '2024-12-03', frequent: false, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Salad+Server+Set' }
 ];
 
 var REQUESTS = [
@@ -164,10 +164,19 @@ function statusBadge(status) {
   return '<span class="badge badge-' + cls + '">' + (STATUS_LABELS[status] || status) + '</span>';
 }
 
+function getStockStatus(p) {
+  if (!p) return 'out';
+  var qty = p.stockQty || 0;
+  var min = p.minStock || 0;
+  if (qty <= 0) return 'out';
+  if (qty <= min) return 'low';
+  return 'in';
+}
+function stockBadge(status) {
+  return '<span class="stock-badge stock-badge-' + status + '"><span class="stock-dot"></span>' + (status === 'in' ? 'In Stock' : status === 'low' ? 'Low Stock' : 'Out of Stock') + '</span>';
+}
 function stockHTML(stock) {
-  if (stock === 'in') return '<div class="stock-in">In Stock</div>';
-  if (stock === 'low') return '<div class="stock-low">Low Stock</div>';
-  return '<div class="stock-out">Out of Stock</div>';
+  return stockBadge(stock);
 }
 
 function fmtPrice(amount) {
@@ -184,11 +193,12 @@ function fmtDate(dateStr) {
 /* ---- Expected Delivery (demo) ---- */
 function getExpectedDelivery(item) {
   var p = PRODUCTS.find(function(x) { return x.id === item.id; });
-  if (!p || !p.stockQty) return null;
-  if (item.qty <= p.stockQty) return null;
-  var remaining = item.qty - p.stockQty;
+  if (!p) return null;
+  if (item.qty <= (p.stockQty || 0)) return null;
+  var remaining = item.qty - (p.stockQty || 0);
   var days = Math.max(3, Math.ceil(remaining / 8));
-  return { available: p.stockQty, required: item.qty, remaining: remaining, days: days };
+  var date = p.expectedDelivery || (function() { var d = new Date(); d.setDate(d.getDate() + days); return d.toISOString().split('T')[0]; })();
+  return { available: p.stockQty || 0, required: item.qty, remaining: remaining, days: days, date: date };
 }
 
 /* ---- Terms & Conditions ---- */
@@ -197,53 +207,38 @@ var DEFAULT_QUOTATION_TERMS = [
   'If the delivered products do not meet the agreed quality standards, the company will replace them accordingly.',
   'Any complaints regarding the products must be registered within three (3) days of delivery.',
   'The company will not entertain any claims made after three (3) days from the date of delivery.',
-  'Delivery of products will only be made if previously agreed upon.',
-  'Payment Terms: Net ___ Days from Invoice Date.'
+  'Delivery of products will only be made if previously agreed upon.'
 ];
-function getOrderTerms() {
-  var t = getSessionData('order_terms');
-  if (t && t.length) return t;
-  return DEFAULT_QUOTATION_TERMS.slice();
+function getPaymentDays() {
+  var d = parseInt(getSessionData('payment_days'), 10);
+  if (isNaN(d) || d < 0) d = 30;
+  return d;
 }
-function setOrderTerms(terms) { setSessionData('order_terms', terms); }
-function getOrderPaymentTerms() { return getSessionData('order_payment_terms') || 'Net 30 Days'; }
-function setOrderPaymentTerms(val) { setSessionData('order_payment_terms', val); }
+function setPaymentDays(val) {
+  var d = parseInt(val, 10);
+  if (isNaN(d) || d < 0) d = 30;
+  setSessionData('payment_days', d);
+}
+function getPaymentTermsLine() {
+  return 'Payment Terms: Net ' + getPaymentDays() + ' Days from Invoice Date.';
+}
+function getOrderTerms() {
+  return DEFAULT_QUOTATION_TERMS.concat([getPaymentTermsLine()]);
+}
+function getOrderPaymentTerms() {
+  return 'Net ' + getPaymentDays() + ' Days';
+}
 function renderTermsEditor() {
   var wrap = document.getElementById('termsEditor');
   if (!wrap) return;
-  var terms = getOrderTerms();
-  wrap.innerHTML = terms.map(function(t, i) {
-    return '<div class="terms-clause">' +
-      '<textarea class="form-input" rows="2" onchange="updateTermClause(' + i + ', this.value)">' + t + '</textarea>' +
-      '<div class="terms-clause-actions">' +
-        '<button type="button" class="btn btn-sm btn-secondary" onclick="moveTermClause(' + i + ',-1)"' + (i === 0 ? ' disabled' : '') + '><i class="fas fa-arrow-up"></i></button>' +
-        '<button type="button" class="btn btn-sm btn-secondary" onclick="moveTermClause(' + i + ',1)"' + (i === terms.length - 1 ? ' disabled' : '') + '><i class="fas fa-arrow-down"></i></button>' +
-        '<button type="button" class="btn btn-sm btn-danger" onclick="removeTermClause(' + i + ')"><i class="fas fa-trash"></i></button>' +
-      '</div>' +
-    '</div>';
+  wrap.innerHTML = DEFAULT_QUOTATION_TERMS.map(function(t) {
+    return '<li>' + t + '</li>';
   }).join('');
-}
-function addTermClause() { var t = getOrderTerms(); t.push(''); setOrderTerms(t); renderTermsEditor(); }
-function removeTermClause(i) { var t = getOrderTerms(); t.splice(i, 1); setOrderTerms(t); renderTermsEditor(); }
-function moveTermClause(i, dir) {
-  var t = getOrderTerms(); var j = i + dir;
-  if (j < 0 || j >= t.length) return;
-  var tmp = t[i]; t[i] = t[j]; t[j] = tmp;
-  setOrderTerms(t); renderTermsEditor();
-}
-function updateTermClause(i, val) { var t = getOrderTerms(); t[i] = val; setOrderTerms(t); }
-function saveOrderPaymentTerms() {
-  var inp = document.getElementById('orderPaymentTerms');
-  if (inp) setOrderPaymentTerms(inp.value);
-}
-function saveAdminTerms(text) {
-  var lines = (text || '').split('\n').map(function(l) { return l.replace(/^\s*\d+\.\s*/, '').trim(); }).filter(function(l) { return l.length > 0; });
-  setOrderTerms(lines);
 }
 function initTermsEditor() {
   renderTermsEditor();
-  var inp = document.getElementById('orderPaymentTerms');
-  if (inp) inp.value = getOrderPaymentTerms();
+  var inp = document.getElementById('paymentDays');
+  if (inp) inp.value = getPaymentDays();
 }
 
 /* ---- Cart ---- */
@@ -253,12 +248,19 @@ function addToCart(productId, qty, discount) {
   if (!qty || qty < 1) qty = 1;
   if (typeof discount !== 'number' || discount < 0) discount = 0;
   var p = PRODUCTS.find(function(x) { return x.id === productId; });
-  if (p && p.stock === 'out') { showToast('This item is out of stock', 'error'); return; }
+  var avail = p ? (p.stockQty || 0) : 0;
   var cart = getCart();
   var existing = cart.find(function(x) { return x.id === productId; });
-  if (existing) { existing.qty += qty; existing.discount = discount; } else if (p) { cart.push({ id: p.id, name: p.name, sku: p.sku, color: p.color || '', price: p.price, qty: qty, discount: discount }); }
+  var totalQty = (existing ? existing.qty : 0) + qty;
+  if (existing) { existing.qty = totalQty; existing.discount = discount; } else if (p) { cart.push({ id: p.id, name: p.name, sku: p.sku, color: p.color || '', price: p.price, qty: qty, discount: discount }); }
   setCart(cart); updateCartBadge(); updateProductsCounter();
-  showToast('Item added to cart', 'success');
+  if (p && totalQty > avail) {
+    var line = getExpectedDelivery({ id: p.id, qty: totalQty });
+    var dateText = p.expectedDelivery ? fmtDate(p.expectedDelivery) : (line ? 'in approximately ' + line.days + ' days' : 'TBD');
+    showToast('Only ' + avail + ' units available. Remaining quantity expected on: ' + dateText, 'warning');
+  } else {
+    showToast('Item added to cart — ' + avail + ' units available', 'success');
+  }
 }
 function removeFromCart(productId) { setCart(getCart().filter(function(x) { return x.id !== productId; })); updateCartBadge(); updateProductsCounter(); }
 function updateCartQty(productId, delta) {
@@ -292,7 +294,7 @@ function showToast(message, type) {
   type = type || 'info';
   var container = document.querySelector('.toast-container');
   if (!container) { container = document.createElement('div'); container.className = 'toast-container'; document.body.appendChild(container); }
-  var icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', info: 'fa-info-circle' };
+  var icons = { success: 'fa-check-circle', error: 'fa-exclamation-circle', warning: 'fa-exclamation-triangle', info: 'fa-info-circle' };
   var toast = document.createElement('div');
   toast.className = 'toast ' + type;
   toast.innerHTML = '<i class="fas ' + (icons[type] || icons.info) + '"></i><span>' + message + '</span>';
@@ -471,7 +473,8 @@ function initProductCatalog() {
           '<div class="product-card-sku">SKU: ' + p.sku + (p.color ? ' · <span class="pc-color">' + p.color + '</span>' : '') + '</div>' +
           '<div style="margin-bottom:6px;"><span class="chip" style="pointer-events:none;font-size:10px;padding:2px 10px;">' + p.category + '</span></div>' +
           '<div class="product-card-price">' + fmtPrice(p.price) + '</div>' +
-          '<div class="product-card-stock">' + stockHTML(p.stock) + '</div>' +
+          '<div class="product-card-stock">' + stockBadge(getStockStatus(p)) + '<span class="pc-avail">Available: ' + (p.stockQty || 0) + '</span></div>' +
+          (p.expectedDelivery ? '<div class="product-card-delivery"><i class="fas fa-truck"></i> Expected: ' + fmtDate(p.expectedDelivery) + '</div>' : '') +
           '<div class="product-card-discount"><label>Discount</label><input type="number" value="0" min="0" max="100" class="pc-discount-input" data-pid="' + p.id + '"><span>%</span></div>' +
           '<div class="product-card-footer">' +
             '<div class="product-card-qty"><button onclick="this.nextElementSibling.value=Math.max(1,parseInt(this.nextElementSibling.value||1)-1)">−</button><input type="number" value="1" min="1" max="999" class="pc-qty-input" data-pid="' + p.id + '"><button onclick="this.previousElementSibling.value=Math.min(999,parseInt(this.previousElementSibling.value||1)+1)">+</button></div>' +
@@ -523,7 +526,7 @@ function renderCart() {
     var discountLabel = item.discount > 0 ? '<div class="cart-item-discount">' + item.discount + '% discount</div>' : '';
     var lineTotal = item.price * item.qty * (1 - (item.discount || 0) / 100);
     var delivery = getExpectedDelivery(item);
-    var deliveryHtml = delivery ? '<div class="cart-item-delivery"><i class="fas fa-truck"></i><div><div class="cid-line">Available: ' + delivery.available + ' pcs · Required: ' + delivery.required + ' pcs</div><div class="cid-note">Remaining ' + delivery.remaining + ' pcs expected in approximately ' + delivery.days + ' days.</div></div></div>' : '';
+    var deliveryHtml = delivery ? '<div class="cart-item-delivery warning"><i class="fas fa-exclamation-triangle"></i><div><div class="cid-line">Available: ' + delivery.available + ' pcs · Required: ' + delivery.required + ' pcs</div><div class="cid-note">Only ' + delivery.available + ' units available. Remaining quantity expected on: ' + fmtDate(delivery.date) + '.</div></div></div>' : '';
     return '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">' + item.name + (item.color ? ' · <span style="font-weight:400;color:var(--gray-500);">' + item.color + '</span>' : '') + '</div><div class="cart-item-sku">SKU: ' + item.sku + ' · ' + fmtPrice(item.price) + ' each</div>' + discountLabel + deliveryHtml + '</div><div class="qty-control"><button class="qty-btn" onclick="updateCartQty(' + item.id + ',-1);renderCart();"><i class="fas fa-minus"></i></button><div class="qty-value">' + item.qty + '</div><button class="qty-btn" onclick="updateCartQty(' + item.id + ',1);renderCart();"><i class="fas fa-plus"></i></button></div><div class="cart-item-price">' + fmtPrice(lineTotal) + '</div><button class="cart-item-remove" onclick="removeFromCart(' + item.id + ');renderCart();"><i class="fas fa-trash-alt"></i></button></div>';
   }).join('');
   if (countEl) countEl.textContent = cart.reduce(function(s, i) { return s + i.qty; }, 0) + ' item(s)';
@@ -669,10 +672,10 @@ function loadSalesQuotationPreview() {
   if (el('sqpDate')) el('sqpDate').textContent = new Date().toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
   var validUntil = new Date(); validUntil.setDate(validUntil.getDate() + 30);
   if (el('sqpValidity')) el('sqpValidity').textContent = validUntil.toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
-  if (el('sqpPayment')) el('sqpPayment').textContent = data.paymentTerms || 'Net 30 Days';
+  if (el('sqpPayment')) el('sqpPayment').textContent = data.paymentTerms || getOrderPaymentTerms();
   var termsEl = el('sqpTerms');
   if (termsEl) {
-    var terms = (data.terms && data.terms.length) ? data.terms : DEFAULT_QUOTATION_TERMS;
+    var terms = (data.terms && data.terms.length) ? data.terms : getOrderTerms();
     termsEl.innerHTML = terms.map(function(t) { return '<li>' + t + '</li>'; }).join('');
   }
   if (data.customer) {
@@ -911,11 +914,10 @@ function initQuotationForm() {
   if (el('qDiscount')) el('qDiscount').value = req.discount || 0;
   var qTermsEl = el('qTerms');
   if (qTermsEl) {
-    var savedTerms = getOrderTerms();
-    qTermsEl.value = savedTerms.map(function(t, i) { return (i + 1) + '. ' + t; }).join('\n');
+    qTermsEl.value = getOrderTerms().map(function(t, i) { return (i + 1) + '. ' + t; }).join('\n');
   }
   var qPayEl = el('qPayment');
-  if (qPayEl) qPayEl.value = getOrderPaymentTerms();
+  if (qPayEl) qPayEl.value = getPaymentDays();
   var itemsEl = el('qItems');
   if (itemsEl && req.items) {
     var runningTotal = 0;
@@ -955,11 +957,10 @@ function loadQuotationPreview() {
   if (el('qpNumber')) el('qpNumber').textContent = document.getElementById('qRef') ? document.getElementById('qRef').value : 'QT-2024-1234';
   if (el('qpDate')) el('qpDate').textContent = new Date().toLocaleDateString('en-SA', { year: 'numeric', month: 'long', day: 'numeric' });
   if (el('qpValidity')) el('qpValidity').textContent = document.getElementById('qValidity') ? document.getElementById('qValidity').value : '2025-01-18';
-  if (el('qpPayment')) el('qpPayment').textContent = document.getElementById('qPayment') ? document.getElementById('qPayment').value : (getSessionData('order_payment_terms') || 'Net 30 Days');
+  if (el('qpPayment')) el('qpPayment').textContent = document.getElementById('qPayment') ? ('Net ' + document.getElementById('qPayment').value + ' Days') : getOrderPaymentTerms();
   var termsEl = el('qpTerms');
   if (termsEl) {
-    var terms = getSessionData('order_terms');
-    if (!terms || !terms.length) terms = DEFAULT_QUOTATION_TERMS;
+    var terms = getOrderTerms();
     termsEl.innerHTML = terms.map(function(t) { return '<li>' + t + '</li>'; }).join('');
   }
   var cust = req.customer;
@@ -1294,6 +1295,19 @@ var AR = {
   'Payment Terms': 'شروط الدفع',
   'Currency': 'العملة',
   'Line Items': 'بنود الخط',
+  'Available Quantity': 'الكمية المتاحة',
+  'Minimum Stock Level': 'الحد الأدنى للمخزون',
+  'Expected Delivery Date': 'تاريخ التسليم المتوقع',
+  'Last Updated': 'آخر تحديث',
+  'Product Details': 'تفاصيل المنتج',
+  'Available': 'متاح',
+  'Stock Summary': 'ملخص المخزون',
+  'Total Products': 'إجمالي المنتجات',
+  'Products In Stock': 'منتجات متوفرة',
+  'Low Stock Products': 'منتجات منخفضة المخزون',
+  'Out of Stock Products': 'منتجات غير متوفرة',
+  'Only {n} units available. Remaining quantity expected on: {d}': 'متاح فقط {n} وحدة. الكمية المتبقية متوقعة في: {d}',
+  'Item added to cart': 'تمت إضافة الصنف إلى السلة',
   'Subtotal': 'المجموع الفرعي',
   'Discount (%)': 'الخصم (%)',
   'Discount Amount': 'مبلغ الخصم',
@@ -1528,6 +1542,12 @@ function applyTranslations() {
   document.querySelectorAll('.stock-in').forEach(function(el) { var t = el.childNodes[el.childNodes.length - 1]; if (t && t.nodeType === 3) t.textContent = ' ' + (AR['In Stock'] || 'In Stock'); });
   document.querySelectorAll('.stock-low').forEach(function(el) { var t = el.childNodes[el.childNodes.length - 1]; if (t && t.nodeType === 3) t.textContent = ' ' + (AR['Low Stock'] || 'Low Stock'); });
   document.querySelectorAll('.stock-out').forEach(function(el) { var t = el.childNodes[el.childNodes.length - 1]; if (t && t.nodeType === 3) t.textContent = ' ' + (AR['Out of Stock'] || 'Out of Stock'); });
+  document.querySelectorAll('.stock-badge').forEach(function(el) {
+    var t = el.childNodes[el.childNodes.length - 1];
+    if (!t || t.nodeType !== 3) return;
+    var key = el.classList.contains('stock-badge-in') ? 'In Stock' : el.classList.contains('stock-badge-low') ? 'Low Stock' : 'Out of Stock';
+    t.textContent = ' ' + (AR[key] || key);
+  });
 }
 /* ---- Document Branding Injector ---- */
 function applyDocumentBranding() {

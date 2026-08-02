@@ -222,7 +222,7 @@
       if (el('qpNumber')) el('qpNumber').textContent = document.getElementById('qRef') ? document.getElementById('qRef').value : 'QT-2024-1234';
       if (el('qpDate')) el('qpDate').textContent = new Date().toLocaleDateString('en-SA',{year:'numeric',month:'long',day:'numeric'});
       if (el('qpValidity')) el('qpValidity').textContent = document.getElementById('qValidity') ? document.getElementById('qValidity').value : '2025-01-18';
-      if (el('qpPayment')) el('qpPayment').textContent = document.getElementById('qPayment') ? document.getElementById('qPayment').value : 'Net 30';
+      if (el('qpPayment')) el('qpPayment').textContent = document.getElementById('qPayment') ? ('Net ' + document.getElementById('qPayment').value + ' Days') : getOrderPaymentTerms();
       if (req.salesperson && el('qpSalesperson')) el('qpSalesperson').textContent = req.salesperson;
       if (req.salesperson && el('qpPreparedBy')) el('qpPreparedBy').textContent = req.salesperson;
 

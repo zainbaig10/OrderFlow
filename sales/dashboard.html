@@ -52,6 +52,17 @@
           <a href="new-order.html" class="quick-action-primary"><div class="qap-icon"><i class="fas fa-cart-plus"></i></div><div><div class="qap-text">New Quotation</div><div class="qap-desc">Search customer, add products, generate quotation</div></div></a>
           <a href="customers.html" class="quick-action-primary"><div class="qap-icon" style="background:var(--success-light);color:var(--success);"><i class="fas fa-user-plus"></i></div><div><div class="qap-text">New Customer</div><div class="qap-desc">Add a new customer to the system</div></div></a>
         </div>
+        <div class="card mb-6">
+          <div class="card-header"><h3 class="card-title"><i class="fas fa-boxes-stacked" style="margin-right:8px;color:var(--primary-400);"></i>Stock Summary</h3><a href="product-catalog.html" class="btn btn-sm btn-secondary">View Products</a></div>
+          <div class="card-body">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;">
+              <div class="ss-tile"><div class="ss-tile-icon blue"><i class="fas fa-box"></i></div><div><div class="ss-tile-value" id="ssTotal">18</div><div class="ss-tile-label">Total Products</div></div></div>
+              <div class="ss-tile"><div class="ss-tile-icon green"><i class="fas fa-check-circle"></i></div><div><div class="ss-tile-value" id="ssInStock">—</div><div class="ss-tile-label">Products In Stock</div></div></div>
+              <div class="ss-tile"><div class="ss-tile-icon orange"><i class="fas fa-exclamation-triangle"></i></div><div><div class="ss-tile-value" id="ssLowStock">—</div><div class="ss-tile-label">Low Stock Products</div></div></div>
+              <div class="ss-tile"><div class="ss-tile-icon red"><i class="fas fa-times-circle"></i></div><div><div class="ss-tile-value" id="ssOutStock">—</div><div class="ss-tile-label">Out of Stock Products</div></div></div>
+            </div>
+          </div>
+        </div>
         <div class="card">
           <div class="card-header"><h3 class="card-title">Recent Quotations</h3><a href="my-requests.html" class="btn btn-sm btn-secondary">View All</a></div>
           <div class="card-body-no-pad"><div class="table-wrapper">
@@ -71,5 +82,16 @@
     </div>
   </div>
   <script src="../assets/js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var inStock = PRODUCTS.filter(function(p) { return getStockStatus(p) === 'in'; }).length;
+      var lowStock = PRODUCTS.filter(function(p) { return getStockStatus(p) === 'low'; }).length;
+      var outStock = PRODUCTS.filter(function(p) { return getStockStatus(p) === 'out'; }).length;
+      if (document.getElementById('ssTotal')) document.getElementById('ssTotal').textContent = PRODUCTS.length;
+      if (document.getElementById('ssInStock')) document.getElementById('ssInStock').textContent = inStock;
+      if (document.getElementById('ssLowStock')) document.getElementById('ssLowStock').textContent = lowStock;
+      if (document.getElementById('ssOutStock')) document.getElementById('ssOutStock').textContent = outStock;
+    });
+  </script>
 </body>
 </html>

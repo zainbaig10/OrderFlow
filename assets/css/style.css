@@ -217,6 +217,42 @@ ul, ol { list-style: none; }
 .stock-out { color: var(--danger); font-size: 12px; font-weight: 600; display: flex; align-items: center; gap: 4px; }
 .stock-out::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--danger); }
 
+/* ---- Stock Badge (pill) ---- */
+.stock-badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.stock-dot { width: 7px; height: 7px; border-radius: 50%; }
+.stock-badge-in { background: var(--success-light); color: var(--success-text); }
+.stock-badge-in .stock-dot { background: var(--success); }
+.stock-badge-low { background: var(--warning-light); color: var(--warning-dark, #B45309); }
+.stock-badge-low .stock-dot { background: var(--warning); }
+.stock-badge-out { background: var(--danger-light); color: var(--danger-text); }
+.stock-badge-out .stock-dot { background: var(--danger); }
+.pc-avail { margin-left: 8px; font-size: 11px; font-weight: 500; color: var(--gray-500); }
+.product-card-delivery { font-size: 11px; color: var(--warning-dark, #B45309); margin-bottom: 6px; }
+.product-card-delivery i { margin-right: 4px; }
+
+/* ---- Product Details (admin) ---- */
+.pd-card { display: flex; flex-direction: column; gap: 16px; }
+.pd-card-top { display: flex; align-items: center; gap: 16px; }
+.pd-card-top img { width: 96px; height: 96px; border-radius: var(--radius-md); object-fit: cover; border: 1px solid var(--gray-200); background: var(--gray-100); }
+.pd-name { font-size: 17px; font-weight: 700; color: var(--gray-900); }
+.pd-sku { font-size: 13px; color: var(--gray-500); margin-top: 4px; }
+.pd-grid { margin-bottom: 0; }
+.detail-item { display: flex; flex-direction: column; gap: 4px; }
+.detail-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; color: var(--gray-500); }
+
+/* ---- Stock Summary ---- */
+.ss-row { display: flex; align-items: center; justify-content: space-between; font-size: 13px; }
+.ss-label { color: var(--gray-600); font-weight: 500; }
+.ss-value { font-weight: 700; color: var(--gray-900); }
+.ss-tile { display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--gray-200); border-radius: var(--radius-md); background: var(--white); }
+.ss-tile-icon { width: 38px; height: 38px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; font-size: 15px; flex-shrink: 0; }
+.ss-tile-icon.blue { background: var(--primary-50); color: var(--primary-500); }
+.ss-tile-icon.green { background: var(--success-light); color: var(--success); }
+.ss-tile-icon.orange { background: var(--warning-light); color: var(--warning); }
+.ss-tile-icon.red { background: var(--danger-light); color: var(--danger); }
+.ss-tile-value { font-size: 20px; font-weight: 800; color: var(--gray-900); line-height: 1.1; }
+.ss-tile-label { font-size: 11px; color: var(--gray-500); margin-top: 2px; }
+
 /* ---- Tabs ---- */
 .tabs { display: flex; gap: 0; border-bottom: 2px solid var(--gray-200); margin-bottom: 20px; overflow-x: auto; }
 .tab-btn { padding: 10px 20px; font-size: 13px; font-weight: 600; color: var(--gray-500); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: all var(--transition); white-space: nowrap; }
@@ -388,6 +424,7 @@ ul, ol { list-style: none; }
 .toast { padding: 14px 20px; border-radius: var(--radius-md); background: var(--gray-900); color: var(--white); font-size: 13px; font-weight: 500; box-shadow: var(--shadow-lg); display: flex; align-items: center; gap: 10px; min-width: 280px; animation: toastIn 0.3s ease; }
 .toast.success { background: var(--success); }
 .toast.error { background: var(--danger); }
+.toast.warning { background: var(--warning); }
 .toast.info { background: var(--info); }
 @keyframes toastIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 @keyframes toastOut { from { transform: translateX(0); opacity: 1; } to { transform: translateX(100%); opacity: 0; } }

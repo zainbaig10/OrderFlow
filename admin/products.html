@@ -6,6 +6,15 @@
   <title>Products — EXION OrderFlow</title>
   <link rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    .data-table.products-table { width: 100%; table-layout: fixed; min-width: 900px; }
+    .data-table.products-table thead th,
+    .data-table.products-table tbody td { padding: 12px 12px; }
+    .data-table.products-table thead th { white-space: normal; }
+    .data-table.products-table tbody td { white-space: nowrap; }
+    .data-table.products-table tbody td.product-name { white-space: normal; }
+    .products-table .cat-badge { display: inline-block; white-space: nowrap; padding: 3px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; border: 1.5px solid var(--gray-200); color: var(--gray-600); line-height: 1.4; pointer-events: none; }
+  </style>
 </head>
 <body>
   <div class="app">
@@ -35,26 +44,25 @@
         </div>
       </header>
       <main class="content">
-        <div class="page-header"><div><h1 class="page-title">Products</h1><p class="page-subtitle">10 products across 6 categories</p></div><button class="btn btn-primary" onclick="document.getElementById('addProductModal').classList.add('show')"><i class="fas fa-plus"></i> Add Product</button></div>
+        <div class="page-header"><div><h1 class="page-title">Products</h1><p class="page-subtitle">18 products across 6 categories</p></div><button class="btn btn-primary" onclick="document.getElementById('addProductModal').classList.add('show')"><i class="fas fa-plus"></i> Add Product</button></div>
         <div class="filters-bar">
-          <div class="filter-group"><label>Category:</label><select class="form-select" id="adminProductCategory" style="width:auto;min-width:160px;"><option value="All">All Categories</option><option value="Hinges">Hinges</option><option value="Channels">Channels</option><option value="Storage">Storage</option><option value="Organizers">Organizers</option><option value="Mechanisms">Mechanisms</option></select></div>
+          <div class="filter-group"><label>Category:</label><select class="form-select" id="adminProductCategory" style="width:auto;min-width:160px;"><option value="All">All Categories</option><option value="Dinner Plates">Dinner Plates</option><option value="Bowls">Bowls</option><option value="Platters">Platters</option><option value="Serving">Serving</option><option value="Trays">Trays</option><option value="Accessories">Accessories</option></select></div>
         </div>
         <div class="card"><div class="card-body-no-pad"><div class="table-wrapper">
-          <table class="data-table">
-            <thead><tr><th>Product Name</th><th>SKU</th><th>Color</th><th>Category</th><th>Default Price (SAR)</th><th>Stock Status</th><th></th></tr></thead>
-            <tbody id="adminProductTableBody">
-              <tr data-category="Hinges"><td><strong>Soft Close Hinges</strong></td><td>HNG-110</td><td>Nickel</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Hinges</span></td><td>SAR 18.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Hinges"><td><strong>Soft Close Hinges</strong></td><td>HNG-110</td><td>Black</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Hinges</span></td><td>SAR 18.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Channels"><td><strong>Drawer Channels</strong></td><td>DRW-220</td><td>Nickel</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Channels</span></td><td>SAR 45.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Storage"><td><strong>Pull Out Basket</strong></td><td>BSK-330</td><td>White</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Storage</span></td><td>SAR 85.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Storage"><td><strong>Pantry Unit</strong></td><td>PNT-440</td><td>White</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Storage</span></td><td>SAR 120.00</td><td><div class="stock-low">Low Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Organizers"><td><strong>Cutlery Tray</strong></td><td>CTR-550</td><td>White</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Organizers</span></td><td>SAR 35.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Storage"><td><strong>Magic Corner</strong></td><td>MGC-660</td><td>Nickel</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Storage</span></td><td>SAR 150.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Storage"><td><strong>Bottle Pull Out</strong></td><td>BTL-770</td><td>Nickel</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Storage</span></td><td>SAR 95.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Organizers"><td><strong>Dish Drying Rack</strong></td><td>DRY-880</td><td>White</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Organizers</span></td><td>SAR 75.00</td><td><div class="stock-low">Low Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Mechanisms"><td><strong>Lift System</strong></td><td>LFT-990</td><td>Nickel</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Mechanisms</span></td><td>SAR 130.00</td><td><div class="stock-in">In Stock</div></td><td><button class="btn btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-              <tr data-category="Organizers"><td><strong>Waste Bin System</strong></td><td>WBS-100</td><td>Black</td><td><span class="chip" style="pointer-events:none;font-size:11px;padding:2px 10px;">Organizers</span></td><td>SAR 65.00</td><td><div class="stock-out">Out of Stock</div></td><td><button class="btn-sm btn-secondary edit-product-btn"><i class="fas fa-edit"></i></button></td></tr>
-            </tbody>
+          <table class="data-table products-table">
+            <colgroup>
+              <col style="width:18%">
+              <col style="width:8%">
+              <col style="width:7%">
+              <col style="width:13%">
+              <col style="width:10%">
+              <col style="width:7%">
+              <col style="width:13%">
+              <col style="width:13%">
+              <col style="width:11%">
+            </colgroup>
+            <thead><tr><th>Product Name</th><th>SKU</th><th>Color</th><th>Category</th><th>Default Price (SAR)</th><th>Available Quantity</th><th>Stock Status</th><th>Expected Delivery Date</th><th></th></tr></thead>
+            <tbody id="adminProductTableBody"></tbody>
           </table>
         </div></div></div>
       </main>
@@ -65,15 +73,17 @@
       <div class="modal">
         <div class="modal-header"><h3>Add New Product</h3><button class="modal-close" onclick="document.getElementById('addProductModal').classList.remove('show')"><i class="fas fa-times"></i></button></div>
         <div class="modal-body">
-          <form onsubmit="event.preventDefault(); showToast('Product added successfully','success'); document.getElementById('addProductModal').classList.remove('show');">
+          <form id="addProductForm" onsubmit="event.preventDefault();">
             <div class="form-grid">
-              <div class="form-group"><label>Product Name *</label><input type="text" class="form-input" required placeholder="e.g. Soft Close Hinges"></div>
-              <div class="form-group"><label>SKU *</label><input type="text" class="form-input" required placeholder="e.g. HNG-120"></div>
-              <div class="form-group"><label>Color</label><input type="text" class="form-input" placeholder="e.g. White, Black, Nickel"></div>
-              <div class="form-group"><label>Category *</label><select class="form-select" required><option value="">Select category</option><option>Hinges</option><option>Channels</option><option>Storage</option><option>Organizers</option><option>Mechanisms</option></select></div>
-              <div class="form-group"><label>Default Price (SAR) *</label><input type="number" class="form-input" required placeholder="0.00" step="0.01" min="0"></div>
-              <div class="form-group"><label>Stock Status *</label><select class="form-select" required><option value="in">In Stock</option><option value="low">Low Stock</option><option value="out">Out of Stock</option></select></div>
-              <div class="form-group full"><label>Image URL</label><input type="text" class="form-input" placeholder="https://placehold.co/400x280/..."></div>
+              <div class="form-group"><label>Product Name *</label><input type="text" class="form-input" id="addProdName" required placeholder="e.g. Soft Close Hinges"></div>
+              <div class="form-group"><label>SKU *</label><input type="text" class="form-input" id="addProdSku" required placeholder="e.g. HNG-120"></div>
+              <div class="form-group"><label>Color</label><input type="text" class="form-input" id="addProdColor" placeholder="e.g. White, Black, Nickel"></div>
+              <div class="form-group"><label>Category *</label><select class="form-select" id="addProdCategory" required><option value="">Select category</option><option>Dinner Plates</option><option>Bowls</option><option>Platters</option><option>Serving</option><option>Trays</option><option>Accessories</option></select></div>
+              <div class="form-group"><label>Default Price (SAR) *</label><input type="number" class="form-input" id="addProdPrice" required placeholder="0.00" step="0.01" min="0"></div>
+              <div class="form-group"><label>Available Quantity *</label><input type="number" class="form-input" id="addProdQty" required placeholder="0" min="0"></div>
+              <div class="form-group"><label>Minimum Stock Level</label><input type="number" class="form-input" id="addProdMinStock" placeholder="0" min="0"></div>
+              <div class="form-group"><label>Expected Delivery Date</label><input type="date" class="form-input" id="addProdExpected"></div>
+              <div class="form-group full"><label>Image URL</label><input type="text" class="form-input" id="addProdImage" placeholder="https://placehold.co/400x280/..."></div>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-secondary" onclick="document.getElementById('addProductModal').classList.remove('show')">Cancel</button><button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add Product</button></div>
           </form>
@@ -86,14 +96,16 @@
       <div class="modal">
         <div class="modal-header"><h3>Edit Product</h3><button class="modal-close" onclick="document.getElementById('editProductModal').classList.remove('show')"><i class="fas fa-times"></i></button></div>
         <div class="modal-body">
-          <form onsubmit="event.preventDefault(); showToast('Product updated successfully','success'); document.getElementById('editProductModal').classList.remove('show');">
+          <form id="editProductForm" onsubmit="event.preventDefault();">
             <div class="form-grid">
               <div class="form-group"><label>Product Name *</label><input type="text" class="form-input" id="editProdName" required></div>
               <div class="form-group"><label>SKU *</label><input type="text" class="form-input" id="editProdSku" required></div>
               <div class="form-group"><label>Color</label><input type="text" class="form-input" id="editProdColor"></div>
-              <div class="form-group"><label>Category *</label><select class="form-select" id="editProdCategory" required><option value="">Select category</option><option>Hinges</option><option>Channels</option><option>Storage</option><option>Organizers</option><option>Mechanisms</option></select></div>
+              <div class="form-group"><label>Category *</label><select class="form-select" id="editProdCategory" required><option value="">Select category</option><option>Dinner Plates</option><option>Bowls</option><option>Platters</option><option>Serving</option><option>Trays</option><option>Accessories</option></select></div>
               <div class="form-group"><label>Default Price (SAR) *</label><input type="number" class="form-input" id="editProdPrice" required step="0.01" min="0"></div>
-              <div class="form-group"><label>Stock Status *</label><select class="form-select" id="editProdStock" required><option value="in">In Stock</option><option value="low">Low Stock</option><option value="out">Out of Stock</option></select></div>
+              <div class="form-group"><label>Available Quantity *</label><input type="number" class="form-input" id="editProdQty" required min="0"></div>
+              <div class="form-group"><label>Minimum Stock Level</label><input type="number" class="form-input" id="editProdMinStock" min="0"></div>
+              <div class="form-group"><label>Expected Delivery Date</label><input type="date" class="form-input" id="editProdExpected"></div>
               <div class="form-group full"><label>Image URL</label><input type="text" class="form-input" id="editProdImage"></div>
             </div>
             <div class="modal-footer"><button type="button" class="btn btn-secondary" onclick="document.getElementById('editProductModal').classList.remove('show')">Cancel</button><button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Changes</button></div>
@@ -102,26 +114,120 @@
       </div>
     </div>
 
+    <!-- Product Details Modal -->
+    <div class="modal-overlay" id="productDetailsModal">
+      <div class="modal">
+        <div class="modal-header"><h3>Product Details</h3><button class="modal-close" onclick="document.getElementById('productDetailsModal').classList.remove('show')"><i class="fas fa-times"></i></button></div>
+        <div class="modal-body">
+          <div class="pd-card">
+            <div class="pd-card-top"><img id="pdImage" src="" alt=""><div><div class="pd-name" id="pdName"></div><div class="pd-sku" id="pdSku"></div></div></div>
+            <div class="detail-grid pd-grid">
+              <div class="detail-item"><span class="detail-label">Available Quantity</span><span class="detail-value" id="pdQty"></span></div>
+              <div class="detail-item"><span class="detail-label">Stock Status</span><span class="detail-value" id="pdStatus"></span></div>
+              <div class="detail-item"><span class="detail-label">Expected Delivery Date</span><span class="detail-value" id="pdExpected"></span></div>
+              <div class="detail-item"><span class="detail-label">Last Updated</span><span class="detail-value" id="pdUpdated"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
      <script src="../assets/js/app.js"></script>
     <script>
-      document.querySelectorAll('.edit-product-btn').forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          e.stopPropagation();
-          var row = btn.closest('tr');
-          document.getElementById('editProdName').value = row.querySelector('td strong').textContent.trim();
-          document.getElementById('editProdSku').value = row.querySelectorAll('td')[1].textContent.trim();
-          document.getElementById('editProdColor').value = row.querySelectorAll('td')[2].textContent.trim();
-          document.getElementById('editProdCategory').value = row.querySelector('.chip').textContent.trim();
-          var priceText = row.querySelectorAll('td')[4].textContent.replace(/[^0-9.]/g, '');
-          document.getElementById('editProdPrice').value = parseFloat(priceText) || 0;
-          var stockEl = row.querySelector('.stock-in, .stock-low, .stock-out');
-          if (stockEl) {
-            if (stockEl.classList.contains('stock-in')) document.getElementById('editProdStock').value = 'in';
-            else if (stockEl.classList.contains('stock-low')) document.getElementById('editProdStock').value = 'low';
-            else document.getElementById('editProdStock').value = 'out';
-          }
-          document.getElementById('editProductModal').classList.add('show');
+      var adminEditingId = null;
+
+      function renderAdminProducts() {
+        var tbody = document.getElementById('adminProductTableBody');
+        if (!tbody) return;
+        tbody.innerHTML = PRODUCTS.map(function(p) {
+          var status = getStockStatus(p);
+          return '<tr data-category="' + p.category + '">' +
+            '<td class="product-name"><strong>' + p.name + '</strong></td>' +
+            '<td>' + p.sku + '</td>' +
+            '<td>' + (p.color || '—') + '</td>' +
+            '<td><span class="cat-badge">' + p.category + '</span></td>' +
+            '<td>' + fmtPrice(p.price) + '</td>' +
+            '<td>' + (p.stockQty || 0) + '</td>' +
+            '<td>' + stockBadge(status) + '</td>' +
+            '<td>' + (p.expectedDelivery ? fmtDate(p.expectedDelivery) : '—') + '</td>' +
+            '<td style="white-space:nowrap;"><button class="btn btn-sm btn-secondary view-product-btn" data-id="' + p.id + '" title="View"><i class="fas fa-eye"></i></button> <button class="btn btn-sm btn-secondary edit-product-btn" data-id="' + p.id + '" title="Edit"><i class="fas fa-edit"></i></button></td>' +
+            '</tr>';
+        }).join('');
+      }
+
+      function openProductDetails(id) {
+        var p = PRODUCTS.find(function(x) { return x.id === id; });
+        if (!p) return;
+        document.getElementById('pdName').textContent = p.name;
+        document.getElementById('pdSku').textContent = p.sku + (p.color ? ' · ' + p.color : '');
+        document.getElementById('pdImage').src = p.image || '';
+        document.getElementById('pdImage').alt = p.name;
+        document.getElementById('pdQty').textContent = (p.stockQty || 0) + ' units';
+        document.getElementById('pdStatus').innerHTML = stockBadge(getStockStatus(p));
+        document.getElementById('pdExpected').textContent = p.expectedDelivery ? fmtDate(p.expectedDelivery) : '—';
+        document.getElementById('pdUpdated').textContent = p.lastUpdated ? fmtDate(p.lastUpdated) : '—';
+        document.getElementById('productDetailsModal').classList.add('show');
+      }
+
+      function openEditProduct(id) {
+        var p = PRODUCTS.find(function(x) { return x.id === id; });
+        if (!p) return;
+        adminEditingId = id;
+        document.getElementById('editProdName').value = p.name;
+        document.getElementById('editProdSku').value = p.sku;
+        document.getElementById('editProdColor').value = p.color || '';
+        document.getElementById('editProdCategory').value = p.category || '';
+        document.getElementById('editProdPrice').value = p.price;
+        document.getElementById('editProdQty').value = p.stockQty || 0;
+        document.getElementById('editProdMinStock').value = p.minStock || 0;
+        document.getElementById('editProdExpected').value = p.expectedDelivery || '';
+        document.getElementById('editProdImage').value = p.image || '';
+        document.getElementById('editProductModal').classList.add('show');
+      }
+
+      document.addEventListener('click', function(e) {
+        var viewBtn = e.target.closest('.view-product-btn');
+        var editBtn = e.target.closest('.edit-product-btn');
+        if (viewBtn) { e.stopPropagation(); openProductDetails(parseInt(viewBtn.dataset.id)); }
+        else if (editBtn) { e.stopPropagation(); openEditProduct(parseInt(editBtn.dataset.id)); }
+      });
+
+      document.getElementById('addProductForm').addEventListener('submit', function() {
+        var nextId = PRODUCTS.reduce(function(m, p) { return Math.max(m, p.id); }, 0) + 1;
+        PRODUCTS.push({
+          id: nextId,
+          name: document.getElementById('addProdName').value.trim(),
+          sku: document.getElementById('addProdSku').value.trim(),
+          color: document.getElementById('addProdColor').value.trim(),
+          category: document.getElementById('addProdCategory').value,
+          price: parseFloat(document.getElementById('addProdPrice').value) || 0,
+          stockQty: parseInt(document.getElementById('addProdQty').value) || 0,
+          minStock: parseInt(document.getElementById('addProdMinStock').value) || 0,
+          expectedDelivery: document.getElementById('addProdExpected').value || null,
+          lastUpdated: new Date().toISOString().split('T')[0],
+          image: document.getElementById('addProdImage').value.trim() || 'https://placehold.co/400x280/f5f0eb/8b7355?text=New+Product'
         });
+        renderAdminProducts();
+        document.getElementById('addProductModal').classList.remove('show');
+        showToast('Product added successfully', 'success');
+      });
+
+      document.getElementById('editProductForm').addEventListener('submit', function() {
+        var p = PRODUCTS.find(function(x) { return x.id === adminEditingId; });
+        if (!p) return;
+        p.name = document.getElementById('editProdName').value.trim();
+        p.sku = document.getElementById('editProdSku').value.trim();
+        p.color = document.getElementById('editProdColor').value.trim();
+        p.category = document.getElementById('editProdCategory').value;
+        p.price = parseFloat(document.getElementById('editProdPrice').value) || 0;
+        p.stockQty = parseInt(document.getElementById('editProdQty').value) || 0;
+        p.minStock = parseInt(document.getElementById('editProdMinStock').value) || 0;
+        p.expectedDelivery = document.getElementById('editProdExpected').value || null;
+        p.lastUpdated = new Date().toISOString().split('T')[0];
+        p.image = document.getElementById('editProdImage').value.trim() || p.image;
+        renderAdminProducts();
+        document.getElementById('editProductModal').classList.remove('show');
+        showToast('Product updated successfully', 'success');
       });
 
       document.getElementById('adminProductCategory').addEventListener('change', function() {
@@ -131,6 +237,8 @@
           else { row.style.display = 'none'; }
         });
       });
+
+      document.addEventListener('DOMContentLoaded', function() { renderAdminProducts(); });
     </script>
   </body>
 </html>

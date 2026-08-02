@@ -49,7 +49,7 @@
             <div class="form-group"><label>Salesperson</label><input type="text" class="form-input" value="Sarah Al Rashid" disabled style="background:var(--gray-50);"></div>
             <div class="form-group"><label>Quotation Date</label><input type="date" class="form-input" id="qDate"></div>
             <div class="form-group"><label>Valid Until</label><input type="date" class="form-input" id="qValidity"></div>
-            <div class="form-group"><label>Payment Terms</label><select class="form-select" id="qPayment" onchange="setSessionData('order_payment_terms', this.value)"><option value="Net 15">Net 15</option><option value="Net 30" selected>Net 30</option><option value="Net 45">Net 45</option><option value="Net 60">Net 60</option><option value="Advance Payment">Advance Payment</option><option value="Cash on Delivery">Cash on Delivery</option></select></div>
+            <div class="form-group"><label>Payment Terms</label><select class="form-select" id="qPayment" onchange="setPaymentDays(this.value)"><option value="15">Net 15</option><option value="30" selected>Net 30</option><option value="45">Net 45</option><option value="60">Net 60</option></select></div>
             <div class="form-group"><label>Currency</label><input type="text" class="form-input" value="SAR" disabled style="background:var(--gray-50);"></div>
           </div></div>
         </div>
@@ -71,12 +71,12 @@
           <div class="card-header"><h3 class="card-title"><i class="fas fa-sticky-note" style="margin-right:8px;color:var(--primary-400);"></i>Terms &amp; Notes</h3></div>
           <div class="card-body">
             <div class="form-group"><label>Internal Notes (not shown on quotation)</label><textarea class="form-input form-textarea" placeholder="Internal notes...">Customer requested urgent processing. Check stock availability before confirming.</textarea></div>
-            <div class="form-group"><label>Terms &amp; Conditions</label><textarea class="form-input form-textarea" rows="4" id="qTerms" oninput="saveAdminTerms(this.value)">1. We are committed to supplying products as per the approved sample. In case of any quality discrepancy, the company will accept the return of the products without any additional charges.
+            <div class="form-group"><label>Terms &amp; Conditions</label><textarea class="form-input form-textarea" rows="4" id="qTerms" readonly style="background:var(--gray-50);">1. We are committed to supplying products as per the approved sample. In case of any quality discrepancy, the company will accept the return of the products without any additional charges.
 2. If the delivered products do not meet the agreed quality standards, the company will replace them accordingly.
 3. Any complaints regarding the products must be registered within three (3) days of delivery.
 4. The company will not entertain any claims made after three (3) days from the date of delivery.
 5. Delivery of products will only be made if previously agreed upon.
-6. Payment Terms: Net ___ Days from Invoice Date.</textarea></div>
+6. Payment Terms: Net 30 Days from Invoice Date.</textarea></div>
           </div>
         </div>
         <div style="text-align:right;" class="mt-4">
