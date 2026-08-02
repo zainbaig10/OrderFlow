@@ -239,7 +239,7 @@
           return '<tr>' +
             '<td>'+(i+1)+'</td>' +
             '<td style="font-size:11px;color:#6b7280;">'+p.sku+'</td>' +
-            '<td><span class="dn-prod-name">'+p.name+'</span>'+(p.nameAr?'<br><span style="font-size:11px;color:#9ca3af;" dir="rtl">'+p.nameAr+'</span>':'')+'</td>' +
+            '<td><span class="dn-prod-name">'+p.name+'</span>'+(p.color?' <span style="font-size:11px;color:#9ca3af;">('+p.color+')</span>':'')+(p.nameAr?'<br><span style="font-size:11px;color:#9ca3af;" dir="rtl">'+p.nameAr+'</span>':'')+'</td>' +
             '<td class="dn-right" style="font-weight:700;">'+qty+'</td>' +
             '</tr>';
         }).join('');

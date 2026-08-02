@@ -37,23 +37,23 @@
       <main class="content">
         <div class="page-header">
           <div><h1 class="page-title">Customers</h1><p class="page-subtitle">10 registered customers</p></div>
-          <button class="btn btn-primary" onclick="showToast('Add customer form would open here','info')"><i class="fas fa-plus"></i> Add Customer</button>
+          <button class="btn btn-primary" onclick="openCustomerModal()"><i class="fas fa-plus"></i> Add Customer</button>
         </div>
         <div class="card">
           <div class="card-body-no-pad"><div class="table-wrapper">
             <table class="data-table">
               <thead><tr><th>Company</th><th>Contact Person</th><th>Phone</th><th>Email</th><th>Address</th><th>Orders</th><th></th></tr></thead>
-              <tbody>
-                <tr><td><strong>Al Muhaidib Kitchens</strong></td><td>Khalid Al Muhaidib</td><td>+966 13 812 3456</td><td>khalid@almuhaidib.com.sa</td><td>King Fahd Road, Al Khobar 31952</td><td>22</td><td><a href="customer-details.html?id=1" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Raha Kitchen Solutions</strong></td><td>Faisal Al Ghamdi</td><td>+966 13 823 4567</td><td>faisal@raha-kitchens.sa</td><td>Prince Sultan Road, Dammam 32211</td><td>31</td><td><a href="customer-details.html?id=2" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Eastern Kitchens Factory</strong></td><td>Omar Al Dossari</td><td>+966 13 834 5678</td><td>omar@eastern-kitchens.sa</td><td>Industrial Area 3, Dammam 31412</td><td>15</td><td><a href="customer-details.html?id=3" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Gulf Modular Kitchens</strong></td><td>Sultan Al Harbi</td><td>+966 13 845 6789</td><td>sultan@gulfmodular.sa</td><td>Corniche Road, Al Khobar 34712</td><td>19</td><td><a href="customer-details.html?id=4" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Al Jazeera Kitchen World</strong></td><td>Mohammed Al Qahtani</td><td>+966 13 856 7890</td><td>mohammed@aljazeerakitchen.sa</td><td>King Abdullah Street, Al Khobar 34614</td><td>27</td><td><a href="customer-details.html?id=5" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Dammam Interior Works</strong></td><td>Abdullah Al Shamrani</td><td>+966 13 867 8901</td><td>abdullah@dammaminterior.sa</td><td>Al Faisaliyah District, Dammam 32215</td><td>8</td><td><a href="customer-details.html?id=6" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Crystal Kitchen Systems</strong></td><td>Turki Al Otaibi</td><td>+966 13 878 9012</td><td>turki@crystalkitchens.sa</td><td>Shaikh Jaber Street, Al Khobar 34722</td><td>12</td><td><a href="customer-details.html?id=7" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Al Khobar Kitchen Showroom</strong></td><td>Ibrahim Al Mutairi</td><td>+966 13 889 0123</td><td>ibrahim@khobarkitchen.sa</td><td>Dhahran Street, Al Khobar 34622</td><td>34</td><td><a href="customer-details.html?id=8" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Saudi Kitchen Supply Co.</strong></td><td>Ahmed Al Zahrani</td><td>+966 13 890 1234</td><td>ahmed@sdkitchen.sa</td><td>3rd Industrial City, Dammam 31413</td><td>41</td><td><a href="customer-details.html?id=9" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
-                <tr><td><strong>Royal Kitchen Fittings</strong></td><td>Bandar Al Subaie</td><td>+966 13 901 2345</td><td>bandar@royalkitchen.sa</td><td>Al Shati District, Dammam 32216</td><td>3</td><td><a href="customer-details.html?id=10" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a></td></tr>
+              <tbody id="customerTableBody">
+                <tr data-id="1"><td><strong>Al Muhaidib Kitchens</strong></td><td>Khalid Al Muhaidib</td><td>+966 13 812 3456</td><td>khalid@almuhaidib.com.sa</td><td>King Fahd Road, Al Khobar 31952</td><td>22</td><td><a href="customer-details.html?id=1" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(1)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="2"><td><strong>Raha Kitchen Solutions</strong></td><td>Faisal Al Ghamdi</td><td>+966 13 823 4567</td><td>faisal@raha-kitchens.sa</td><td>Prince Sultan Road, Dammam 32211</td><td>31</td><td><a href="customer-details.html?id=2" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(2)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="3"><td><strong>Eastern Kitchens Factory</strong></td><td>Omar Al Dossari</td><td>+966 13 834 5678</td><td>omar@eastern-kitchens.sa</td><td>Industrial Area 3, Dammam 31412</td><td>15</td><td><a href="customer-details.html?id=3" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(3)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="4"><td><strong>Gulf Modular Kitchens</strong></td><td>Sultan Al Harbi</td><td>+966 13 845 6789</td><td>sultan@gulfmodular.sa</td><td>Corniche Road, Al Khobar 34712</td><td>19</td><td><a href="customer-details.html?id=4" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(4)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="5"><td><strong>Al Jazeera Kitchen World</strong></td><td>Mohammed Al Qahtani</td><td>+966 13 856 7890</td><td>mohammed@aljazeerakitchen.sa</td><td>King Abdullah Street, Al Khobar 34614</td><td>27</td><td><a href="customer-details.html?id=5" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(5)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="6"><td><strong>Dammam Interior Works</strong></td><td>Abdullah Al Shamrani</td><td>+966 13 867 8901</td><td>abdullah@dammaminterior.sa</td><td>Al Faisaliyah District, Dammam 32215</td><td>8</td><td><a href="customer-details.html?id=6" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(6)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="7"><td><strong>Crystal Kitchen Systems</strong></td><td>Turki Al Otaibi</td><td>+966 13 878 9012</td><td>turki@crystalkitchens.sa</td><td>Shaikh Jaber Street, Al Khobar 34722</td><td>12</td><td><a href="customer-details.html?id=7" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(7)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="8"><td><strong>Al Khobar Kitchen Showroom</strong></td><td>Ibrahim Al Mutairi</td><td>+966 13 889 0123</td><td>ibrahim@khobarkitchen.sa</td><td>Dhahran Street, Al Khobar 34622</td><td>34</td><td><a href="customer-details.html?id=8" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(8)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="9"><td><strong>Saudi Kitchen Supply Co.</strong></td><td>Ahmed Al Zahrani</td><td>+966 13 890 1234</td><td>ahmed@sdkitchen.sa</td><td>3rd Industrial City, Dammam 31413</td><td>41</td><td><a href="customer-details.html?id=9" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(9)"><i class="fas fa-edit"></i></button></td></tr>
+                <tr data-id="10"><td><strong>Royal Kitchen Fittings</strong></td><td>Bandar Al Subaie</td><td>+966 13 901 2345</td><td>bandar@royalkitchen.sa</td><td>Al Shati District, Dammam 32216</td><td>3</td><td><a href="customer-details.html?id=10" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(10)"><i class="fas fa-edit"></i></button></td></tr>
               </tbody>
             </table>
           </div></div>
@@ -61,6 +61,97 @@
       </main>
     </div>
   </div>
+    <!-- Add/Edit Customer Modal -->
+    <div class="modal-overlay" id="customerModal">
+      <div class="modal">
+        <div class="modal-header"><h3 id="customerModalTitle">Add Customer</h3><button class="modal-close" onclick="closeCustomerModal()"><i class="fas fa-times"></i></button></div>
+        <div class="modal-body">
+          <form id="customerModalForm" onsubmit="saveCustomer(event)">
+            <div class="form-grid">
+              <div class="form-group"><label>Company *</label><input type="text" class="form-input" id="cmCompany" required></div>
+              <div class="form-group"><label>Contact Person *</label><input type="text" class="form-input" id="cmContact" required></div>
+              <div class="form-group"><label>Phone *</label><input type="text" class="form-input" id="cmPhone" required></div>
+              <div class="form-group"><label>Email</label><input type="email" class="form-input" id="cmEmail"></div>
+              <div class="form-group"><label>Customer VAT Number</label><input type="text" class="form-input" id="cmVatNumber"></div>
+              <div class="form-group"><label>Customer CR Number</label><input type="text" class="form-input" id="cmCrNumber"></div>
+              <div class="form-group full"><label>Address</label><input type="text" class="form-input" id="cmAddress"></div>
+              <div class="form-group full"><label>Notes</label><textarea class="form-input form-textarea" id="cmNotes"></textarea></div>
+            </div>
+            <div class="modal-footer"><button type="button" class="btn btn-secondary" onclick="closeCustomerModal()">Cancel</button><button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Save Customer</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+
   <script src="../assets/js/app.js"></script>
+  <script>
+    var editingCustomerId = null;
+
+    function openCustomerModal(id) {
+      editingCustomerId = id || null;
+      document.getElementById('customerModalTitle').textContent = id ? 'Edit Customer' : 'Add Customer';
+      if (id) {
+        var c = CUSTOMERS.find(function(c) { return c.id === id; });
+        if (c) {
+          document.getElementById('cmCompany').value = c.company || '';
+          document.getElementById('cmContact').value = c.contact || '';
+          document.getElementById('cmPhone').value = c.phone || '';
+          document.getElementById('cmEmail').value = c.email || '';
+          document.getElementById('cmVatNumber').value = c.vatNumber || '';
+          document.getElementById('cmCrNumber').value = c.crNumber || '';
+          document.getElementById('cmAddress').value = c.address || '';
+          document.getElementById('cmNotes').value = c.notes || '';
+        }
+      } else {
+        document.getElementById('customerModalForm').reset();
+      }
+      document.getElementById('customerModal').classList.add('show');
+    }
+
+    function closeCustomerModal() {
+      document.getElementById('customerModal').classList.remove('show');
+    }
+
+    function saveCustomer(e) {
+      e.preventDefault();
+      var data = {
+        company: document.getElementById('cmCompany').value,
+        contact: document.getElementById('cmContact').value,
+        phone: document.getElementById('cmPhone').value,
+        email: document.getElementById('cmEmail').value,
+        vatNumber: document.getElementById('cmVatNumber').value,
+        crNumber: document.getElementById('cmCrNumber').value,
+        address: document.getElementById('cmAddress').value,
+        notes: document.getElementById('cmNotes').value
+      };
+      if (editingCustomerId) {
+        var c = CUSTOMERS.find(function(c) { return c.id === editingCustomerId; });
+        if (c) {
+          c.company = data.company;
+          c.contact = data.contact;
+          c.phone = data.phone;
+          c.email = data.email;
+          c.vatNumber = data.vatNumber;
+          c.crNumber = data.crNumber;
+          c.address = data.address;
+          c.notes = data.notes;
+        }
+        showToast('Customer updated successfully', 'success');
+      } else {
+        CUSTOMERS.push({ id: Date.now(), orders: 0, lastVisit: new Date().toISOString().split('T')[0], lastSalesperson: 'Andrew Teo', company: data.company, contact: data.contact, phone: data.phone, email: data.email, vatNumber: data.vatNumber, crNumber: data.crNumber, address: data.address, notes: data.notes });
+        showToast('Customer added successfully', 'success');
+      }
+      closeCustomerModal();
+      renderCustomerTable();
+    }
+
+    function renderCustomerTable() {
+      var tbody = document.getElementById('customerTableBody');
+      if (!tbody) return;
+      tbody.innerHTML = CUSTOMERS.map(function(c) {
+        return '<tr data-id="' + c.id + '"><td><strong>' + c.company + '</strong></td><td>' + (c.contact || '') + '</td><td>' + (c.phone || '') + '</td><td>' + (c.email || '') + '</td><td>' + (c.address || '') + '</td><td>' + (c.orders || 0) + '</td><td><a href="customer-details.html?id=' + c.id + '" class="btn btn-sm btn-secondary"><i class="fas fa-eye"></i></a> <button class="btn btn-sm btn-secondary" onclick="openCustomerModal(' + c.id + ')"><i class="fas fa-edit"></i></button></td></tr>';
+      }).join('');
+    }
+  </script>
 </body>
 </html>

@@ -61,6 +61,8 @@
                 <div class="detail-item"><div class="detail-label">Contact Person</div><div class="detail-value" id="chContact">—</div></div>
                 <div class="detail-item"><div class="detail-label">Phone</div><div class="detail-value" id="chPhone">—</div></div>
                 <div class="detail-item"><div class="detail-label">Email</div><div class="detail-value" id="chEmail">—</div></div>
+                <div class="detail-item"><div class="detail-label">Customer VAT Number</div><div class="detail-value" id="chVatNumber">—</div></div>
+                <div class="detail-item"><div class="detail-label">Customer CR Number</div><div class="detail-value" id="chCrNumber">—</div></div>
                 <div class="detail-item" style="grid-column:1/-1;"><div class="detail-label">Address</div><div class="detail-value" id="chAddress">—</div></div>
                 <div class="detail-item" style="grid-column:1/-1;"><div class="detail-label">Notes</div><div class="detail-value" id="chNotes">—</div></div>
               </div>
@@ -137,6 +139,8 @@
       if (el('chContact')) el('chContact').textContent = customer.contact;
       if (el('chPhone')) el('chPhone').textContent = customer.phone;
       if (el('chEmail')) el('chEmail').textContent = customer.email || '—';
+      if (el('chVatNumber')) el('chVatNumber').textContent = customer.vatNumber || '—';
+      if (el('chCrNumber')) el('chCrNumber').textContent = customer.crNumber || '—';
       if (el('chAddress')) el('chAddress').textContent = customer.address || '—';
       if (el('chNotes')) el('chNotes').textContent = customer.notes || '—';
       if (el('chTotalOrders')) el('chTotalOrders').textContent = customer.orders;
@@ -194,7 +198,7 @@
               '<div class="freq-product-img"><img src="' + p.image + '" alt="' + p.name + '"></div>' +
               '<div class="freq-product-info">' +
                 '<div class="freq-product-name">' + p.name + '</div>' +
-                '<div class="freq-product-meta">SKU: ' + p.sku + ' · ' + p.category + (p.nameAr ? ' · <span dir="rtl">' + p.nameAr + '</span>' : '') + '</div>' +
+                '<div class="freq-product-meta">SKU: ' + p.sku + (p.color ? ' · ' + p.color : '') + ' · ' + p.category + (p.nameAr ? ' · <span dir="rtl">' + p.nameAr + '</span>' : '') + '</div>' +
               '</div>' +
               '<div class="freq-product-price">' + fmtPrice(p.price) + '</div>' +
               '</div>';

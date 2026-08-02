@@ -36,6 +36,7 @@
     .qt2-products tbody td.qt2-right{text-align:right}
     .qt2-products tbody tr:nth-child(even){background:#f9fafb}
     .qt2-prod-name{font-weight:600;color:#1f2937}
+    .qt2-prod-img{width:40px;height:40px;object-fit:cover;border-radius:6px;border:1px solid #e5e7eb;background:#f9fafb;vertical-align:middle}
     .qt2-totals{display:flex;justify-content:flex-end;margin-bottom:28px}
     .qt2-totals-table{width:300px}
     .qt2-totals-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#4b5563}
@@ -136,14 +137,12 @@
                 <table>
                   <thead>
                     <tr>
-                      <th style="width:36px">#</th>
-                      <th>SKU</th>
-                      <th>Product Name</th>
-                      <th class="qt2-right" style="width:60px">Qty</th>
+                      <th style="width:60px">Product Image</th>
+                      <th>Product Description</th>
+                      <th class="qt2-right" style="width:70px">Quantity</th>
                       <th class="qt2-right" style="width:100px">Unit Price</th>
-                      <th class="qt2-right" style="width:70px">Disc %</th>
-                      <th class="qt2-right" style="width:70px">VAT %</th>
-                      <th class="qt2-right" style="width:110px">Line Total</th>
+                      <th class="qt2-right" style="width:70px">Discount</th>
+                      <th class="qt2-right" style="width:110px">Final Amount</th>
                     </tr>
                   </thead>
                   <tbody id="qpItems"></tbody>
@@ -165,7 +164,7 @@
                   <li>Prices are valid for 30 days from the date of this quotation.</li>
                   <li>Delivery within 5-7 working days upon order confirmation.</li>
                   <li>Payment terms: Net 30 days from invoice date.</li>
-                  <li>Goods remain the property of Waleed Mohammed Al Suwat Holding Co. until full payment is received.</li>
+                  <li>Goods remain the property of Waleed Mohammed Al Suwat Holding Company until full payment is received.</li>
                   <li>All prices are in Saudi Riyals (SAR) and inclusive of 15% VAT unless stated otherwise.</li>
                   <li>Claims for damaged goods must be reported within 48 hours of delivery.</li>
                 </ol>
@@ -259,13 +258,11 @@
           var lineTotal = afterDisc + vatAmt;
           var discCell = discount > 0 ? discount + '%' : '—';
           return '<tr>' +
-            '<td>'+(i+1)+'</td>' +
-            '<td style="font-size:11px;color:#6b7280;">'+p.sku+'</td>' +
-            '<td><span class="qt2-prod-name">'+p.name+'</span>'+(p.nameAr?'<br><span style="font-size:11px;color:#9ca3af;" dir="rtl">'+p.nameAr+'</span>':'')+'</td>' +
+            '<td style="text-align:center;"><img src="'+(p.image||'')+'" alt="'+(p.name||'')+'" class="qt2-prod-img"></td>' +
+            '<td><span class="qt2-prod-name">'+p.name+'</span>'+(p.color?' <span style="font-size:11px;color:#9ca3af;">('+p.color+')</span>':'')+(p.nameAr?'<br><span style="font-size:11px;color:#9ca3af;" dir="rtl">'+p.nameAr+'</span>':'')+'<br><span style="font-size:11px;color:#6b7280;">SKU: '+p.sku+'</span></td>' +
             '<td class="qt2-right">'+qty+'</td>' +
             '<td class="qt2-right">SAR '+p.price.toFixed(2)+'</td>' +
             '<td class="qt2-right">'+discCell+'</td>' +
-            '<td class="qt2-right">'+tax+'%</td>' +
             '<td class="qt2-right" style="font-weight:700;">SAR '+lineTotal.toFixed(2)+'</td>' +
             '</tr>';
         }).join('');

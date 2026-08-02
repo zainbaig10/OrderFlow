@@ -31,8 +31,8 @@
     .qt2-customer-detail{font-size:12px;color:#6b7280;line-height:1.7}
     .qt2-products{margin-bottom:20px}
     .qt2-products table{table-layout:fixed;width:100%}
-    .qt2-products col.col-num{width:6%}
-    .qt2-products col.col-product{width:44%}
+    .qt2-products col.col-img{width:18%}
+    .qt2-products col.col-product{width:32%}
     .qt2-products col.col-qty{width:10%}
     .qt2-products col.col-price{width:15%}
     .qt2-products col.col-disc{width:10%}
@@ -43,6 +43,7 @@
     .qt2-products tbody td.qt2-right{text-align:right}
     .qt2-products tbody tr:nth-child(even){background:#f9fafb}
     .qt2-prod-name{font-weight:600;color:#1f2937}
+    .qt2-prod-img{width:40px;height:40px;object-fit:cover;border-radius:6px;border:1px solid #e5e7eb;background:#f9fafb;vertical-align:middle}
     .qt2-totals{display:flex;justify-content:flex-end;margin-bottom:28px}
     .qt2-totals-table{width:45%}
     .qt2-totals-row{display:flex;justify-content:space-between;padding:6px 0;font-size:13px;color:#4b5563}
@@ -198,7 +199,7 @@
                 <div class="qt2-products">
                   <table>
                     <colgroup>
-                      <col class="col-num">
+                      <col class="col-img">
                       <col class="col-product">
                       <col class="col-qty">
                       <col class="col-price">
@@ -207,12 +208,12 @@
                     </colgroup>
                     <thead>
                       <tr>
-                        <th>#</th>
-                        <th>Product</th>
-                        <th class="qt2-right">Qty</th>
+                        <th>Product Image</th>
+                        <th>Product Description</th>
+                        <th class="qt2-right">Quantity</th>
                         <th class="qt2-right">Unit Price</th>
                         <th class="qt2-right">Discount</th>
-                        <th class="qt2-right">Amount</th>
+                        <th class="qt2-right">Final Amount</th>
                       </tr>
                     </thead>
                     <tbody id="sqpItems"></tbody>
@@ -236,7 +237,7 @@
                     <li>Prices are valid for 30 days from the date of this quotation.</li>
                     <li>Delivery within 5-7 working days upon order confirmation.</li>
                     <li>Payment terms: Net 30 days from invoice date.</li>
-                    <li>Goods remain the property of Waleed Mohammed Al Suwat Holding Co. until full payment is received.</li>
+                    <li>Goods remain the property of Waleed Mohammed Al Suwat Holding Company until full payment is received.</li>
                     <li>All prices are in Saudi Riyals (SAR) and inclusive of 15% VAT unless stated otherwise.</li>
                     <li>Claims for damaged goods must be reported within 48 hours of delivery.</li>
                   </ol>
@@ -322,9 +323,12 @@
           var vatAmt = afterDisc * (15 / 100);
           var lineTotal = afterDisc + vatAmt;
           var discCell = item.discount > 0 ? item.discount + '%' : '—';
+          var prodImg = '';
+          var prod = PRODUCTS.find(function(x) { return x.id === item.id; });
+          if (prod && prod.image) prodImg = '<img src="' + prod.image + '" alt="' + item.name + '" class="qt2-prod-img">';
           return '<tr>' +
-            '<td>' + (i + 1) + '</td>' +
-            '<td><span class="qt2-prod-name">' + item.name + '</span><br><span style="font-size:11px;color:#9ca3af;">' + item.sku + '</span></td>' +
+            '<td style="text-align:center;">' + prodImg + '</td>' +
+            '<td><span class="qt2-prod-name">' + item.name + '</span>' + (item.color ? ' <span style="font-size:11px;color:#9ca3af;">(' + item.color + ')</span>' : '') + '<br><span style="font-size:11px;color:#6b7280;">SKU: ' + item.sku + '</span></td>' +
             '<td class="qt2-right">' + item.qty + '</td>' +
             '<td class="qt2-right">SAR ' + item.price.toFixed(2) + '</td>' +
             '<td class="qt2-right">' + discCell + '</td>' +

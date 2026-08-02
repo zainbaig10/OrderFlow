@@ -11,7 +11,7 @@ var MAX_DISCOUNT = 5;
 var DOCUMENT_COMPANY = {
   logoTextLeft: 'W',
   logoTextRight: 'W',
-  name: 'WALEED MOHAMMED ALSUWAT HOLDING CO.',
+  name: 'WALEED MOHAMMED ALSUWAT HOLDING COMPANY',
   subtitle: 'Holding Company',
   address: 'Bldg. 7041, Fayd Al Samaa St., Ext. 3628, Al Ruwais District, Jeddah 23213, KSA',
   email: 'Sales@alswatlogistics.com',
@@ -84,35 +84,37 @@ function applyDocumentBranding() {
 }
 
 var CUSTOMERS = [
-  { id: 1, company: 'Al Muhaidib Kitchens', contact: 'Khalid Al Muhaidib', phone: '+966 13 812 3456', email: 'khalid@almuhaidib.com.sa', address: 'King Fahd Road, Al Khobar 31952', notes: 'Premium kitchen projects. Net 30 terms.', orders: 22, lastVisit: '2024-12-18', lastSalesperson: 'Sarah Al Rashid' },
-  { id: 2, company: 'Raha Kitchen Solutions', contact: 'Faisal Al Ghamdi', phone: '+966 13 823 4567', email: 'faisal@raha-kitchens.sa', address: 'Prince Sultan Road, Dammam 32211', notes: 'Bulk orders for apartment complexes.', orders: 31, lastVisit: '2024-12-17', lastSalesperson: 'Marcus Al Harbi' },
-  { id: 3, company: 'Eastern Kitchens Factory', contact: 'Omar Al Dossari', phone: '+966 13 834 5678', email: 'omar@eastern-kitchens.sa', address: 'Industrial Area 3, Dammam 31412', notes: 'Own manufacturing. Requires quality certifications.', orders: 15, lastVisit: '2024-12-14', lastSalesperson: 'Marcus Al Harbi' },
-  { id: 4, company: 'Gulf Modular Kitchens', contact: 'Sultan Al Harbi', phone: '+966 13 845 6789', email: 'sultan@gulfmodular.sa', address: 'Corniche Road, Al Khobar 34712', notes: 'Prefers imported European hardware.', orders: 19, lastVisit: '2024-12-15', lastSalesperson: 'Priya Nair' },
-  { id: 5, company: 'Al Jazeera Kitchen World', contact: 'Mohammed Al Qahtani', phone: '+966 13 856 7890', email: 'mohammed@aljazeerakitchen.sa', address: 'King Abdullah Street, Al Khobar 34614', notes: 'Price-sensitive. Requests detailed quotations.', orders: 27, lastVisit: '2024-12-11', lastSalesperson: 'Marcus Al Harbi' },
-  { id: 6, company: 'Dammam Interior Works', contact: 'Abdullah Al Shamrani', phone: '+966 13 867 8901', email: 'abdullah@dammaminterior.sa', address: 'Al Faisaliyah District, Dammam 32215', notes: 'Interior fit-out company. Regular monthly orders.', orders: 8, lastVisit: '2024-12-10', lastSalesperson: 'Sarah Al Rashid' },
-  { id: 7, company: 'Crystal Kitchen Systems', contact: 'Turki Al Otaibi', phone: '+966 13 878 9012', email: 'turki@crystalkitchens.sa', address: 'Shaikh Jaber Street, Al Khobar 34722', notes: 'High-end residential projects only.', orders: 12, lastVisit: '2024-12-12', lastSalesperson: 'Priya Nair' },
-  { id: 8, company: 'Al Khobar Kitchen Showroom', contact: 'Ibrahim Al Mutairi', phone: '+966 13 889 0123', email: 'ibrahim@khobarkitchen.sa', address: 'Dhahran Street, Al Khobar 34622', notes: 'Showroom and retail. Small quantity orders.', orders: 34, lastVisit: '2024-12-13', lastSalesperson: 'Sarah Al Rashid' },
-  { id: 9, company: 'Saudi Kitchen Supply Co.', contact: 'Ahmed Al Zahrani', phone: '+966 13 890 1234', email: 'ahmed@sdkitchen.sa', address: '3rd Industrial City, Dammam 31413', notes: 'Distributor. Large volume, tight margins.', orders: 41, lastVisit: '2024-12-16', lastSalesperson: 'Sarah Al Rashid' },
-  { id: 10, company: 'Royal Kitchen Fittings', contact: 'Bandar Al Subaie', phone: '+966 13 901 2345', email: 'bandar@royalkitchen.sa', address: 'Al Shati District, Dammam 32216', notes: 'New customer since Q3 2024.', orders: 3, lastVisit: '2024-12-09', lastSalesperson: 'Priya Nair' }
+  { id: 1, company: 'Al Muhaidib Kitchens', contact: 'Khalid Al Muhaidib', phone: '+966 13 812 3456', email: 'khalid@almuhaidib.com.sa', vatNumber: '310123456700001', crNumber: '101012345670001', address: 'King Fahd Road, Al Khobar 31952', notes: 'Premium kitchen projects. Net 30 terms.', orders: 22, lastVisit: '2024-12-18', lastSalesperson: 'Sarah Al Rashid' },
+  { id: 2, company: 'Raha Kitchen Solutions', contact: 'Faisal Al Ghamdi', phone: '+966 13 823 4567', email: 'faisal@raha-kitchens.sa', vatNumber: '310123456700002', crNumber: '101012345670002', address: 'Prince Sultan Road, Dammam 32211', notes: 'Bulk orders for apartment complexes.', orders: 31, lastVisit: '2024-12-17', lastSalesperson: 'Marcus Al Harbi' },
+  { id: 3, company: 'Eastern Kitchens Factory', contact: 'Omar Al Dossari', phone: '+966 13 834 5678', email: 'omar@eastern-kitchens.sa', vatNumber: '310123456700003', crNumber: '101012345670003', address: 'Industrial Area 3, Dammam 31412', notes: 'Own manufacturing. Requires quality certifications.', orders: 15, lastVisit: '2024-12-14', lastSalesperson: 'Marcus Al Harbi' },
+  { id: 4, company: 'Gulf Modular Kitchens', contact: 'Sultan Al Harbi', phone: '+966 13 845 6789', email: 'sultan@gulfmodular.sa', vatNumber: '310123456700004', crNumber: '101012345670004', address: 'Corniche Road, Al Khobar 34712', notes: 'Prefers imported European hardware.', orders: 19, lastVisit: '2024-12-15', lastSalesperson: 'Priya Nair' },
+  { id: 5, company: 'Al Jazeera Kitchen World', contact: 'Mohammed Al Qahtani', phone: '+966 13 856 7890', email: 'mohammed@aljazeerakitchen.sa', vatNumber: '310123456700005', crNumber: '101012345670005', address: 'King Abdullah Street, Al Khobar 34614', notes: 'Price-sensitive. Requests detailed quotations.', orders: 27, lastVisit: '2024-12-11', lastSalesperson: 'Marcus Al Harbi' },
+  { id: 6, company: 'Dammam Interior Works', contact: 'Abdullah Al Shamrani', phone: '+966 13 867 8901', email: 'abdullah@dammaminterior.sa', vatNumber: '310123456700006', crNumber: '101012345670006', address: 'Al Faisaliyah District, Dammam 32215', notes: 'Interior fit-out company. Regular monthly orders.', orders: 8, lastVisit: '2024-12-10', lastSalesperson: 'Sarah Al Rashid' },
+  { id: 7, company: 'Crystal Kitchen Systems', contact: 'Turki Al Otaibi', phone: '+966 13 878 9012', email: 'turki@crystalkitchens.sa', vatNumber: '310123456700007', crNumber: '101012345670007', address: 'Shaikh Jaber Street, Al Khobar 34722', notes: 'High-end residential projects only.', orders: 12, lastVisit: '2024-12-12', lastSalesperson: 'Priya Nair' },
+  { id: 8, company: 'Al Khobar Kitchen Showroom', contact: 'Ibrahim Al Mutairi', phone: '+966 13 889 0123', email: 'ibrahim@khobarkitchen.sa', vatNumber: '310123456700008', crNumber: '101012345670008', address: 'Dhahran Street, Al Khobar 34622', notes: 'Showroom and retail. Small quantity orders.', orders: 34, lastVisit: '2024-12-13', lastSalesperson: 'Sarah Al Rashid' },
+  { id: 9, company: 'Saudi Kitchen Supply Co.', contact: 'Ahmed Al Zahrani', phone: '+966 13 890 1234', email: 'ahmed@sdkitchen.sa', vatNumber: '310123456700009', crNumber: '101012345670009', address: '3rd Industrial City, Dammam 31413', notes: 'Distributor. Large volume, tight margins.', orders: 41, lastVisit: '2024-12-16', lastSalesperson: 'Sarah Al Rashid' },
+  { id: 10, company: 'Royal Kitchen Fittings', contact: 'Bandar Al Subaie', phone: '+966 13 901 2345', email: 'bandar@royalkitchen.sa', vatNumber: '310123456700010', crNumber: '101012345670010', address: 'Al Shati District, Dammam 32216', notes: 'New customer since Q3 2024.', orders: 3, lastVisit: '2024-12-09', lastSalesperson: 'Priya Nair' }
 ];
 
 var PRODUCTS = [
-  { id: 1, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', price: 12.50, category: 'Dinner Plates', stock: 'in', frequent: true, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Dinner+Plate+11%E2%80%B3' },
-  { id: 2, name: 'Deep Plate 9"', nameAr: 'طبق عميق 9 بوصة', sku: 'DP-090', price: 10.00, category: 'Dinner Plates', stock: 'in', frequent: true, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Deep+Plate+9%E2%80%B3' },
-  { id: 3, name: 'Soup Bowl', nameAr: 'طبق شوربة', sku: 'SB-200', price: 8.50, category: 'Bowls', stock: 'in', frequent: true, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Soup+Bowl' },
-  { id: 4, name: 'Serving Bowl', nameAr: 'طبق تقديم كبير', sku: 'SB-300', price: 22.00, category: 'Bowls', stock: 'in', frequent: false, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Serving+Bowl' },
-  { id: 5, name: 'Matt Bowl 7"', nameAr: 'طبق مات 7 بوصة', sku: 'MB-210', price: 9.00, category: 'Bowls', stock: 'out', frequent: false, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Matt+Bowl+7%E2%80%B3' },
-  { id: 6, name: 'Oval Platter 14"', nameAr: 'طبق بيضاوي 14 بوصة', sku: 'OP-350', price: 28.00, category: 'Platters', stock: 'in', frequent: false, image: 'https://placehold.co/400x280/f0f5f0/558855?text=Oval+Platter+14%E2%80%B3' },
-  { id: 7, name: 'Leaf Platter 12"', nameAr: 'طبق ورقة 12 بوصة', sku: 'LP-360', price: 32.00, category: 'Platters', stock: 'low', frequent: false, image: 'https://placehold.co/400x280/f0f5f0/558855?text=Leaf+Platter+12%E2%80%B3' },
-  { id: 8, name: 'Serving Plate 10"', nameAr: 'طبق تقديم 10 بوصة', sku: 'SP-320', price: 25.00, category: 'Serving', stock: 'in', frequent: true, image: 'https://placehold.co/400x280/faf5ef/887755?text=Serving+Plate+10%E2%80%B3' },
-  { id: 9, name: 'Serving Platter 15"', nameAr: 'طبق تقديم كبير 15 بوصة', sku: 'SPL-380', price: 42.00, category: 'Serving', stock: 'in', frequent: false, image: 'https://placehold.co/400x280/faf5ef/887755?text=Serving+Platter+15%E2%80%B3' },
-  { id: 10, name: 'Sauce Bowl Set', nameAr: 'طقم أطباق صوص', sku: 'SBS-160', price: 18.00, category: 'Serving', stock: 'low', frequent: false, image: 'https://placehold.co/400x280/faf5ef/887755?text=Sauce+Bowl+Set' },
-  { id: 11, name: 'Round Tray 10"', nameAr: 'صينية دائرية 10 بوصة', sku: 'RT-280', price: 18.00, category: 'Trays', stock: 'in', frequent: true, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Round+Tray+10%E2%80%B3' },
-  { id: 12, name: 'Square Tray 10"', nameAr: 'صينية مربعة 10 بوصة', sku: 'ST-290', price: 20.00, category: 'Trays', stock: 'in', frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Square+Tray+10%E2%80%B3' },
-  { id: 13, name: 'Serving Tray 14"', nameAr: 'صينية تقديم 14 بوصة', sku: 'STR-400', price: 35.00, category: 'Trays', stock: 'low', frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Serving+Tray+14%E2%80%B3' },
-  { id: 14, name: 'Cup & Saucer Set', nameAr: 'فنجان وصحن', sku: 'CS-150', price: 14.00, category: 'Accessories', stock: 'in', frequent: true, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Cup+%26+Saucer' },
-  { id: 15, name: 'Tumbler Glass 300ml', nameAr: 'كأس شفاف 300 مل', sku: 'TG-300', price: 6.50, category: 'Accessories', stock: 'in', frequent: false, image: 'https://placehold.co/400x280/f0f5f5/557777?text=Tumbler+300ml' },
-  { id: 16, name: 'Salad Server Set', nameAr: 'طقم سلطات', sku: 'SSS-170', price: 16.00, category: 'Accessories', stock: 'in', frequent: false, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Salad+Server+Set' }
+  { id: 1, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'White', price: 12.50, category: 'Dinner Plates', stock: 'in', stockQty: 20, frequent: true, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Dinner+Plate+11%E2%80%B3' },
+  { id: 17, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'Black', price: 12.50, category: 'Dinner Plates', stock: 'in', stockQty: 20, frequent: false, image: 'https://placehold.co/400x280/2b2b2b/d0d0d0?text=Dinner+Plate+11%E2%80%B3+Black' },
+  { id: 18, name: 'Dinner Plate 11"', nameAr: 'طبق عشاء 11 بوصة', sku: 'DP-110', color: 'Blue', price: 12.50, category: 'Dinner Plates', stock: 'in', stockQty: 20, frequent: false, image: 'https://placehold.co/400x280/1e3a8a/e0e7ff?text=Dinner+Plate+11%E2%80%B3+Blue' },
+  { id: 2, name: 'Deep Plate 9"', nameAr: 'طبق عميق 9 بوصة', sku: 'DP-090', color: 'White', price: 10.00, category: 'Dinner Plates', stock: 'in', stockQty: 50, frequent: true, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Deep+Plate+9%E2%80%B3' },
+  { id: 3, name: 'Soup Bowl', nameAr: 'طبق شوربة', sku: 'SB-200', color: 'White', price: 8.50, category: 'Bowls', stock: 'in', stockQty: 80, frequent: true, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Soup+Bowl' },
+  { id: 4, name: 'Serving Bowl', nameAr: 'طبق تقديم كبير', sku: 'SB-300', color: 'White', price: 22.00, category: 'Bowls', stock: 'in', stockQty: 30, frequent: false, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Serving+Bowl' },
+  { id: 5, name: 'Matt Bowl 7"', nameAr: 'طبق مات 7 بوصة', sku: 'MB-210', color: 'Beige', price: 9.00, category: 'Bowls', stock: 'out', stockQty: 0, frequent: false, image: 'https://placehold.co/400x280/e8f0f5/557788?text=Matt+Bowl+7%E2%80%B3' },
+  { id: 6, name: 'Oval Platter 14"', nameAr: 'طبق بيضاوي 14 بوصة', sku: 'OP-350', color: 'White', price: 28.00, category: 'Platters', stock: 'in', stockQty: 25, frequent: false, image: 'https://placehold.co/400x280/f0f5f0/558855?text=Oval+Platter+14%E2%80%B3' },
+  { id: 7, name: 'Leaf Platter 12"', nameAr: 'طبق ورقة 12 بوصة', sku: 'LP-360', color: 'Green', price: 32.00, category: 'Platters', stock: 'low', stockQty: 5, frequent: false, image: 'https://placehold.co/400x280/f0f5f0/558855?text=Leaf+Platter+12%E2%80%B3' },
+  { id: 8, name: 'Serving Plate 10"', nameAr: 'طبق تقديم 10 بوصة', sku: 'SP-320', color: 'White', price: 25.00, category: 'Serving', stock: 'in', stockQty: 40, frequent: true, image: 'https://placehold.co/400x280/faf5ef/887755?text=Serving+Plate+10%E2%80%B3' },
+  { id: 9, name: 'Serving Platter 15"', nameAr: 'طبق تقديم كبير 15 بوصة', sku: 'SPL-380', color: 'White', price: 42.00, category: 'Serving', stock: 'in', stockQty: 15, frequent: false, image: 'https://placehold.co/400x280/faf5ef/887755?text=Serving+Platter+15%E2%80%B3' },
+  { id: 10, name: 'Sauce Bowl Set', nameAr: 'طقم أطباق صوص', sku: 'SBS-160', color: 'White', price: 18.00, category: 'Serving', stock: 'low', stockQty: 4, frequent: false, image: 'https://placehold.co/400x280/faf5ef/887755?text=Sauce+Bowl+Set' },
+  { id: 11, name: 'Round Tray 10"', nameAr: 'صينية دائرية 10 بوصة', sku: 'RT-280', color: 'White', price: 18.00, category: 'Trays', stock: 'in', stockQty: 35, frequent: true, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Round+Tray+10%E2%80%B3' },
+  { id: 12, name: 'Square Tray 10"', nameAr: 'صينية مربعة 10 بوصة', sku: 'ST-290', color: 'White', price: 20.00, category: 'Trays', stock: 'in', stockQty: 30, frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Square+Tray+10%E2%80%B3' },
+  { id: 13, name: 'Serving Tray 14"', nameAr: 'صينية تقديم 14 بوصة', sku: 'STR-400', color: 'Brown', price: 35.00, category: 'Trays', stock: 'low', stockQty: 6, frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Serving+Tray+14%E2%80%B3' },
+  { id: 14, name: 'Cup & Saucer Set', nameAr: 'فنجان وصحن', sku: 'CS-150', color: 'White', price: 14.00, category: 'Accessories', stock: 'in', stockQty: 45, frequent: true, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Cup+%26+Saucer' },
+  { id: 15, name: 'Tumbler Glass 300ml', nameAr: 'كأس شفاف 300 مل', sku: 'TG-300', color: 'Clear', price: 6.50, category: 'Accessories', stock: 'in', stockQty: 100, frequent: false, image: 'https://placehold.co/400x280/f0f5f5/557777?text=Tumbler+300ml' },
+  { id: 16, name: 'Salad Server Set', nameAr: 'طقم سلطات', sku: 'SSS-170', color: 'Black', price: 16.00, category: 'Accessories', stock: 'in', stockQty: 25, frequent: false, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Salad+Server+Set' }
 ];
 
 var REQUESTS = [
@@ -179,6 +181,16 @@ function fmtDate(dateStr) {
   return d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
 }
 
+/* ---- Expected Delivery (demo) ---- */
+function getExpectedDelivery(item) {
+  var p = PRODUCTS.find(function(x) { return x.id === item.id; });
+  if (!p || !p.stockQty) return null;
+  if (item.qty <= p.stockQty) return null;
+  var remaining = item.qty - p.stockQty;
+  var days = Math.max(3, Math.ceil(remaining / 8));
+  return { available: p.stockQty, required: item.qty, remaining: remaining, days: days };
+}
+
 /* ---- Cart ---- */
 function getCart() { try { return JSON.parse(sessionStorage.getItem('df_cart')) || []; } catch(e) { return []; } }
 function setCart(cart) { sessionStorage.setItem('df_cart', JSON.stringify(cart)); }
@@ -189,7 +201,7 @@ function addToCart(productId, qty, discount) {
   if (p && p.stock === 'out') { showToast('This item is out of stock', 'error'); return; }
   var cart = getCart();
   var existing = cart.find(function(x) { return x.id === productId; });
-  if (existing) { existing.qty += qty; existing.discount = discount; } else if (p) { cart.push({ id: p.id, name: p.name, sku: p.sku, price: p.price, qty: qty, discount: discount }); }
+  if (existing) { existing.qty += qty; existing.discount = discount; } else if (p) { cart.push({ id: p.id, name: p.name, sku: p.sku, color: p.color || '', price: p.price, qty: qty, discount: discount }); }
   setCart(cart); updateCartBadge(); updateProductsCounter();
   showToast('Item added to cart', 'success');
 }
@@ -349,7 +361,7 @@ function initAddCustomerForm() {
   if (!form) return;
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    var customer = { id: Date.now(), company: form.querySelector('[name="company"]').value, contact: form.querySelector('[name="contact"]').value, phone: form.querySelector('[name="phone"]').value, email: form.querySelector('[name="email"]').value, address: form.querySelector('[name="address"]').value, notes: form.querySelector('[name="notes"]').value, orders: 0, lastVisit: new Date().toISOString().split('T')[0], lastSalesperson: 'Sarah Al Rashid' };
+    var customer = { id: Date.now(), company: form.querySelector('[name="company"]').value, contact: form.querySelector('[name="contact"]').value, phone: form.querySelector('[name="phone"]').value, email: form.querySelector('[name="email"]').value, vatNumber: form.querySelector('[name="vatNumber"]').value, crNumber: form.querySelector('[name="crNumber"]').value, address: form.querySelector('[name="address"]').value, notes: form.querySelector('[name="notes"]').value, orders: 0, lastVisit: new Date().toISOString().split('T')[0], lastSalesperson: 'Sarah Al Rashid' };
     selectCustomer(customer);
     showToast('New customer added successfully', 'success');
   });
@@ -390,8 +402,8 @@ function initProductCatalog() {
     var filtered = PRODUCTS.slice();
     if (category !== 'All') filtered = filtered.filter(function(p) { return p.category === category; });
     if (filter) filtered = filtered.filter(function(p) { return p.name.toLowerCase().includes(filter.toLowerCase()) || p.sku.toLowerCase().includes(filter.toLowerCase()) || (p.nameAr || '').includes(filter); });
-    if (sort === 'name-asc') filtered.sort(function(a, b) { return a.name.localeCompare(b.name); });
-    else if (sort === 'name-desc') filtered.sort(function(a, b) { return b.name.localeCompare(a.name); });
+    if (sort === 'name-asc') filtered.sort(function(a, b) { return a.name.localeCompare(b.name) || (a.color || '').localeCompare(b.color || ''); });
+    else if (sort === 'name-desc') filtered.sort(function(a, b) { return b.name.localeCompare(a.name) || (b.color || '').localeCompare(a.color || ''); });
     else if (sort === 'price-asc') filtered.sort(function(a, b) { return a.price - b.price; });
     else if (sort === 'price-desc') filtered.sort(function(a, b) { return b.price - a.price; });
     if (filtered.length === 0) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-box-open"></i><h3>No products found</h3><p>Try adjusting your search or filter.</p></div>'; return; }
@@ -401,7 +413,7 @@ function initProductCatalog() {
         '<div class="product-card-body">' +
           '<div class="product-card-name">' + p.name + '</div>' +
           '<div class="pc-name-ar" dir="rtl">' + (p.nameAr || '') + '</div>' +
-          '<div class="product-card-sku">SKU: ' + p.sku + '</div>' +
+          '<div class="product-card-sku">SKU: ' + p.sku + (p.color ? ' · <span class="pc-color">' + p.color + '</span>' : '') + '</div>' +
           '<div style="margin-bottom:6px;"><span class="chip" style="pointer-events:none;font-size:10px;padding:2px 10px;">' + p.category + '</span></div>' +
           '<div class="product-card-price">' + fmtPrice(p.price) + '</div>' +
           '<div class="product-card-stock">' + stockHTML(p.stock) + '</div>' +
@@ -455,7 +467,9 @@ function renderCart() {
   container.innerHTML = cart.map(function(item) {
     var discountLabel = item.discount > 0 ? '<div class="cart-item-discount">' + item.discount + '% discount</div>' : '';
     var lineTotal = item.price * item.qty * (1 - (item.discount || 0) / 100);
-    return '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">' + item.name + '</div><div class="cart-item-sku">SKU: ' + item.sku + ' · ' + fmtPrice(item.price) + ' each</div>' + discountLabel + '</div><div class="qty-control"><button class="qty-btn" onclick="updateCartQty(' + item.id + ',-1);renderCart();"><i class="fas fa-minus"></i></button><div class="qty-value">' + item.qty + '</div><button class="qty-btn" onclick="updateCartQty(' + item.id + ',1);renderCart();"><i class="fas fa-plus"></i></button></div><div class="cart-item-price">' + fmtPrice(lineTotal) + '</div><button class="cart-item-remove" onclick="removeFromCart(' + item.id + ');renderCart();"><i class="fas fa-trash-alt"></i></button></div>';
+    var delivery = getExpectedDelivery(item);
+    var deliveryHtml = delivery ? '<div class="cart-item-delivery"><i class="fas fa-truck"></i><div><div class="cid-line">Available: ' + delivery.available + ' pcs · Required: ' + delivery.required + ' pcs</div><div class="cid-note">Remaining ' + delivery.remaining + ' pcs expected in approximately ' + delivery.days + ' days.</div></div></div>' : '';
+    return '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">' + item.name + (item.color ? ' · <span style="font-weight:400;color:var(--gray-500);">' + item.color + '</span>' : '') + '</div><div class="cart-item-sku">SKU: ' + item.sku + ' · ' + fmtPrice(item.price) + ' each</div>' + discountLabel + deliveryHtml + '</div><div class="qty-control"><button class="qty-btn" onclick="updateCartQty(' + item.id + ',-1);renderCart();"><i class="fas fa-minus"></i></button><div class="qty-value">' + item.qty + '</div><button class="qty-btn" onclick="updateCartQty(' + item.id + ',1);renderCart();"><i class="fas fa-plus"></i></button></div><div class="cart-item-price">' + fmtPrice(lineTotal) + '</div><button class="cart-item-remove" onclick="removeFromCart(' + item.id + ');renderCart();"><i class="fas fa-trash-alt"></i></button></div>';
   }).join('');
   if (countEl) countEl.textContent = cart.reduce(function(s, i) { return s + i.qty; }, 0) + ' item(s)';
   renderCartSummary();
@@ -489,7 +503,7 @@ function initReviewPage() {
     itemsEl.innerHTML = cart.map(function(item, idx) {
       var lineTotal = item.price * item.qty * (1 - (item.discount || 0) / 100);
       var discountCol = item.discount > 0 ? '<td class="text-right text-warning">' + item.discount + '%</td>' : '<td class="text-right text-muted">—</td>';
-      return '<tr><td>' + (idx + 1) + '</td><td><strong>' + item.name + '</strong><br><span class="text-muted" style="font-size:12px;">SKU: ' + item.sku + '</span></td><td class="text-right">' + item.qty + '</td><td class="text-right">' + fmtPrice(item.price) + '</td>' + discountCol + '<td class="text-right font-bold">' + fmtPrice(lineTotal) + '</td></tr>';
+      return '<tr><td>' + (idx + 1) + '</td><td><strong>' + item.name + '</strong>' + (item.color ? ' <span class="text-muted" style="font-size:12px;">(' + item.color + ')</span>' : '') + '<br><span class="text-muted" style="font-size:12px;">SKU: ' + item.sku + '</span></td><td class="text-right">' + item.qty + '</td><td class="text-right">' + fmtPrice(item.price) + '</td>' + discountCol + '<td class="text-right font-bold">' + fmtPrice(lineTotal) + '</td></tr>';
     }).join('');
   }
   renderReviewSummary();
@@ -608,8 +622,11 @@ function loadSalesQuotationPreview() {
   if (itemsEl && data.items) {
     itemsEl.innerHTML = data.items.map(function(item, i) {
       var lineTotal = item.price * item.qty * (1 - (item.discount || 0) / 100);
-      var discCol = item.discount > 0 ? '<td class="text-right">' + item.discount + '%</td>' : '<td class="text-right">—</td>';
-      return '<tr><td>' + (i + 1) + '</td><td>' + item.name + '</td><td class="text-right">' + item.qty + '</td><td class="text-right">' + fmtPrice(item.price) + '</td>' + discCol + '<td class="text-right">' + fmtPrice(lineTotal) + '</td></tr>';
+      var discCol = item.discount > 0 ? '<td class="qt2-right">' + item.discount + '%</td>' : '<td class="qt2-right">—</td>';
+      var prodImg = '';
+      var prod = PRODUCTS.find(function(x) { return x.id === item.id; });
+      if (prod && prod.image) prodImg = '<img src="' + prod.image + '" alt="' + item.name + '" class="qt2-prod-img">';
+      return '<tr><td style="text-align:center;">' + prodImg + '</td><td><span class="qt2-prod-name">' + item.name + '</span>' + (item.color ? ' <span style="font-size:11px;color:#9ca3af;">(' + item.color + ')</span>' : '') + '<br><span style="font-size:11px;color:#6b7280;">SKU: ' + item.sku + '</span></td><td class="qt2-right">' + item.qty + '</td><td class="qt2-right">' + fmtPrice(item.price) + '</td>' + discCol + '<td class="qt2-right" style="font-weight:700;">' + fmtPrice(lineTotal) + '</td></tr>';
     }).join('');
   }
   if (el('sqpSubtotal')) el('sqpSubtotal').textContent = fmtPrice(data.subtotal);
@@ -711,7 +728,7 @@ function loadSalesQuotationDetails() {
       var lineTotal = p.price * qty * (1 - (req.discount || 0) / 100);
       origSubtotal += p.price * qty;
       var discCol = req.discount > 0 ? '<td class="text-right text-warning">' + req.discount + '%</td>' : '<td class="text-right text-muted">—</td>';
-      return '<tr><td>' + (i + 1) + '</td><td><strong>' + p.name + '</strong><br><span class="text-muted" style="font-size:12px;">' + p.sku + '</span></td><td class="text-right">' + qty + '</td><td class="text-right">' + fmtPrice(p.price) + '</td>' + discCol + '<td class="text-right font-bold">' + fmtPrice(lineTotal) + '</td></tr>';
+      return '<tr><td>' + (i + 1) + '</td><td><strong>' + p.name + '</strong>' + (p.color ? ' <span class="text-muted" style="font-size:12px;">(' + p.color + ')</span>' : '') + '<br><span class="text-muted" style="font-size:12px;">' + p.sku + '</span></td><td class="text-right">' + qty + '</td><td class="text-right">' + fmtPrice(p.price) + '</td>' + discCol + '<td class="text-right font-bold">' + fmtPrice(lineTotal) + '</td></tr>';
     }).join('');
     var discountAmt = origSubtotal * (req.discount || 0) / 100;
     var net = origSubtotal - discountAmt;
@@ -768,7 +785,7 @@ function loadAdminQuotationDetails() {
       var lineTotal = p.price * qty * (1 - (req.discount || 0) / 100);
       origSubtotal += p.price * qty;
       var discCol = req.discount > 0 ? '<td class="text-right text-warning">' + req.discount + '%</td>' : '<td class="text-right text-muted">—</td>';
-      return '<tr><td>' + (i + 1) + '</td><td><strong>' + p.name + '</strong><br><span class="text-muted" style="font-size:12px;">' + p.sku + '</span></td><td class="text-right">' + qty + '</td><td class="text-right">' + fmtPrice(p.price) + '</td>' + discCol + '<td class="text-right font-bold">' + fmtPrice(lineTotal) + '</td></tr>';
+      return '<tr><td>' + (i + 1) + '</td><td><strong>' + p.name + '</strong>' + (p.color ? ' <span class="text-muted" style="font-size:12px;">(' + p.color + ')</span>' : '') + '<br><span class="text-muted" style="font-size:12px;">' + p.sku + '</span></td><td class="text-right">' + qty + '</td><td class="text-right">' + fmtPrice(p.price) + '</td>' + discCol + '<td class="text-right font-bold">' + fmtPrice(lineTotal) + '</td></tr>';
     }).join('');
     var discountAmt = origSubtotal * (req.discount || 0) / 100;
     var net = origSubtotal - discountAmt;
@@ -834,7 +851,7 @@ function initQuotationForm() {
     itemsEl.innerHTML = req.items.map(function(p, i) {
       var qty = [2, 1, 3, 5, 1, 2, 4, 1, 2, 3][i % 10];
       var lineTotal = p.price * qty; runningTotal += lineTotal;
-      return '<tr><td>' + (i + 1) + '</td><td>' + p.name + '<br><span class="text-muted" style="font-size:12px;">' + p.sku + '</span></td><td class="text-right">' + qty + '</td><td class="text-right">' + fmtPrice(p.price) + '</td><td class="text-right font-bold">' + fmtPrice(lineTotal) + '</td></tr>';
+      return '<tr><td>' + (i + 1) + '</td><td>' + p.name + (p.color ? ' <span class="text-muted" style="font-size:12px;">(' + p.color + ')</span>' : '') + '<br><span class="text-muted" style="font-size:12px;">' + p.sku + '</span></td><td class="text-right">' + qty + '</td><td class="text-right">' + fmtPrice(p.price) + '</td><td class="text-right font-bold">' + fmtPrice(lineTotal) + '</td></tr>';
     }).join('');
     if (el('qSubtotal')) el('qSubtotal').textContent = fmtPrice(runningTotal);
     setSessionData('quotation_subtotal', runningTotal);
@@ -913,6 +930,8 @@ function loadCustomerHistory() {
   if (el('chContact')) el('chContact').textContent = customer.contact;
   if (el('chPhone')) el('chPhone').textContent = customer.phone;
   if (el('chEmail')) el('chEmail').textContent = customer.email || '—';
+  if (el('chVatNumber')) el('chVatNumber').textContent = customer.vatNumber || '—';
+  if (el('chCrNumber')) el('chCrNumber').textContent = customer.crNumber || '—';
   if (el('chAddress')) el('chAddress').textContent = customer.address || '—';
   if (el('chNotes')) el('chNotes').textContent = customer.notes || '—';
   if (el('chLastVisit')) el('chLastVisit').textContent = customer.lastVisit ? fmtDate(customer.lastVisit) : '—';
@@ -1512,7 +1531,7 @@ function loadFrequentProducts() {
       '<div class="fp-info">' +
         '<div class="fp-name">' + p.name + '</div>' +
         '<div class="fp-ar" dir="rtl">' + (p.nameAr || '') + '</div>' +
-        '<div class="fp-meta"><span class="fp-sku">' + p.sku + '</span><span class="fp-price">' + fmtPrice(p.price) + '</span></div>' +
+        '<div class="fp-meta"><span class="fp-sku">' + p.sku + (p.color ? ' · ' + p.color : '') + '</span><span class="fp-price">' + fmtPrice(p.price) + '</span></div>' +
       '</div>' +
       '<div class="fp-add"><i class="fas fa-plus"></i></div>' +
     '</div>';
