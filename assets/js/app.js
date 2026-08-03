@@ -5,7 +5,7 @@
 
 var CURRENCY = 'SAR';
 var VAT_RATE = 15;
-var MAX_DISCOUNT = 5;
+var MAX_SALESMAN_DISCOUNT = 25;
 /* ---- Document Branding (Quotation & Delivery Note) ---- */
 /* ---- Document Branding (Quotation & Delivery Note) ---- */
 var DOCUMENT_COMPANY = {
@@ -596,9 +596,9 @@ function renderDiscountWarning() {
   var approvalActions = document.getElementById('approvalActions');
   var maxDisc = getCartMaxDiscount();
   if (!warningEl) return;
-  if (maxDisc > MAX_DISCOUNT) {
+  if (maxDisc > MAX_SALESMAN_DISCOUNT) {
     warningEl.classList.remove('hidden');
-    warningEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i><div><div class="dw-text">Discount exceeds your approval limit.</div><div class="dw-desc">Maximum allowed discount is ' + MAX_DISCOUNT + '%. This quotation requires admin approval before sending. Status will be set to: Pending Discount Approval.</div></div>';
+    warningEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i><div><div class="dw-text">Discount exceeds your approval limit.</div><div class="dw-desc">Maximum allowed discount is ' + MAX_SALESMAN_DISCOUNT + '%. This quotation requires admin approval before sending. Status will be set to: Pending Discount Approval.</div></div>';
     if (normalActions) normalActions.classList.add('hidden');
     if (approvalActions) approvalActions.classList.remove('hidden');
   } else {
