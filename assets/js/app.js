@@ -114,7 +114,16 @@ var PRODUCTS = [
   { id: 13, name: 'Serving Tray 14"', nameAr: 'صينية تقديم 14 بوصة', sku: 'STR-400', color: 'Brown', price: 35.00, category: 'Trays', stockQty: 6, minStock: 10, expectedDelivery: '2026-08-25', lastUpdated: '2024-12-06', frequent: false, image: 'https://placehold.co/400x280/f5f0f5/885588?text=Serving+Tray+14%E2%80%B3' },
   { id: 14, name: 'Cup & Saucer Set', nameAr: 'فنجان وصحن', sku: 'CS-150', color: 'White', price: 14.00, category: 'Accessories', stockQty: 45, minStock: 15, lastUpdated: '2024-12-05', frequent: true, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Cup+%26+Saucer' },
   { id: 15, name: 'Tumbler Glass 300ml', nameAr: 'كأس شفاف 300 مل', sku: 'TG-300', color: 'Clear', price: 6.50, category: 'Accessories', stockQty: 100, minStock: 25, lastUpdated: '2024-12-04', frequent: false, image: 'https://placehold.co/400x280/f0f5f5/557777?text=Tumbler+300ml' },
-  { id: 16, name: 'Salad Server Set', nameAr: 'طقم سلطات', sku: 'SSS-170', color: 'Black', price: 16.00, category: 'Accessories', stockQty: 25, minStock: 10, lastUpdated: '2024-12-03', frequent: false, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Salad+Server+Set' }
+  { id: 16, name: 'Salad Server Set', nameAr: 'طقم سلطات', sku: 'SSS-170', color: 'Black', price: 16.00, category: 'Accessories', stockQty: 25, minStock: 10, lastUpdated: '2024-12-03', frequent: false, image: 'https://placehold.co/400x280/f5f5f0/777766?text=Salad+Server+Set' },
+  { id: 19, name: 'Dinner Set', nameAr: 'طقم عشاء', sku: 'DNS-500', color: 'White', parentProduct: 'Dinner Set', price: 85.00, category: 'Dinner Plates', stockQty: 25, minStock: 10, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Dinner+Set+White' },
+  { id: 20, name: 'Dinner Set', nameAr: 'طقم عشاء', sku: 'DNS-510', color: 'Black', parentProduct: 'Dinner Set', price: 95.00, category: 'Dinner Plates', stockQty: 18, minStock: 10, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/2b2b2b/d0d0d0?text=Dinner+Set+Black' },
+  { id: 21, name: 'Dinner Set', nameAr: 'طقم عشاء', sku: 'DNS-520', color: 'Grey', parentProduct: 'Dinner Set', price: 92.00, category: 'Dinner Plates', stockQty: 12, minStock: 10, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/9ca3af/1f2937?text=Dinner+Set+Grey' },
+  { id: 22, name: 'Tea Set', nameAr: 'طقم شاي', sku: 'TES-200', color: 'White', parentProduct: 'Tea Set', price: 45.00, category: 'Accessories', stockQty: 30, minStock: 10, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/f5f0eb/8b7355?text=Tea+Set+White' },
+  { id: 23, name: 'Tea Set', nameAr: 'طقم شاي', sku: 'TES-210', color: 'Gold', parentProduct: 'Tea Set', price: 58.00, category: 'Accessories', stockQty: 0, minStock: 10, expectedDelivery: '2026-09-05', lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/d4af37/3b2f0b?text=Tea+Set+Gold' },
+  { id: 24, name: 'Serving Tray', nameAr: 'صينية تقديم', sku: 'STY-300', color: 'Silver', parentProduct: 'Serving Tray', price: 38.00, category: 'Trays', stockQty: 22, minStock: 10, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/c0c4cc/1f2937?text=Serving+Tray+Silver' },
+  { id: 25, name: 'Serving Tray', nameAr: 'صينية تقديم', sku: 'STY-310', color: 'Gold', parentProduct: 'Serving Tray', price: 44.00, category: 'Trays', stockQty: 14, minStock: 10, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/d4af37/3b2f0b?text=Serving+Tray+Gold' },
+  { id: 26, name: 'Storage Container', nameAr: 'حاوية تخزين', sku: 'SCN-400', color: 'Blue', parentProduct: 'Storage Container', price: 26.00, category: 'Serving', stockQty: 40, minStock: 15, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/1e3a8a/e0e7ff?text=Storage+Container+Blue' },
+  { id: 27, name: 'Storage Container', nameAr: 'حاوية تخزين', sku: 'SCN-410', color: 'Grey', parentProduct: 'Storage Container', price: 26.00, category: 'Serving', stockQty: 8, minStock: 15, lastUpdated: '2024-12-18', frequent: false, image: 'https://placehold.co/400x280/9ca3af/1f2937?text=Storage+Container+Grey' }
 ];
 
 var REQUESTS = [
@@ -246,7 +255,7 @@ function getCart() { try { return JSON.parse(sessionStorage.getItem('df_cart')) 
 function setCart(cart) { sessionStorage.setItem('df_cart', JSON.stringify(cart)); }
 function addToCart(productId, qty, discount) {
   if (!qty || qty < 1) qty = 1;
-  if (typeof discount !== 'number' || discount < 0) discount = 0;
+  discount = normalizeDiscount(discount);
   var p = PRODUCTS.find(function(x) { return x.id === productId; });
   var avail = p ? (p.stockQty || 0) : 0;
   var cart = getCart();
@@ -268,6 +277,29 @@ function updateCartQty(productId, delta) {
   if (item) { item.qty += delta; if (item.qty <= 0) { removeFromCart(productId); return; } }
   setCart(cart); updateCartBadge(); updateProductsCounter();
 }
+function getCurrentUserRole() { return sessionStorage.getItem('df_user_role') || 'sales'; }
+function isManager() { return getCurrentUserRole() === 'admin'; }
+function normalizeDiscount(value) {
+  value = parseFloat(value);
+  if (isNaN(value) || value < 0) return 0;
+  return value;
+}
+function updateCartQtyDirect(productId, newQty) {
+  var cart = getCart(); var item = cart.find(function(x) { return x.id === productId; });
+  if (!item) return;
+  newQty = parseInt(newQty, 10);
+  if (isNaN(newQty) || newQty < 1) { renderCart(); return; }
+  item.qty = newQty;
+  setCart(cart); updateCartBadge(); updateProductsCounter();
+  renderCart();
+}
+function updateCartDiscount(productId, newDiscount) {
+  var cart = getCart(); var item = cart.find(function(x) { return x.id === productId; });
+  if (!item) return;
+  item.discount = normalizeDiscount(newDiscount);
+  setCart(cart); updateCartBadge(); updateProductsCounter();
+  renderCart();
+}
 function getCartSubtotal() { return getCart().reduce(function(s, i) { return s + (i.price * i.qty); }, 0); }
 function getCartDiscountTotal() { return getCart().reduce(function(s, i) { return s + (i.price * i.qty * (i.discount || 0) / 100); }, 0); }
 function getCartNet() { return getCartSubtotal() - getCartDiscountTotal(); }
@@ -275,6 +307,7 @@ function getCartVAT() { return getCartNet() * (VAT_RATE / 100); }
 function getCartGrandTotal() { return getCartNet() + getCartVAT(); }
 function getCartCount() { return getCart().reduce(function(s, i) { return s + i.qty; }, 0); }
 function getCartMaxDiscount() { var cart = getCart(); if (!cart.length) return 0; return Math.max.apply(null, cart.map(function(i) { return i.discount || 0; })); }
+function isDiscountApprovalRequired() { return !isManager() && getCartMaxDiscount() > MAX_SALESMAN_DISCOUNT; }
 function clearCart() { sessionStorage.removeItem('df_cart'); updateCartBadge(); updateProductsCounter(); }
 function updateCartBadge() {
   var badge = document.getElementById('cartBadge');
@@ -360,6 +393,7 @@ function initClickableRows() {
 function handleLogin(e) {
   e.preventDefault();
   var role = document.getElementById('loginRole') ? document.getElementById('loginRole').value : 'sales';
+  sessionStorage.setItem('df_user_role', role);
   if (role === 'admin') window.location.href = 'admin/dashboard.html';
   else window.location.href = 'sales/dashboard.html';
 }
@@ -448,6 +482,90 @@ function initVisitFields() {
 }
 
 /* ---- Product Catalog ---- */
+function productColorDot(color) {
+  var map = {
+    White: '#ffffff', Black: '#111111', Grey: '#9ca3af', Gray: '#9ca3af',
+    Blue: '#2563eb', Green: '#16a34a', Red: '#ef4444', Yellow: '#eab308',
+    Orange: '#f97316', Purple: '#7c3aed', Pink: '#ec4899', Beige: '#e0d2b4',
+    Brown: '#8b5a2b', Cream: '#f5f0e1', Clear: '#d1fae5', Silver: '#c0c4cc', Gold: '#d4af37'
+  };
+  return map[color] || '#9ca3af';
+}
+function groupProductsByName(products) {
+  var groups = []; var index = {};
+  products.forEach(function(p) {
+    var key = p.parentProduct || p.name;
+    if (!index[key]) { index[key] = []; groups.push(index[key]); }
+    index[key].push(p);
+  });
+  return groups;
+}
+function getSelectedProductId(btn) {
+  var el = btn.closest('.product-card').querySelector('.pc-selected-pid');
+  return el ? parseInt(el.value, 10) : parseInt(btn.closest('.product-card').dataset.pid, 10);
+}
+function selectProductColor(swatch, pid) {
+  var card = swatch.closest('.product-card');
+  var p = PRODUCTS.find(function(x) { return x.id === pid; });
+  if (!p) return;
+  var sel = card.querySelector('.pc-selected-pid');
+  if (sel) sel.value = pid;
+  card.querySelectorAll('.pc-color-swatch').forEach(function(s) { s.classList.toggle('selected', parseInt(s.dataset.pid, 10) === pid); });
+  var skuEl = card.querySelector('[data-role="sku"]');
+  if (skuEl) skuEl.innerHTML = 'SKU: ' + p.sku + (p.color ? ' · <span class="pc-color">' + p.color + '</span>' : '');
+  var priceEl = card.querySelector('[data-role="price"]');
+  if (priceEl) priceEl.textContent = fmtPrice(p.price);
+  var stockEl = card.querySelector('[data-role="stock"]');
+  if (stockEl) stockEl.innerHTML = stockBadge(getStockStatus(p)) + '<span class="pc-avail">Available: ' + (p.stockQty || 0) + '</span>';
+  var imgEl = card.querySelector('.product-card-img img');
+  if (imgEl) imgEl.src = p.image;
+  var delEl = card.querySelector('[data-role="delivery"]');
+  if (delEl) delEl.innerHTML = p.expectedDelivery ? '<div class="product-card-delivery"><i class="fas fa-truck"></i> Expected: ' + fmtDate(p.expectedDelivery) + '</div>' : '';
+}
+function buildProductCard(p) {
+  return '<div class="product-card">' +
+    '<div class="product-card-img"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy"></div>' +
+    '<div class="product-card-body">' +
+      '<div class="product-card-name">' + p.name + '</div>' +
+      '<div class="pc-name-ar" dir="rtl">' + (p.nameAr || '') + '</div>' +
+      '<div class="product-card-sku">SKU: ' + p.sku + (p.color ? ' · <span class="pc-color">' + p.color + '</span>' : '') + '</div>' +
+      '<div style="margin-bottom:6px;"><span class="chip" style="pointer-events:none;font-size:10px;padding:2px 10px;">' + p.category + '</span></div>' +
+      '<div class="product-card-price">' + fmtPrice(p.price) + '</div>' +
+      '<div class="product-card-stock">' + stockBadge(getStockStatus(p)) + '<span class="pc-avail">Available: ' + (p.stockQty || 0) + '</span></div>' +
+      (p.expectedDelivery ? '<div class="product-card-delivery"><i class="fas fa-truck"></i> Expected: ' + fmtDate(p.expectedDelivery) + '</div>' : '') +
+      '<div class="product-card-discount"><label>Discount</label><input type="number" value="0" min="0" max="100" class="pc-discount-input" data-pid="' + p.id + '"><span>%</span></div>' +
+      '<div class="product-card-footer">' +
+        '<div class="product-card-qty"><button onclick="this.nextElementSibling.value=Math.max(1,parseInt(this.nextElementSibling.value||1)-1)">−</button><input type="number" value="1" min="1" max="999" class="pc-qty-input" data-pid="' + p.id + '"><button onclick="this.previousElementSibling.value=Math.min(999,parseInt(this.previousElementSibling.value||1)+1)">+</button></div>' +
+        '<button class="product-card-add" onclick="addToCart(' + p.id + ',parseInt(this.closest(\'.product-card\').querySelector(\'.pc-qty-input\').value||1),parseFloat(this.closest(\'.product-card\').querySelector(\'.pc-discount-input\').value)||0)">Add</button>' +
+      '</div>' +
+    '</div></div>';
+}
+function buildColorGroupCard(group) {
+  var primary = group[0];
+  var displayName = primary.parentProduct || primary.name;
+  var swatches = group.map(function(v) {
+    return '<span class="pc-color-swatch' + (v.id === primary.id ? ' selected' : '') + '" data-pid="' + v.id + '" onclick="selectProductColor(this,' + v.id + ')"><i class="pc-swatch-dot" style="background:' + productColorDot(v.color) + ';"></i>' + v.color + '</span>';
+  }).join('');
+  return '<div class="product-card">' +
+    '<input type="hidden" class="pc-selected-pid" value="' + primary.id + '">' +
+    '<div class="product-card-img"><img src="' + primary.image + '" alt="' + displayName + '" loading="lazy"></div>' +
+    '<div class="product-card-body">' +
+      '<div class="product-card-name">' + displayName + '</div>' +
+      '<div class="pc-name-ar" dir="rtl">' + (primary.nameAr || '') + '</div>' +
+      '<div class="product-card-sku" data-role="sku">SKU: ' + primary.sku + (primary.color ? ' · <span class="pc-color">' + primary.color + '</span>' : '') + '</div>' +
+      '<div style="margin-bottom:6px;"><span class="chip" style="pointer-events:none;font-size:10px;padding:2px 10px;">' + primary.category + '</span></div>' +
+      '<div class="product-card-price" data-role="price">' + fmtPrice(primary.price) + '</div>' +
+      '<div class="product-card-stock" data-role="stock">' + stockBadge(getStockStatus(primary)) + '<span class="pc-avail">Available: ' + (primary.stockQty || 0) + '</span></div>' +
+      '<div data-role="delivery">' + (primary.expectedDelivery ? '<div class="product-card-delivery"><i class="fas fa-truck"></i> Expected: ' + fmtDate(primary.expectedDelivery) + '</div>' : '') + '</div>' +
+      '<div class="product-card-colors"><span class="pc-colors-label">Colors:</span>' + swatches + '</div>' +
+      '<div class="product-card-discount"><label>Discount</label><input type="number" value="0" min="0" max="100" class="pc-discount-input" data-pid="' + primary.id + '"><span>%</span></div>' +
+      '<div class="product-card-footer">' +
+        '<div class="product-card-qty"><button onclick="this.nextElementSibling.value=Math.max(1,parseInt(this.nextElementSibling.value||1)-1)">−</button><input type="number" value="1" min="1" max="999" class="pc-qty-input" data-pid="' + primary.id + '"><button onclick="this.previousElementSibling.value=Math.min(999,parseInt(this.previousElementSibling.value||1)+1)">+</button></div>' +
+        '<button class="product-card-add" onclick="addToCart(getSelectedProductId(this),parseInt(this.closest(\'.product-card\').querySelector(\'.pc-qty-input\').value||1),parseFloat(this.closest(\'.product-card\').querySelector(\'.pc-discount-input\').value)||0)">Add</button>' +
+      '</div>' +
+    '</div></div>';
+}
+
 function initProductCatalog() {
   var grid = document.getElementById('productGrid');
   if (!grid) return;
@@ -458,29 +576,14 @@ function initProductCatalog() {
     filter = filter || ''; category = category || 'All'; sort = sort || 'name-asc';
     var filtered = PRODUCTS.slice();
     if (category !== 'All') filtered = filtered.filter(function(p) { return p.category === category; });
-    if (filter) filtered = filtered.filter(function(p) { return p.name.toLowerCase().includes(filter.toLowerCase()) || p.sku.toLowerCase().includes(filter.toLowerCase()) || (p.nameAr || '').includes(filter); });
+    if (filter) filtered = filtered.filter(function(p) { return p.name.toLowerCase().includes(filter.toLowerCase()) || p.sku.toLowerCase().includes(filter.toLowerCase()) || (p.nameAr || '').includes(filter) || (p.parentProduct || '').toLowerCase().includes(filter.toLowerCase()); });
     if (sort === 'name-asc') filtered.sort(function(a, b) { return a.name.localeCompare(b.name) || (a.color || '').localeCompare(b.color || ''); });
     else if (sort === 'name-desc') filtered.sort(function(a, b) { return b.name.localeCompare(a.name) || (b.color || '').localeCompare(a.color || ''); });
     else if (sort === 'price-asc') filtered.sort(function(a, b) { return a.price - b.price; });
     else if (sort === 'price-desc') filtered.sort(function(a, b) { return b.price - a.price; });
     if (filtered.length === 0) { grid.innerHTML = '<div class="empty-state" style="grid-column:1/-1;"><i class="fas fa-box-open"></i><h3>No products found</h3><p>Try adjusting your search or filter.</p></div>'; return; }
-    grid.innerHTML = filtered.map(function(p) {
-      return '<div class="product-card">' +
-        '<div class="product-card-img"><img src="' + p.image + '" alt="' + p.name + '" loading="lazy"></div>' +
-        '<div class="product-card-body">' +
-          '<div class="product-card-name">' + p.name + '</div>' +
-          '<div class="pc-name-ar" dir="rtl">' + (p.nameAr || '') + '</div>' +
-          '<div class="product-card-sku">SKU: ' + p.sku + (p.color ? ' · <span class="pc-color">' + p.color + '</span>' : '') + '</div>' +
-          '<div style="margin-bottom:6px;"><span class="chip" style="pointer-events:none;font-size:10px;padding:2px 10px;">' + p.category + '</span></div>' +
-          '<div class="product-card-price">' + fmtPrice(p.price) + '</div>' +
-          '<div class="product-card-stock">' + stockBadge(getStockStatus(p)) + '<span class="pc-avail">Available: ' + (p.stockQty || 0) + '</span></div>' +
-          (p.expectedDelivery ? '<div class="product-card-delivery"><i class="fas fa-truck"></i> Expected: ' + fmtDate(p.expectedDelivery) + '</div>' : '') +
-          '<div class="product-card-discount"><label>Discount</label><input type="number" value="0" min="0" max="100" class="pc-discount-input" data-pid="' + p.id + '"><span>%</span></div>' +
-          '<div class="product-card-footer">' +
-            '<div class="product-card-qty"><button onclick="this.nextElementSibling.value=Math.max(1,parseInt(this.nextElementSibling.value||1)-1)">−</button><input type="number" value="1" min="1" max="999" class="pc-qty-input" data-pid="' + p.id + '"><button onclick="this.previousElementSibling.value=Math.min(999,parseInt(this.previousElementSibling.value||1)+1)">+</button></div>' +
-            '<button class="product-card-add" onclick="addToCart(' + p.id + ',parseInt(this.closest(\'.product-card\').querySelector(\'.pc-qty-input\').value||1),parseFloat(this.closest(\'.product-card\').querySelector(\'.pc-discount-input\').value)||0)">Add</button>' +
-          '</div>' +
-        '</div></div>';
+    grid.innerHTML = groupProductsByName(filtered).map(function(group) {
+      return group.length > 1 ? buildColorGroupCard(group) : buildProductCard(group[0]);
     }).join('');
   }
 
@@ -523,11 +626,11 @@ function renderCart() {
   if (emptyEl) emptyEl.classList.add('hidden');
   if (cartContent) cartContent.classList.remove('hidden');
   container.innerHTML = cart.map(function(item) {
-    var discountLabel = item.discount > 0 ? '<div class="cart-item-discount">' + item.discount + '% discount</div>' : '';
     var lineTotal = item.price * item.qty * (1 - (item.discount || 0) / 100);
     var delivery = getExpectedDelivery(item);
     var deliveryHtml = delivery ? '<div class="cart-item-delivery warning"><i class="fas fa-exclamation-triangle"></i><div><div class="cid-line">Available: ' + delivery.available + ' pcs · Required: ' + delivery.required + ' pcs</div><div class="cid-note">Only ' + delivery.available + ' units available. Remaining quantity expected on: ' + fmtDate(delivery.date) + '.</div></div></div>' : '';
-    return '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">' + item.name + (item.color ? ' · <span style="font-weight:400;color:var(--gray-500);">' + item.color + '</span>' : '') + '</div><div class="cart-item-sku">SKU: ' + item.sku + ' · ' + fmtPrice(item.price) + ' each</div>' + discountLabel + deliveryHtml + '</div><div class="qty-control"><button class="qty-btn" onclick="updateCartQty(' + item.id + ',-1);renderCart();"><i class="fas fa-minus"></i></button><div class="qty-value">' + item.qty + '</div><button class="qty-btn" onclick="updateCartQty(' + item.id + ',1);renderCart();"><i class="fas fa-plus"></i></button></div><div class="cart-item-price">' + fmtPrice(lineTotal) + '</div><button class="cart-item-remove" onclick="removeFromCart(' + item.id + ');renderCart();"><i class="fas fa-trash-alt"></i></button></div>';
+    var discountEdit = '<div class="cart-item-discount-edit"><span class="ce-label">Discount</span><span class="ce-input"><input type="number" min="0" max="100" step="1" value="' + (item.discount || 0) + '" onchange="updateCartDiscount(' + item.id + ', this.value)"><span>%</span></span></div>';
+    return '<div class="cart-item"><div class="cart-item-info"><div class="cart-item-name">' + item.name + (item.color ? ' · <span style="font-weight:400;color:var(--gray-500);">' + item.color + '</span>' : '') + '</div><div class="cart-item-sku">SKU: ' + item.sku + ' · ' + fmtPrice(item.price) + ' each</div>' + discountEdit + deliveryHtml + '</div><div class="qty-control"><button class="qty-btn" onclick="updateCartQty(' + item.id + ',-1);renderCart();"><i class="fas fa-minus"></i></button><input type="number" class="qty-value" min="1" max="999" value="' + item.qty + '" onchange="updateCartQtyDirect(' + item.id + ', this.value)"><button class="qty-btn" onclick="updateCartQty(' + item.id + ',1);renderCart();"><i class="fas fa-plus"></i></button></div><div class="cart-item-price">' + fmtPrice(lineTotal) + '</div><button class="cart-item-remove" onclick="removeFromCart(' + item.id + ');renderCart();"><i class="fas fa-trash-alt"></i></button></div>';
   }).join('');
   if (countEl) countEl.textContent = cart.reduce(function(s, i) { return s + i.qty; }, 0) + ' item(s)';
   renderCartSummary();
@@ -594,9 +697,8 @@ function renderDiscountWarning() {
   var warningEl = document.getElementById('discountWarning');
   var normalActions = document.getElementById('normalActions');
   var approvalActions = document.getElementById('approvalActions');
-  var maxDisc = getCartMaxDiscount();
   if (!warningEl) return;
-  if (maxDisc > MAX_SALESMAN_DISCOUNT) {
+  if (isDiscountApprovalRequired()) {
     warningEl.classList.remove('hidden');
     warningEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i><div><div class="dw-text">Discount exceeds your approval limit.</div><div class="dw-desc">Maximum allowed discount is ' + MAX_SALESMAN_DISCOUNT + '%. This quotation requires admin approval before sending. Status will be set to: Pending Discount Approval.</div></div>';
     if (normalActions) normalActions.classList.add('hidden');
@@ -1297,6 +1399,7 @@ var AR = {
   'Line Items': 'بنود الخط',
   'Available Quantity': 'الكمية المتاحة',
   'Minimum Stock Level': 'الحد الأدنى للمخزون',
+  'Parent Product': 'المنتج الرئيسي',
   'Expected Delivery Date': 'تاريخ التسليم المتوقع',
   'Last Updated': 'آخر تحديث',
   'Product Details': 'تفاصيل المنتج',

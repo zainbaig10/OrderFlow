@@ -14,6 +14,7 @@
     .data-table.products-table tbody td { white-space: nowrap; }
     .data-table.products-table tbody td.product-name { white-space: normal; }
     .products-table .cat-badge { display: inline-block; white-space: nowrap; padding: 3px 12px; border-radius: 20px; font-size: 11px; font-weight: 600; border: 1.5px solid var(--gray-200); color: var(--gray-600); line-height: 1.4; pointer-events: none; }
+    .product-parent-label { font-size: 11px; font-weight: 500; color: var(--gray-400); margin-top: 2px; }
   </style>
 </head>
 <body>
@@ -44,7 +45,7 @@
         </div>
       </header>
       <main class="content">
-        <div class="page-header"><div><h1 class="page-title">Products</h1><p class="page-subtitle">18 products across 6 categories</p></div><button class="btn btn-primary" onclick="document.getElementById('addProductModal').classList.add('show')"><i class="fas fa-plus"></i> Add Product</button></div>
+        <div class="page-header"><div><h1 class="page-title">Products</h1><p class="page-subtitle">27 products across 6 categories</p></div><button class="btn btn-primary" onclick="document.getElementById('addProductModal').classList.add('show')"><i class="fas fa-plus"></i> Add Product</button></div>
         <div class="filters-bar">
           <div class="filter-group"><label>Category:</label><select class="form-select" id="adminProductCategory" style="width:auto;min-width:160px;"><option value="All">All Categories</option><option value="Dinner Plates">Dinner Plates</option><option value="Bowls">Bowls</option><option value="Platters">Platters</option><option value="Serving">Serving</option><option value="Trays">Trays</option><option value="Accessories">Accessories</option></select></div>
         </div>
@@ -77,6 +78,7 @@
             <div class="form-grid">
               <div class="form-group"><label>Product Name *</label><input type="text" class="form-input" id="addProdName" required placeholder="e.g. Soft Close Hinges"></div>
               <div class="form-group"><label>SKU *</label><input type="text" class="form-input" id="addProdSku" required placeholder="e.g. HNG-120"></div>
+              <div class="form-group"><label>Parent Product</label><input type="text" class="form-input" id="addProdParent" placeholder="e.g. Dinner Set (group color variants)"></div>
               <div class="form-group"><label>Color</label><input type="text" class="form-input" id="addProdColor" placeholder="e.g. White, Black, Nickel"></div>
               <div class="form-group"><label>Category *</label><select class="form-select" id="addProdCategory" required><option value="">Select category</option><option>Dinner Plates</option><option>Bowls</option><option>Platters</option><option>Serving</option><option>Trays</option><option>Accessories</option></select></div>
               <div class="form-group"><label>Default Price (SAR) *</label><input type="number" class="form-input" id="addProdPrice" required placeholder="0.00" step="0.01" min="0"></div>
@@ -100,6 +102,7 @@
             <div class="form-grid">
               <div class="form-group"><label>Product Name *</label><input type="text" class="form-input" id="editProdName" required></div>
               <div class="form-group"><label>SKU *</label><input type="text" class="form-input" id="editProdSku" required></div>
+              <div class="form-group"><label>Parent Product</label><input type="text" class="form-input" id="editProdParent" placeholder="e.g. Dinner Set (group color variants)"></div>
               <div class="form-group"><label>Color</label><input type="text" class="form-input" id="editProdColor"></div>
               <div class="form-group"><label>Category *</label><select class="form-select" id="editProdCategory" required><option value="">Select category</option><option>Dinner Plates</option><option>Bowls</option><option>Platters</option><option>Serving</option><option>Trays</option><option>Accessories</option></select></div>
               <div class="form-group"><label>Default Price (SAR) *</label><input type="number" class="form-input" id="editProdPrice" required step="0.01" min="0"></div>
@@ -122,6 +125,7 @@
           <div class="pd-card">
             <div class="pd-card-top"><img id="pdImage" src="" alt=""><div><div class="pd-name" id="pdName"></div><div class="pd-sku" id="pdSku"></div></div></div>
             <div class="detail-grid pd-grid">
+              <div class="detail-item"><span class="detail-label">Parent Product</span><span class="detail-value" id="pdParent"></span></div>
               <div class="detail-item"><span class="detail-label">Available Quantity</span><span class="detail-value" id="pdQty"></span></div>
               <div class="detail-item"><span class="detail-label">Stock Status</span><span class="detail-value" id="pdStatus"></span></div>
               <div class="detail-item"><span class="detail-label">Expected Delivery Date</span><span class="detail-value" id="pdExpected"></span></div>
@@ -139,10 +143,14 @@
       function renderAdminProducts() {
         var tbody = document.getElementById('adminProductTableBody');
         if (!tbody) return;
+        var categories = [];
+        PRODUCTS.forEach(function(p) { if (categories.indexOf(p.category) === -1) categories.push(p.category); });
+        var sub = document.querySelector('.page-subtitle');
+        if (sub) sub.textContent = PRODUCTS.length + ' products across ' + categories.length + ' categories';
         tbody.innerHTML = PRODUCTS.map(function(p) {
           var status = getStockStatus(p);
           return '<tr data-category="' + p.category + '">' +
-            '<td class="product-name"><strong>' + p.name + '</strong></td>' +
+            '<td class="product-name"><strong>' + p.name + '</strong>' + (p.parentProduct && p.parentProduct !== p.name ? '<div class="product-parent-label">' + p.parentProduct + '</div>' : '') + '</td>' +
             '<td>' + p.sku + '</td>' +
             '<td>' + (p.color || '—') + '</td>' +
             '<td><span class="cat-badge">' + p.category + '</span></td>' +
@@ -160,6 +168,7 @@
         if (!p) return;
         document.getElementById('pdName').textContent = p.name;
         document.getElementById('pdSku').textContent = p.sku + (p.color ? ' · ' + p.color : '');
+        document.getElementById('pdParent').textContent = p.parentProduct || '—';
         document.getElementById('pdImage').src = p.image || '';
         document.getElementById('pdImage').alt = p.name;
         document.getElementById('pdQty').textContent = (p.stockQty || 0) + ' units';
@@ -175,6 +184,7 @@
         adminEditingId = id;
         document.getElementById('editProdName').value = p.name;
         document.getElementById('editProdSku').value = p.sku;
+        document.getElementById('editProdParent').value = p.parentProduct || '';
         document.getElementById('editProdColor').value = p.color || '';
         document.getElementById('editProdCategory').value = p.category || '';
         document.getElementById('editProdPrice').value = p.price;
@@ -198,6 +208,7 @@
           id: nextId,
           name: document.getElementById('addProdName').value.trim(),
           sku: document.getElementById('addProdSku').value.trim(),
+          parentProduct: document.getElementById('addProdParent').value.trim() || null,
           color: document.getElementById('addProdColor').value.trim(),
           category: document.getElementById('addProdCategory').value,
           price: parseFloat(document.getElementById('addProdPrice').value) || 0,
@@ -217,6 +228,7 @@
         if (!p) return;
         p.name = document.getElementById('editProdName').value.trim();
         p.sku = document.getElementById('editProdSku').value.trim();
+        p.parentProduct = document.getElementById('editProdParent').value.trim() || null;
         p.color = document.getElementById('editProdColor').value.trim();
         p.category = document.getElementById('editProdCategory').value;
         p.price = parseFloat(document.getElementById('editProdPrice').value) || 0;
