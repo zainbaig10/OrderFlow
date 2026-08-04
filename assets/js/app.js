@@ -279,9 +279,15 @@ function updateCartQty(productId, delta) {
 }
 function getCurrentUserRole() { return sessionStorage.getItem('df_user_role') || 'sales'; }
 function isManager() { return getCurrentUserRole() === 'admin'; }
+/* Single shared discount-approval rule. Any discount greater than MAX_SALESMAN_DISCOUNT
+   applied by a non-manager requires manager approval before the quotation can be generated or sent. */
+function discountRequiresApproval(discount) {
+  return !isManager() && (parseFloat(discount) || 0) > MAX_SALESMAN_DISCOUNT;
+}
 function normalizeDiscount(value) {
   value = parseFloat(value);
   if (isNaN(value) || value < 0) return 0;
+  if (value > 100) return 100;
   return value;
 }
 function updateCartQtyDirect(productId, newQty) {
@@ -307,7 +313,7 @@ function getCartVAT() { return getCartNet() * (VAT_RATE / 100); }
 function getCartGrandTotal() { return getCartNet() + getCartVAT(); }
 function getCartCount() { return getCart().reduce(function(s, i) { return s + i.qty; }, 0); }
 function getCartMaxDiscount() { var cart = getCart(); if (!cart.length) return 0; return Math.max.apply(null, cart.map(function(i) { return i.discount || 0; })); }
-function isDiscountApprovalRequired() { return !isManager() && getCartMaxDiscount() > MAX_SALESMAN_DISCOUNT; }
+function isDiscountApprovalRequired() { return discountRequiresApproval(getCartMaxDiscount()); }
 function clearCart() { sessionStorage.removeItem('df_cart'); updateCartBadge(); updateProductsCounter(); }
 function updateCartBadge() {
   var badge = document.getElementById('cartBadge');
@@ -711,7 +717,8 @@ function renderDiscountWarning() {
 }
 
 function generateQuotation() {
-  setSessionData('quotation_data', {
+  if (isDiscountApprovalRequired()) { submitForApproval(); return; }
+  var data = {
     customer: getSessionData('selected_customer'),
     items: getCart(),
     subtotal: getCartSubtotal(),
@@ -724,7 +731,10 @@ function generateQuotation() {
     terms: getOrderTerms(),
     paymentTerms: getOrderPaymentTerms(),
     date: new Date().toISOString()
-  });
+  };
+  data.id = persistCreatedQuote('generated');
+  data.status = 'generated';
+  setSessionData('quotation_data', data);
   var reviewSection = document.getElementById('reviewSection');
   var previewSection = document.getElementById('previewSection');
   if (reviewSection && previewSection) {
@@ -739,8 +749,27 @@ function generateQuotation() {
   }
 }
 
+/* Record newly created quotations so their status is consistent across the workflow. */
+function persistCreatedQuote(status) {
+  var quotes = [];
+  try { quotes = JSON.parse(sessionStorage.getItem('df_created_quotes') || '[]'); } catch(e) { quotes = []; }
+  var id = 'QT-' + new Date().getFullYear() + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+  var customer = getSessionData('selected_customer');
+  quotes.push({
+    id: id,
+    customer: customer ? customer.company : 'Walk-in Customer',
+    date: new Date().toISOString().split('T')[0],
+    discount: getCartMaxDiscount(),
+    total: getCartGrandTotal(),
+    status: status,
+    salesperson: 'Sarah Al Rashid'
+  });
+  sessionStorage.setItem('df_created_quotes', JSON.stringify(quotes));
+  return id;
+}
+
 function submitForApproval() {
-  setSessionData('quotation_data', {
+  var data = {
     customer: getSessionData('selected_customer'),
     items: getCart(),
     subtotal: getCartSubtotal(),
@@ -753,13 +782,21 @@ function submitForApproval() {
     terms: getOrderTerms(),
     paymentTerms: getOrderPaymentTerms(),
     date: new Date().toISOString()
-  });
+  };
+  data.id = persistCreatedQuote('pending-approval');
+  data.status = 'pending-approval';
+  setSessionData('quotation_data', data);
   showToast('Quotation submitted for discount approval', 'info');
   clearCart(); sessionStorage.removeItem('df_selected_customer'); sessionStorage.removeItem('df_order_remarks'); sessionStorage.removeItem('df_visit_purpose');
   setTimeout(function() { window.location.href = 'my-requests.html'; }, 1000);
 }
 
 function sendQuotationWhatsApp() {
+  var data = getSessionData('quotation_data');
+  if (data && discountRequiresApproval(data.maxDiscount)) {
+    showToast('This quotation requires discount approval before it can be sent. Submit it for approval first.', 'error');
+    return;
+  }
   showToast('Opening WhatsApp...', 'info');
   setTimeout(function() { showToast('Quotation PDF sent via WhatsApp (simulated)', 'success'); }, 1500);
   setTimeout(function() { window.location.href = 'my-requests.html'; }, 2500);
@@ -1046,10 +1083,26 @@ function updateQuotationTotals() {
   if (el('qDiscountAmt')) el('qDiscountAmt').textContent = '-' + fmtPrice(discountAmt);
   if (el('qTaxAmt')) el('qTaxAmt').textContent = fmtPrice(taxAmt);
   if (el('qGrandTotal')) el('qGrandTotal').textContent = fmtPrice(grand);
+  var warn = el('qDiscountWarn');
+  if (warn) {
+    if (discountRequiresApproval(discount)) {
+      warn.classList.remove('hidden');
+      warn.textContent = 'Discount of ' + discount + '% exceeds the ' + MAX_SALESMAN_DISCOUNT + '% approval limit. A manager must approve before this quotation can be sent.';
+    } else {
+      warn.classList.add('hidden');
+    }
+  }
 }
 
 function saveQuotationDraft() { showToast('Quotation saved as draft', 'success'); }
-function sendQuotationDirect() { showToast('Quotation sent to customer', 'success'); setTimeout(function() { window.location.href = 'requests.html'; }, 1000); }
+function sendQuotationDirect() {
+  var discount = parseFloat(document.getElementById('qDiscount') ? document.getElementById('qDiscount').value : 0) || 0;
+  if (discountRequiresApproval(discount)) {
+    showToast('Discount of ' + discount + '% exceeds the ' + MAX_SALESMAN_DISCOUNT + '% limit. Only a manager can send this quotation.', 'error');
+    return;
+  }
+  showToast('Quotation sent to customer', 'success'); setTimeout(function() { window.location.href = 'requests.html'; }, 1000);
+}
 
 /* ---- Admin Quotation Preview ---- */
 function loadQuotationPreview() {
@@ -1352,7 +1405,7 @@ var AR = {
   'Salesperson': 'مندوب المبيعات',
   'Remarks': 'ملاحظات',
   'Waiting for discount approval.': 'بانتظار موافقة الخصم.',
-  'This quotation exceeds the 5% discount limit. You can send it via WhatsApp once the admin approves the discount.': 'يتجاوز هذا العرض حد الخصم 5%. يمكنك إرساله عبر واتساب بعد موافقة الإدارة على الخصم.',
+  'This quotation exceeds the 25% discount limit. You can send it via WhatsApp once the admin approves the discount.': 'يتجاوز هذا العرض حد الخصم 25%. يمكنك إرساله عبر واتساب بعد موافقة الإدارة على الخصم.',
   'Send via WhatsApp': 'الإرسال عبر واتساب',
   'My Profile': 'ملفي الشخصي',
   'Manage your account settings': 'إدارة إعدادات حسابك',
@@ -1464,7 +1517,7 @@ var AR = {
   'Quotation Sent': 'عرض سعر مرسل',
   'Notify when a quotation is sent to a customer': 'إشعار عند إرسال عرض سعر لعميل',
   'Discount Approval Required': 'موافقة الخصم مطلوبة',
-  'Notify admin when a quotation exceeds 5% discount': 'إشعار الإدارة عند تجاوز عرض السعر 5% خصم',
+  'Notify admin when a quotation exceeds 25% discount': 'إشعار الإدارة عند تجاوز عرض السعر 25% خصم',
   'Customer Accepted': 'قبل العميل',
   'Notify when a customer accepts the quotation': 'إشعار عند قبول العميل لعرض السعر',
   'Daily Summary Email': 'بريد ملخص يومي',
@@ -1549,7 +1602,7 @@ var AR = {
   'Send WhatsApp': 'إرسال واتساب',
   'Mark Completed': 'تحديد كمكتمل',
   'This quotation requires discount approval.': 'يتطلب هذا العرض موافقة على الخصم.',
-  'Salesperson has requested a discount above the 5% limit. Review the quotation and approve or reject.': 'طلب مندوب المبيعات خصماً يتجاوز الحد 5%. راجع عرض السعر ووافق أو ارفض.',
+  'Salesperson has requested a discount above the 25% limit. Review the quotation and approve or reject.': 'طلب مندوب المبيعات خصماً يتجاوز الحد 25%. راجع عرض السعر ووافق أو ارفض.',
   'Approve Discount': 'موافقة على الخصم',
   'Reject Discount': 'رفض الخصم',
   'Status Flow': 'سير الحالة',

@@ -61,6 +61,7 @@
           <div class="cart-summary">
             <div class="cart-summary-row"><span>Subtotal</span><span class="font-bold" id="qSubtotal">SAR 0.00</span></div>
             <div class="cart-summary-row"><span>Discount (%)</span><input type="number" class="form-input" id="qDiscount" value="0" min="0" max="100" style="width:80px;text-align:right;padding:4px 8px;" oninput="updateQuotationTotals()"></div>
+            <div class="discount-warning hidden" id="qDiscountWarn" style="margin-bottom:10px;"></div>
             <div class="cart-summary-row"><span>Discount Amount</span><span id="qDiscountAmt" class="text-danger">-SAR 0.00</span></div>
             <div class="cart-summary-row"><span>VAT (15%)</span><input type="number" class="form-input" id="qTax" value="15" min="0" max="100" style="width:80px;text-align:right;padding:4px 8px;" oninput="updateQuotationTotals()"></div>
             <div class="cart-summary-row"><span>VAT Amount</span><span id="qTaxAmt">SAR 0.00</span></div>
